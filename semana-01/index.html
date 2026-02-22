@@ -77,7 +77,27 @@
         }
     </style>
 </head>
+
 <body class="p-4 md:p-8 text-slate-800">
+
+    <!-- BARRA SUPERIOR: VOLVER + COPIAR ENLACE -->
+    <div class="max-w-5xl mx-auto mb-4 flex flex-wrap justify-end gap-2">
+        <a href="../" class="bg-purple-700 hover:bg-purple-800 text-white font-bold px-4 py-2 rounded-lg shadow transition">
+            ⬅ Volver al Periodo
+        </a>
+
+        <button onclick="copiarEnlace()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold px-4 py-2 rounded-lg shadow transition">
+            🔗 Copiar enlace
+        </button>
+    </div>
+
+    <script>
+        function copiarEnlace() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Enlace copiado ✅");
+        }
+    </script>
+    <!-- FIN BARRA SUPERIOR -->
 
     <header class="max-w-5xl mx-auto mb-12">
         <div class="glass-panel rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
@@ -155,9 +175,6 @@
                     </div>
                 </div>
             </div>
-            
-            
-            
         </section>
 
         <section class="glass-panel rounded-3xl p-8 shadow-xl text-center">
