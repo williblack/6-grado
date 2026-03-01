@@ -19,6 +19,9 @@
         .backface-hidden { backface-visibility: hidden; }
         .rotate-y-180 { transform: rotateY(180deg); }
         
+        /* CORRECCIÓN: Clase específica para forzar el giro 3D en el hover */
+        .group:hover .giro-3d-hover { transform: rotateY(180deg); }
+        
         /* Ocultar barra de scroll para limpieza visual */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #1e293b; }
@@ -90,7 +93,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <div class="group h-64 perspective-1000 cursor-pointer">
-                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d giro-3d-hover">
                         <div class="absolute w-full h-full glass-panel rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden shadow-lg border-t-4 border-amber-500">
                             <i class="fas fa-tools text-5xl text-amber-500 mb-4"></i>
                             <h3 class="text-xl font-bold text-center">Tallar y Rebajar</h3>
@@ -105,7 +108,7 @@
                 </div>
 
                 <div class="group h-64 perspective-1000 cursor-pointer">
-                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d giro-3d-hover">
                         <div class="absolute w-full h-full glass-panel rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden shadow-lg border-t-4 border-orange-500">
                             <i class="fas fa-hammer text-5xl text-orange-500 mb-4"></i>
                             <h3 class="text-xl font-bold text-center">Desbastar vs Afinar</h3>
@@ -121,7 +124,7 @@
                 </div>
 
                 <div class="group h-64 perspective-1000 cursor-pointer">
-                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d giro-3d-hover">
                         <div class="absolute w-full h-full glass-panel rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden shadow-lg border-t-4 border-yellow-500">
                             <i class="fas fa-scroll text-5xl text-yellow-500 mb-4"></i>
                             <h3 class="text-xl font-bold text-center">Lijado Progresivo</h3>
