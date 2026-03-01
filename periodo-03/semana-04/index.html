@@ -1,1 +1,411 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 7 y 8: Tallado, Rebaje y Excel con IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Utilidades para Glassmorphism y 3D */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        
+        /* Ocultar barra de scroll para limpieza visual */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        
+        body {
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur">
+           ⬅ Inicio (Grado)
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+           ⬅ Menú del Periodo
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+           🔗 Copiar enlace
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur z-50">
+        Enlace copiado ✅
+    </div>
+
+    <header class="max-w-5xl mx-auto glass-panel rounded-3xl p-8 mb-12 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 opacity-10 text-9xl">
+            <i class="fas fa-tree"></i>
+        </div>
+        <div class="relative z-10">
+            <div class="inline-block bg-amber-500/20 text-amber-300 px-4 py-1 rounded-full text-sm font-semibold tracking-wide mb-4 border border-amber-500/30">
+                Grado 6 | Semanas 4
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 mb-2">
+                ¡Magia en la Madera! 🪓
+            </h1>
+            <h2 class="text-xl md:text-2xl font-light text-slate-300 mb-6">
+                Tallado, Rebaje y Organización con IA
+            </h2>
+            <div class="flex items-center gap-4 text-sm text-slate-400 border-t border-slate-700/50 pt-4">
+                <span><i class="fas fa-school mr-2"></i>Colegio Santa Mariana de Jesús</span>
+                <span><i class="fas fa-chalkboard-teacher mr-2"></i>Prof. William Fdo Bernal</span>
+                <span><i class="fas fa-calendar-alt mr-2"></i>2026</span>
+            </div>
+        </div>
+        
+        <div class="mt-8 glass-panel bg-blue-500/10 border-blue-500/30 p-6 rounded-2xl">
+            <h3 class="text-lg font-bold text-blue-300 mb-2"><i class="fas fa-bullseye mr-2"></i>Objetivo de Aprendizaje</h3>
+            <p class="text-slate-200">
+                Comprender cómo dar forma a la madera mediante el tallado y lijado progresivo, y aprender a utilizar la Inteligencia Artificial para investigar y organizar datos básicos en Excel.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto space-y-12">
+
+        <section>
+            <h2 class="text-3xl font-bold mb-6 text-amber-400 border-b border-amber-400/20 pb-2">1. Conceptos del Carpintero</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="group h-64 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+                        <div class="absolute w-full h-full glass-panel rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden shadow-lg border-t-4 border-amber-500">
+                            <i class="fas fa-tools text-5xl text-amber-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-center">Tallar y Rebajar</h3>
+                            <p class="text-sm text-slate-400 mt-2 text-center">(Pasa el ratón)</p>
+                        </div>
+                        <div class="absolute w-full h-full glass-panel bg-amber-900/40 rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden rotate-y-180 shadow-lg">
+                            <p class="text-center text-amber-100">
+                                Es quitar pedacitos a la madera para darle forma, como esculpir plastilina dura. Usamos <strong>Formones</strong> y <strong>Gubias</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group h-64 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+                        <div class="absolute w-full h-full glass-panel rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden shadow-lg border-t-4 border-orange-500">
+                            <i class="fas fa-hammer text-5xl text-orange-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-center">Desbastar vs Afinar</h3>
+                            <p class="text-sm text-slate-400 mt-2 text-center">(Pasa el ratón)</p>
+                        </div>
+                        <div class="absolute w-full h-full glass-panel bg-orange-900/40 rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden rotate-y-180 shadow-lg">
+                            <p class="text-center text-orange-100">
+                                <strong>Desbastar:</strong> Trabajo rudo, quitar pedazos grandes y ásperos.<br><br>
+                                <strong>Afinar:</strong> Trabajo delicado, dejar la madera suavecita.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group h-64 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+                        <div class="absolute w-full h-full glass-panel rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden shadow-lg border-t-4 border-yellow-500">
+                            <i class="fas fa-scroll text-5xl text-yellow-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-center">Lijado Progresivo</h3>
+                            <p class="text-sm text-slate-400 mt-2 text-center">(Pasa el ratón)</p>
+                        </div>
+                        <div class="absolute w-full h-full glass-panel bg-yellow-900/40 rounded-2xl flex flex-col items-center justify-center p-6 backface-hidden rotate-y-180 shadow-lg">
+                            <p class="text-center text-yellow-100">
+                                Vamos paso a paso para no dañar la madera:<br>
+                                1. Lija Gruesa<br>
+                                2. Lija Media<br>
+                                3. Lija Fina (¡Como seda!)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="glass-panel p-6 rounded-3xl shadow-xl relative overflow-hidden">
+            <h2 class="text-2xl font-bold mb-4 text-emerald-400"><i class="fas fa-hand-sparkles mr-2"></i>Simulador: ¡Lija la Madera!</h2>
+            <p class="text-slate-300 mb-4">Mueve tu ratón (o dedo) sobre la madera áspera y oscura para simular el efecto de una lija fina. ¡Descubre la madera pulida debajo!</p>
+            
+            <div class="relative w-full max-w-2xl mx-auto h-64 rounded-xl overflow-hidden border-2 border-slate-600 shadow-inner cursor-crosshair">
+                <div class="absolute inset-0 bg-[#d4a373] flex items-center justify-center">
+                    <span class="text-[#8b5a2b] font-bold text-2xl opacity-50 rotate-[-10deg]">¡Madera Afinada! ✨</span>
+                </div>
+                <canvas id="sandCanvas" class="absolute inset-0 w-full h-full"></canvas>
+            </div>
+            <div class="text-center mt-4">
+                <button onclick="resetCanvas()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-full font-bold transition-all shadow-lg hover:scale-105">
+                    <i class="fas fa-sync-alt mr-2"></i>Volver a Desbastar
+                </button>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold mb-6 text-blue-400 border-b border-blue-400/20 pb-2">2. Proyecto: Carpintería, IA y Excel</h2>
+            
+            <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-500 before:to-purple-500">
+                
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-blue-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">1</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded-2xl shadow-lg transition-all hover:scale-[1.02] hover:shadow-blue-500/20 hover:border-blue-500/50">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2">En el Cuaderno 📓</h3>
+                        <p class="text-slate-300 text-sm">Dibuja una tabla de 3 columnas y 3 filas vacías. Los títulos deben ser: <strong>Herramienta</strong> | <strong>¿Para qué sirve?</strong> | <strong>Nivel de lija</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-purple-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">2</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded-2xl shadow-lg transition-all hover:scale-[1.02] hover:shadow-purple-500/20 hover:border-purple-500/50">
+                        <h3 class="font-bold text-xl text-purple-300 mb-2">Consulta a la IA 🤖</h3>
+                        <p class="text-slate-300 text-sm mb-3">Abre un Chatbot (como Gemini) y cópiale este texto exactamente:</p>
+                        <div class="bg-black/50 p-3 rounded-lg border border-slate-700 text-xs text-purple-200 italic">
+                            "Hola. Soy un estudiante de grado sexto. Actúa como un profesor de carpintería y dame la información para llenar una tabla. Dime 3 herramientas para dar forma a la madera, para qué sirven en palabras muy sencillas, y qué lija (gruesa, media o fina) se usa después de cada una."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-emerald-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">3</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded-2xl shadow-lg transition-all hover:scale-[1.02] hover:shadow-emerald-500/20 hover:border-emerald-500/50">
+                        <h3 class="font-bold text-xl text-emerald-300 mb-2">¡A Excel! 📊</h3>
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc pl-4">
+                            <li>Abre Excel en un "Libro en blanco".</li>
+                            <li>En la celda A1 escribe "Herramienta", B1 "¿Para qué sirve?", C1 "Nivel de Lija".</li>
+                            <li>Ponle <span class="text-yellow-400 font-bold">color amarillo</span> al fondo de esos títulos.</li>
+                            <li>Copia las respuestas de la IA en las celdas de abajo.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <section class="max-w-4xl mx-auto mt-16 glass-panel p-8 rounded-3xl shadow-2xl border-t-4 border-pink-500">
+        <h2 class="text-3xl font-bold text-center text-pink-400 mb-8"><i class="fas fa-gamepad mr-2"></i>Micro-Quiz del Carpintero</h2>
+        
+        <div id="quiz-container" class="space-y-6">
+            </div>
+
+        <div id="quiz-result" class="hidden mt-8 text-center p-6 bg-pink-500/20 rounded-2xl border border-pink-500/50 backdrop-blur">
+            <h3 class="text-2xl font-bold text-white mb-2">¡Completado! 🎉</h3>
+            <p id="score-text" class="text-lg text-pink-200"></p>
+            <button onclick="resetQuiz()" class="mt-4 bg-pink-600 hover:bg-pink-500 text-white px-6 py-2 rounded-full font-bold transition-all shadow-lg hover:scale-105">
+                Reintentar
+            </button>
+        </div>
+
+        <div class="mt-12 p-6 bg-slate-800/50 rounded-2xl border border-slate-600 border-dashed text-center">
+            <h3 class="text-xl font-bold text-yellow-400 mb-2">🏠 Tarea para la Casa</h3>
+            <p class="text-slate-300">Dibuja y colorea en tu cuaderno un Formón, una Gubia y un pedazo de Lija. Debajo escribe en grande: <em>"El secreto de una madera suave es la paciencia en el lijado".</em></p>
+        </div>
+    </section>
+
+    <footer class="mt-16 bg-[#020617] py-6 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-sm font-medium tracking-wide">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <script>
+        // -----------------------------------------------------
+        // 1. FUNCIÓN OBLIGATORIA: Copiar Enlace
+        // -----------------------------------------------------
+        function copiarEnlace() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if (t) {
+                    t.classList.remove('hidden');
+                    setTimeout(() => t.classList.add('hidden'), 2000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // -----------------------------------------------------
+        // 2. SIMULADOR CANVAS (Lijado interactivo)
+        // -----------------------------------------------------
+        const canvas = document.getElementById('sandCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function initCanvas() {
+            // Ajustar tamaño real del canvas
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+
+            // Dibujar textura de madera áspera (Fondo inicial del canvas)
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.fillStyle = '#6b4423'; // Marrón oscuro
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Añadir ruido/astillas
+            ctx.fillStyle = '#3e2723';
+            for(let i = 0; i < 2000; i++) {
+                ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 3, 2);
+            }
+
+            // Preparar para "borrar" (lijar)
+            ctx.globalCompositeOperation = 'destination-out';
+        }
+
+        function resetCanvas() {
+            initCanvas();
+        }
+
+        // Eventos para el ratón / tacto
+        let isDrawing = false;
+        
+        const sand = (e) => {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+            ctx.beginPath();
+            ctx.arc(x, y, 30, 0, Math.PI * 2); // Radio del "borrador" (lija)
+            ctx.fill();
+        };
+
+        canvas.addEventListener('mousedown', () => isDrawing = true);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mousemove', sand);
+        
+        // Soporte táctil
+        canvas.addEventListener('touchstart', (e) => { isDrawing = true; sand(e); e.preventDefault(); });
+        canvas.addEventListener('touchend', () => isDrawing = false);
+        canvas.addEventListener('touchmove', (e) => { sand(e); e.preventDefault(); });
+
+        // Inicializar tras cargar y al redimensionar
+        window.onload = initCanvas;
+        window.addEventListener('resize', initCanvas);
+
+
+        // -----------------------------------------------------
+        // 3. LÓGICA DEL MICRO-QUIZ GAMIFICADO
+        // -----------------------------------------------------
+        const questions = [
+            {
+                q: "¿Qué herramienta es como un cuchillo especial para tallar madera?",
+                opts: ["Un Martillo", "Una Gubia", "Un Destornillador"],
+                ans: 1
+            },
+            {
+                q: "¿Qué significa 'Desbastar' la madera?",
+                opts: ["Pintarla de colores", "Lijarla suavemente", "Quitarle los pedazos grandes y rudos"],
+                ans: 2
+            },
+            {
+                q: "Para un buen lijado progresivo, ¿con qué lija debes terminar?",
+                opts: ["Lija Fina", "Lija Gruesa", "Lija de Cartón"],
+                ans: 0
+            }
+        ];
+
+        let currentAnswers = new Array(questions.length).fill(null);
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            
+            questions.forEach((question, qIndex) => {
+                const qBlock = document.createElement('div');
+                qBlock.className = 'glass-panel p-5 rounded-xl border border-slate-600';
+                
+                let html = `<h3 class="font-bold text-lg mb-3 text-slate-200">${qIndex + 1}. ${question.q}</h3>`;
+                html += `<div class="grid grid-cols-1 md:grid-cols-3 gap-3">`;
+                
+                question.opts.forEach((opt, oIndex) => {
+                    const isSelected = currentAnswers[qIndex] === oIndex;
+                    const btnClass = isSelected 
+                        ? 'bg-pink-600 text-white border-pink-400 shadow-[0_0_15px_rgba(236,72,153,0.5)]' 
+                        : 'bg-slate-800/80 text-slate-300 border-slate-600 hover:bg-slate-700 hover:border-pink-500/50';
+                        
+                    html += `
+                        <button onclick="selectAnswer(${qIndex}, ${oIndex})" 
+                                class="w-full text-left px-4 py-3 rounded-lg border transition-all duration-300 ${btnClass}">
+                            ${opt}
+                        </button>
+                    `;
+                });
+                
+                html += `</div>`;
+                qBlock.innerHTML = html;
+                container.appendChild(qBlock);
+            });
+
+            // Mostrar botón de revisar si se respondieron todas
+            if (currentAnswers.every(a => a !== null) && document.getElementById('quiz-result').classList.contains('hidden')) {
+                const btnContainer = document.createElement('div');
+                btnContainer.className = 'text-center mt-6';
+                btnContainer.innerHTML = `
+                    <button onclick="checkAnswers()" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-all">
+                        Revisar Respuestas ✨
+                    </button>
+                `;
+                container.appendChild(btnContainer);
+            }
+        }
+
+        function selectAnswer(qIndex, oIndex) {
+            currentAnswers[qIndex] = oIndex;
+            renderQuiz();
+        }
+
+        function checkAnswers() {
+            let score = 0;
+            currentAnswers.forEach((ans, index) => {
+                if (ans === questions[index].ans) score++;
+            });
+
+            const resultDiv = document.getElementById('quiz-result');
+            const scoreText = document.getElementById('score-text');
+            const container = document.getElementById('quiz-container');
+            
+            container.innerHTML = ''; // Limpiar preguntas para mostrar resultado
+            resultDiv.classList.remove('hidden');
+
+            if (score === questions.length) {
+                scoreText.innerHTML = `¡Excelente! Has acertado ${score} de ${questions.length}. ¡Eres un maestro de la madera! 🏆`;
+                scoreText.className = "text-lg text-emerald-300 font-bold";
+            } else {
+                scoreText.innerHTML = `Acertaste ${score} de ${questions.length}. ¡Casi lo tienes! Sigue practicando el lijado progresivo. 💪`;
+                scoreText.className = "text-lg text-amber-300 font-bold";
+            }
+        }
+
+        function resetQuiz() {
+            currentAnswers = new Array(questions.length).fill(null);
+            document.getElementById('quiz-result').classList.add('hidden');
+            renderQuiz();
+        }
+
+        // Inicializar quiz
+        renderQuiz();
+
+    </script>
+</body>
+</html>
