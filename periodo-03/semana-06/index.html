@@ -3,308 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semana 6: Seguridad en el Taller | Prof. William Fdo Bernal</title>
+    <title>Semana 6: Seguridad Total - Prof. William Fdo Bernal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
-        
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f8fafc;
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-
-        .flip-card {
-            background-color: transparent;
-            perspective: 1000px;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .flip-card-back {
-            transform: rotateY(180deg);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="bg-slate-900 text-slate-100 antialiased">
 
-    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-6">
-        <a href="../../../index.html"
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4 p-4">
+        <a href="../../../index.html" 
            class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-white/10">
-           ⬅ Inicio (Grado)
+            ⬅ Inicio (Grado)
         </a>
-
-        <a href="../../index.html"
+        <a href="../../index.html" 
            class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
-           ⬅ Menú del Periodo
+            ⬅ Menú del Periodo
         </a>
-
-        <button type="button" onclick="copiarEnlace()"
-           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
-           🔗 Copiar enlace
+        <button type="button" onclick="copiarEnlace()" 
+                class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+            🔗 Copiar enlace
         </button>
     </div>
 
-    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500 text-white px-6 py-3 rounded-2xl shadow-2xl backdrop-blur z-50 animate-bounce">
-        Enlace copiado al portapapeles ✅
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur z-50 border border-emerald-500">
+        Enlace copiado ✅
     </div>
 
-    <header class="max-w-5xl mx-auto mb-12 text-center">
-        <div class="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase bg-blue-500 rounded-full">
-            Tecnología e Informática - 2026
-        </div>
-        <h1 class="text-5xl md:text-7xl font-800 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
-            Seguridad: El Escudo del Inventor
-        </h1>
-        <p class="text-xl text-slate-400 font-light italic">Colegio Santa Mariana de Jesús | Prof. William Fdo Bernal</p>
-        
-        <div class="mt-8 glass p-6 rounded-3xl max-w-2xl mx-auto border-l-4 border-emerald-500">
-            <p class="text-lg">
-                <span class="font-bold text-emerald-400">Objetivo:</span> Comprender que para unir piezas (visto la clase anterior), primero debemos proteger nuestra integridad física mediante normas y equipos adecuados.
-            </p>
+    <header class="relative overflow-hidden py-16 px-4 mb-8">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 z-0"></div>
+        <div class="max-w-5xl mx-auto relative z-10 text-center">
+            <span class="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Semana 6 • Periodo 1</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold mt-4 mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+                Normas de Seguridad
+            </h1>
+            <p class="text-xl text-blue-300 font-medium">Colegio Santa Mariana de Jesús (Buga)</p>
+            <p class="text-lg mt-2 opacity-80">Prof. William Fdo Bernal</p>
+            
+            <div class="mt-8 p-6 glass rounded-3xl max-w-2xl mx-auto shadow-2xl">
+                <p class="text-sm uppercase font-bold text-emerald-400 mb-2 tracking-tighter">Objetivo de Aprendizaje</p>
+                <p class="text-lg italic">"Identificar riesgos y aplicar protocolos de protección para usar herramientas de unión (como las de la semana pasada) de forma profesional y segura."</p>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto space-y-12">
+    <main class="max-w-5xl mx-auto px-4 pb-20 space-y-12">
 
-        <section class="glass p-8 rounded-3xl relative overflow-hidden">
-            <span class="absolute top-0 right-0 bg-yellow-500 text-black px-4 py-1 text-xs font-bold rounded-bl-xl">
-                [📝 COPIAR AL CUADERNO]
-            </span>
-            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                📂 Resumen de la Clase
-            </h2>
-            <div class="grid md:grid-cols-2 gap-8 text-slate-200">
-                <div class="space-y-4">
-                    <p class="bg-slate-800/50 p-4 rounded-xl border-l-2 border-blue-500">
-                        <strong>Relación con la Clase Anterior:</strong> La semana pasada aprendimos a unir madera con martillos y destornilladores. Pero, ¿qué pasa si el martillo golpea un dedo o un clavo salta al ojo? Por eso hoy vemos <strong>Seguridad</strong>.
-                    </p>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li><strong>Norma #1:</strong> Orden. Las herramientas en su lugar.</li>
-                        <li><strong>Norma #2:</strong> Protección. Uso obligatorio de EPP.</li>
-                        <li><strong>Norma #3:</strong> Atención. Cero juegos en el taller.</li>
+        <section class="space-y-4">
+            <span class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">📝 COPIAR AL CUADERNO</span>
+            <div class="glass p-8 rounded-3xl border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold mb-4 text-blue-300">Resumen: El Taller Seguro 🛡️</h3>
+                <p class="mb-4">La semana pasada aprendimos a unir piezas con <b>martillos, tornillos y pegantes</b>. Para usar estas herramientas sin accidentes, debemos seguir estas reglas:</p>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="bg-slate-800/50 p-4 rounded-xl"><b>1. Orden:</b> Un lugar limpio evita caídas.</li>
+                    <li class="bg-slate-800/50 p-4 rounded-xl"><b>2. EPP:</b> Uso de gafas, guantes y bata.</li>
+                    <li class="bg-slate-800/50 p-4 rounded-xl"><b>3. Protocolo:</b> Revisar, Usar y Guardar.</li>
+                    <li class="bg-slate-800/50 p-4 rounded-xl"><b>4. Concentración:</b> ¡Cero juegos en el taller!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">💻 INTERACTUAR EN EL PC</span>
+            <div class="glass p-8 rounded-3xl text-center">
+                <h3 class="text-2xl font-bold mb-6">Simulador: Efectividad de la Seguridad</h3>
+                <p class="mb-6 text-slate-400">Mira cómo bajan los riesgos cuando aplicas las normas de seguridad correctamente.</p>
+                <div class="max-w-md mx-auto bg-white/5 p-6 rounded-2xl">
+                    <canvas id="seguridadChart"></canvas>
+                </div>
+                <div class="flex justify-center gap-4 mt-6">
+                    <button onclick="actualizarChart('alto')" class="bg-red-500/20 hover:bg-red-500 text-red-200 px-4 py-2 rounded-lg transition-all border border-red-500/50">Sin Protección</button>
+                    <button onclick="actualizarChart('medio')" class="bg-yellow-500/20 hover:bg-yellow-500 text-yellow-200 px-4 py-2 rounded-lg transition-all border border-yellow-500/50">Normas Básicas</button>
+                    <button onclick="actualizarChart('total')" class="bg-emerald-500/20 hover:bg-emerald-500 text-emerald-200 px-4 py-2 rounded-lg transition-all border border-emerald-500/50">Seguridad Total</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <span class="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">🖥️ TRABAJO EN LA SALA</span>
+            <div class="glass p-8 rounded-3xl border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold mb-4">Reto IA + Excel: Protocolo de Experto</h3>
+                <div class="space-y-6">
+                    <div class="bg-slate-800/80 p-6 rounded-2xl border border-purple-500/30">
+                        <p class="text-sm text-purple-300 font-bold mb-2">PASO 1: Prompt para la IA</p>
+                        <p class="italic text-slate-300 mb-4">"Actúa como un Jefe de Seguridad Industrial. Crea una tabla de 4 filas sobre cómo usar un MARTILLO y un DESTORNILLADOR con seguridad. Columnas: Herramienta, Riesgo principal, Qué NO hacer, y Equipo de protección necesario."</p>
+                    </div>
+                    <div class="bg-slate-800/80 p-6 rounded-2xl border border-blue-500/30">
+                        <p class="text-sm text-blue-300 font-bold mb-2">PASO 2: Formato en Excel</p>
+                        <ol class="list-decimal list-inside space-y-2 text-slate-300">
+                            <li>Copia la tabla de la IA y pégala en Excel.</li>
+                            <li>Aplica <b>"Ajustar texto"</b> para que la información se vea completa.</li>
+                            <li>Color de relleno <b>Verde Oscuro</b> a los títulos.</li>
+                            <li>Inserta un <b>Icono</b> o forma de advertencia al lado de la tabla.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <span class="bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full">🔍 INVESTIGACIÓN</span>
+            <div class="bg-yellow-500/10 border border-yellow-500/30 p-6 rounded-3xl flex items-center gap-6">
+                <div class="text-4xl">🌎</div>
+                <div>
+                    <p class="font-bold text-yellow-500 text-lg">Misión de búsqueda:</p>
+                    <p class="text-slate-300">Busca en Google: <b>"Significado de los colores en las señales de seguridad"</b>. ¿Qué significa el color AZUL y el color ROJO?</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-3xl shadow-2xl">
+            <h3 class="text-2xl font-bold mb-6 text-center">⚡ Flash Quiz de Seguridad</h3>
+            <div id="quiz-container" class="space-y-6">
+                <div class="p-4 bg-slate-800/40 rounded-xl">
+                    <p class="font-medium mb-3">1. ¿Qué es lo PRIMERO que debes hacer antes de usar una herramienta?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <button onclick="checkQuiz(this, false)" class="text-left p-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition">Encenderla rápido</button>
+                        <button onclick="checkQuiz(this, true)" class="text-left p-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition">Revisar el estado del cable/mango</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <span class="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">📄 TAREA EN HOJA SUELTA</span>
+            <div class="glass p-8 rounded-3xl border-2 border-dashed border-orange-500/50">
+                <h3 class="text-2xl font-bold mb-4 text-orange-400">Diseño de Señal Ética</h3>
+                <p class="mb-6">Dibuja en una hoja blanca una <b>Señal de Seguridad Inventada</b> para nuestra sala de sistemas. Debe incluir:</p>
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <ul class="list-disc list-inside space-y-2 flex-1">
+                        <li>Un dibujo claro (pictograma).</li>
+                        <li>Un borde de color (Rojo=Prohibido, Amarillo=Advertencia).</li>
+                        <li>Tu nombre, grado y el año <b>2026</b>.</li>
                     </ul>
-                </div>
-                <div class="space-y-4">
-                    <div class="bg-red-500/10 border border-red-500/30 p-4 rounded-xl">
-                        <h3 class="font-bold text-red-400 mb-2">Protocolos de Acción:</h3>
-                        <p class="text-sm"><strong>Antes:</strong> Revisar cables y estado de la herramienta.<br>
-                        <strong>Durante:</strong> No quitar la vista del trabajo.<br>
-                        <strong>Después:</strong> Desconectar, limpiar y guardar.</p>
+                    <div class="w-48 h-64 bg-white rounded-lg shadow-inner flex flex-col p-4 text-black text-[10px] border-2 border-slate-300">
+                        <div class="flex-1 border-2 border-red-600 rounded-full flex items-center justify-center text-red-600 font-bold text-center">DIBUJO AQUÍ</div>
+                        <div class="mt-2 font-bold text-center border-t border-slate-200 pt-2">NO COMER EN LA SALA</div>
+                        <div class="mt-4 text-[8px] italic uppercase">William Bernal - 6° - 2026</div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="glass p-8 rounded-3xl relative overflow-hidden">
-            <span class="absolute top-0 right-0 bg-emerald-500 text-white px-4 py-1 text-xs font-bold rounded-bl-xl">
-                [💻 INTERACTUAR EN EL PC]
-            </span>
-            <h2 class="text-2xl font-bold mb-6">Simulador: Laboratorio de Seguridad</h2>
-            
-            <div class="grid md:grid-cols-3 gap-4 mb-8">
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front bg-blue-600">
-                            <span class="text-4xl">🥽</span>
-                            <p class="ml-2 font-bold">Gafas</p>
-                        </div>
-                        <div class="flip-card-back bg-slate-700">
-                            <p class="text-sm">Protegen contra astillas al unir madera (Visto Semana 5).</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front bg-orange-600">
-                            <span class="text-4xl">🧤</span>
-                            <p class="ml-2 font-bold">Guantes</p>
-                        </div>
-                        <div class="flip-card-back bg-slate-700">
-                            <p class="text-sm">Evitan cortes con herramientas de mano.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front bg-red-600">
-                            <span class="text-4xl">🥾</span>
-                            <p class="ml-2 font-bold">Botas</p>
-                        </div>
-                        <div class="flip-card-back bg-slate-700">
-                            <p class="text-sm">Protegen contra la caída accidental de herramientas pesadas.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white/5 p-6 rounded-2xl">
-                <h3 class="text-center mb-4 text-emerald-400 font-bold">📊 Estadísticas: ¿Por qué usar protección?</h3>
-                <canvas id="safetyChart" height="100"></canvas>
-            </div>
-        </section>
-
-        <section class="glass p-8 rounded-3xl relative overflow-hidden border-2 border-purple-500/30">
-            <span class="absolute top-0 right-0 bg-purple-500 text-white px-4 py-1 text-xs font-bold rounded-bl-xl">
-                [🖥️ TRABAJO EN LA SALA]
-            </span>
-            <h2 class="text-2xl font-bold mb-6">Reto de la Clase: Inspector de Riesgos</h2>
-            <div class="space-y-4 text-slate-300">
-                <div class="flex items-center gap-4 bg-slate-800/40 p-4 rounded-xl">
-                    <span class="w-8 h-8 flex items-center justify-center bg-purple-600 rounded-full font-bold">1</span>
-                    <p>Recorre la sala de sistemas con la vista e identifica 3 posibles peligros (ej: cables sueltos).</p>
-                </div>
-                <div class="flex items-center gap-4 bg-slate-800/40 p-4 rounded-xl">
-                    <span class="w-8 h-8 flex items-center justify-center bg-purple-600 rounded-full font-bold">2</span>
-                    <p>En el simulador de arriba, voltea las tarjetas y elige qué EPP usarías para la clase de la semana pasada.</p>
-                </div>
-                <div class="flex items-center gap-4 bg-slate-800/40 p-4 rounded-xl">
-                    <span class="w-8 h-8 flex items-center justify-center bg-purple-600 rounded-full font-bold">3</span>
-                    <p>Completa el Micro-Quiz de final de página para obtener tu certificación de "Operario Seguro".</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="glass p-8 rounded-3xl border-2 border-emerald-500/20">
-            <h2 class="text-3xl font-800 mb-8 text-center text-emerald-400 italic">⚡ TEST DE SEGURIDAD ⚡</h2>
-            <div id="quizContainer" class="space-y-6">
-                <div class="quiz-step bg-slate-800/40 p-6 rounded-2xl transition-all">
-                    <p class="text-lg font-bold mb-4">1. Antes de conectar un equipo electrónico, ¿qué es lo primero que haces?</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button onclick="checkAnswer(this, false)" class="p-3 rounded-xl bg-slate-700 hover:bg-slate-600 text-left transition-all">Prenderlo rápido</button>
-                        <button onclick="checkAnswer(this, true)" class="p-3 rounded-xl bg-slate-700 hover:bg-slate-600 text-left transition-all">Revisar que el cable esté sano</button>
-                    </div>
-                </div>
-                <div class="quiz-step bg-slate-800/40 p-6 rounded-2xl transition-all">
-                    <p class="text-lg font-bold mb-4">2. ¿Para qué usamos gafas si estamos trabajando con clavos y martillo?</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button onclick="checkAnswer(this, true)" class="p-3 rounded-xl bg-slate-700 hover:bg-slate-600 text-left transition-all">Evitar astillas en los ojos</button>
-                        <button onclick="checkAnswer(this, false)" class="p-3 rounded-xl bg-slate-700 hover:bg-slate-600 text-left transition-all">Para vernos más profesionales</button>
-                    </div>
-                </div>
-            </div>
-            <div id="quizResult" class="hidden mt-6 p-6 rounded-2xl bg-emerald-600 text-center font-bold text-xl animate-pulse">
-                ¡Felicidades! Has aprobado el protocolo de seguridad 🛡️
-            </div>
-        </section>
-
-        <section class="grid md:grid-cols-2 gap-8">
-            <div class="glass p-8 rounded-3xl border-t-4 border-blue-400">
-                <span class="bg-blue-500 text-white px-3 py-1 text-xs font-bold rounded-full mb-4 inline-block">[🔍 INVESTIGACIÓN]</span>
-                <p class="text-lg leading-relaxed">
-                    Investiga: <strong>¿Qué significa el color AMARILLO y el color ROJO en las señales de seguridad industrial?</strong> Escribe el significado en tu cuaderno con un ejemplo de dibujo.
-                </p>
-            </div>
-            <div class="glass p-8 rounded-3xl border-t-4 border-emerald-400">
-                <span class="bg-emerald-500 text-white px-3 py-1 text-xs font-bold rounded-full mb-4 inline-block">[📄 TAREA EN HOJA SUELTA]</span>
-                <p class="mb-4">Dibuja una señal de advertencia para nuestra sala de sistemas. Debe incluir:</p>
-                <div class="border-2 border-dashed border-slate-500 p-4 rounded-lg text-center bg-white/5">
-                    <p class="text-xs text-slate-400 mb-2 underline">Ejemplo de tu Hoja</p>
-                    <div class="w-12 h-12 bg-yellow-400 mx-auto rounded-lg mb-2 flex items-center justify-center text-black font-bold">⚠</div>
-                    <p class="font-bold">PELIGRO: NO AGUA</p>
-                    <p class="text-[10px] mt-4">Nombre: _________ Grado: 6°</p>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="mt-20 py-8 border-t border-white/10 text-center">
+    <footer class="py-12 bg-black/40 text-center border-t border-white/10">
         <p class="text-slate-500 text-sm">© 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática</p>
-        <p class="text-slate-600 text-xs mt-2 uppercase tracking-widest">Colegio Santa Mariana de Jesús - Buga</p>
+        <p class="text-slate-600 text-xs mt-2 italic">Colegio Santa Mariana de Jesús - Buga, Valle</p>
     </footer>
 
     <script>
-        // Función Copiar Enlace
+        // Lógica de Copiar Enlace
         function copiarEnlace(){
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
                 const t = document.getElementById('toastCopiado');
                 t.classList.remove('hidden');
-                setTimeout(()=> t.classList.add('hidden'), 3000);
+                setTimeout(()=> t.classList.add('hidden'), 2000);
             }).catch(() => {
                 alert("Enlace copiado ✅");
             });
         }
 
-        // Gráfico Interactiva Chart.js
-        const ctx = document.getElementById('safetyChart').getContext('2d');
-        new Chart(ctx, {
+        // Lógica del Chart (Simulador)
+        const ctx = document.getElementById('seguridadChart').getContext('2d');
+        let seguridadChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Sin EPP', 'Con EPP (Gafas/Guantes)'],
+                labels: ['Riesgo de Corte', 'Riesgo Eléctrico', 'Riesgo de Caída'],
                 datasets: [{
-                    label: '% Riesgo de Accidente',
-                    data: [85, 5],
-                    backgroundColor: ['#ef4444', '#10b981'],
+                    label: '% de Riesgo',
+                    data: [90, 85, 70],
+                    backgroundColor: ['#ef4444', '#f59e0b', '#3b82f6'],
                     borderRadius: 10
                 }]
             },
             options: {
                 responsive: true,
-                plugins: {
-                    legend: { display: false }
-                },
-                scales: {
-                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' } },
-                    x: { grid: { display: false } }
-                }
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true, max: 100, ticks: { color: '#94a3b8' } }, x: { ticks: { color: '#94a3b8' } } }
             }
         });
 
-        // Lógica de Quiz
-        let correctAnswers = 0;
-        function checkAnswer(btn, isCorrect) {
+        function actualizarChart(nivel) {
+            let data = [];
+            if(nivel === 'alto') data = [90, 85, 70];
+            if(nivel === 'medio') data = [45, 40, 30];
+            if(nivel === 'total') data = [5, 2, 8];
+            
+            seguridadChart.data.datasets[0].data = data;
+            seguridadChart.update();
+        }
+
+        // Lógica del Quiz
+        function checkQuiz(btn, isCorrect) {
             const parent = btn.parentElement;
             const buttons = parent.querySelectorAll('button');
-            
             buttons.forEach(b => b.disabled = true);
             
             if(isCorrect) {
-                btn.classList.add('bg-emerald-500', 'scale-105');
-                correctAnswers++;
+                btn.classList.add('bg-emerald-600', 'scale-105');
+                btn.innerHTML += " ✨";
             } else {
-                btn.classList.add('bg-red-500', 'animate-shake');
-            }
-
-            if(correctAnswers >= 2) {
-                document.getElementById('quizResult').classList.remove('hidden');
+                btn.classList.add('bg-red-600', 'animate-shake');
+                btn.innerHTML += " ❌";
             }
         }
     </script>
