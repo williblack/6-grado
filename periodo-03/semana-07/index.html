@@ -1,1 +1,358 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Periféricos - Prof. William Fdo Bernal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+        ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.5); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.8); }
+
+        /* Draggable items */
+        .draggable { cursor: grab; }
+        .draggable:active { cursor: grabbing; }
+        
+        .droppable.drag-over {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur">
+           ⬅ Inicio (Grado)
+        </a>
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+           ⬅ Menú del Periodo
+        </a>
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+           🔗 Copiar enlace
+        </button>
+    </div>
+
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur z-50">
+        Enlace copiado ✅
+    </div>
+
+    <div class="max-w-5xl mx-auto space-y-8">
+
+        <header class="glass-panel rounded-3xl p-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-fuchsia-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+            
+            <div class="relative z-10">
+                <p class="text-indigo-400 font-semibold tracking-wider uppercase text-sm mb-2">Colegio Santa Mariana de Jesús | Grado 6°</p>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
+                    LOS PERIFÉRICOS
+                </h1>
+                <p class="text-xl text-gray-300 font-light mb-6">Los "sentidos" de la computadora</p>
+                
+                <div class="glass-card p-4 rounded-xl border-l-4 border-l-cyan-400 inline-block">
+                    <h3 class="font-bold text-cyan-400 mb-1">🎯 Objetivo de Aprendizaje</h3>
+                    <p class="text-sm text-gray-200">Comprender la arquitectura de hardware externo (periféricos), clasificarlos por su flujo de datos (E/S) y aplicar este conocimiento en flujos de trabajo con herramientas ofimáticas e IA.</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="glass-panel rounded-3xl p-8">
+            <span class="bg-blue-600 text-white px-4 py-1.5 text-xs font-bold rounded-full uppercase tracking-wider shadow-lg mb-4 inline-block">
+                📝 COPIAR AL CUADERNO
+            </span>
+            <div class="mt-4 text-gray-200 leading-relaxed space-y-4">
+                <p><strong class="text-indigo-400">Conexión con el tema anterior:</strong> La semana pasada vimos las <em>Normas de Seguridad</em> para proteger el equipo y nuestra integridad física. Hoy daremos el siguiente paso: conoceremos cómo interactuamos de forma segura con la máquina a través de sus "sentidos".</p>
+                
+                <h3 class="text-2xl font-bold text-white mt-6 border-b border-gray-600 pb-2">Arquitectura de Hardware: Periféricos</h3>
+                <p>Un periférico es cualquier dispositivo de hardware auxiliar o independiente conectado a la unidad central de procesamiento (CPU). Permiten el intercambio de datos entre el usuario y el sistema informático.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <div class="glass-card p-4 rounded-xl">
+                        <h4 class="text-emerald-400 font-bold mb-2">➡️ Periféricos de Entrada</h4>
+                        <p class="text-sm">Capturan y digitalizan datos introducidos por el usuario o por otro dispositivo. (Ej: Teclado, Mouse, Micrófono).</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl">
+                        <h4 class="text-orange-400 font-bold mb-2">⬅️ Periféricos de Salida</h4>
+                        <p class="text-sm">Muestran o proyectan información hacia el exterior del ordenador tras ser procesada. (Ej: Monitor, Altavoces).</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl">
+                        <h4 class="text-purple-400 font-bold mb-2">🔄 Periféricos Mixtos (E/S)</h4>
+                        <p class="text-sm">Realizan ambas funciones, operando un flujo de datos bidireccional. (Ej: Pantalla Táctil, Gafas VR).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel rounded-3xl p-8">
+            <span class="bg-indigo-600 text-white px-4 py-1.5 text-xs font-bold rounded-full uppercase tracking-wider shadow-lg mb-4 inline-block">
+                💻 INTERACTUAR EN EL PC
+            </span>
+            <h3 class="text-2xl font-bold text-white mt-4 mb-2">Laboratorio de Clasificación</h3>
+            <p class="text-gray-300 text-sm mb-6">Arrastra los dispositivos tecnológicos a su puerto de conexión correcto según su flujo de datos.</p>
+
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="w-full md:w-1/3 glass-card p-4 rounded-2xl flex flex-wrap gap-3" id="items-container">
+                    <div class="draggable bg-slate-700 p-2 rounded-lg text-sm font-semibold hover:bg-slate-600 transition-all shadow-md" draggable="true" id="item1" data-type="entrada">⌨️ Teclado Mecánico</div>
+                    <div class="draggable bg-slate-700 p-2 rounded-lg text-sm font-semibold hover:bg-slate-600 transition-all shadow-md" draggable="true" id="item2" data-type="salida">🖥️ Monitor 4K</div>
+                    <div class="draggable bg-slate-700 p-2 rounded-lg text-sm font-semibold hover:bg-slate-600 transition-all shadow-md" draggable="true" id="item3" data-type="mixto">🥽 Gafas VR</div>
+                    <div class="draggable bg-slate-700 p-2 rounded-lg text-sm font-semibold hover:bg-slate-600 transition-all shadow-md" draggable="true" id="item4" data-type="entrada">🖱️ Mouse Gamer</div>
+                    <div class="draggable bg-slate-700 p-2 rounded-lg text-sm font-semibold hover:bg-slate-600 transition-all shadow-md" draggable="true" id="item5" data-type="salida">🖨️ Impresora 3D</div>
+                    <div class="draggable bg-slate-700 p-2 rounded-lg text-sm font-semibold hover:bg-slate-600 transition-all shadow-md" draggable="true" id="item6" data-type="mixto">📱 Pantalla Táctil</div>
+                </div>
+
+                <div class="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="droppable glass-card border-dashed border-2 border-emerald-500/50 p-4 rounded-2xl min-h-[150px] flex flex-col items-center justify-start transition-all" data-target="entrada">
+                        <span class="text-emerald-400 font-bold mb-2 block">➡️ ENTRADA</span>
+                    </div>
+                    <div class="droppable glass-card border-dashed border-2 border-orange-500/50 p-4 rounded-2xl min-h-[150px] flex flex-col items-center justify-start transition-all" data-target="salida">
+                        <span class="text-orange-400 font-bold mb-2 block">⬅️ SALIDA</span>
+                    </div>
+                    <div class="droppable glass-card border-dashed border-2 border-purple-500/50 p-4 rounded-2xl min-h-[150px] flex flex-col items-center justify-start transition-all" data-target="mixto">
+                        <span class="text-purple-400 font-bold mb-2 block">🔄 MIXTO</span>
+                    </div>
+                </div>
+            </div>
+            <div id="game-feedback" class="mt-4 text-center font-bold text-lg h-6 text-emerald-400"></div>
+        </section>
+
+        <section class="glass-panel rounded-3xl p-8">
+            <span class="bg-fuchsia-600 text-white px-4 py-1.5 text-xs font-bold rounded-full uppercase tracking-wider shadow-lg mb-4 inline-block">
+                🖥️ TRABAJO EN LA SALA
+            </span>
+            <h3 class="text-2xl font-bold text-white mt-4 mb-4">Reto Ofimático: Integración con IA</h3>
+            
+            <ol class="list-decimal list-inside space-y-4 text-gray-200">
+                <li class="glass-card p-3 rounded-lg">Abre el navegador y dirígete a un asistente de IA (ej. ChatGPT, Gemini o Claude).</li>
+                <li class="glass-card p-3 rounded-lg">Copia exactamente el siguiente <strong>Prompt de Ingeniería</strong> y pégalo en el chat de la IA:
+                    <div class="bg-gray-900 text-green-400 font-mono p-4 rounded-md mt-2 text-sm border border-gray-700 relative group">
+                        <button onclick="copiarPrompt()" class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white text-xs px-2 py-1 rounded">Copiar</button>
+                        "Actúa como un experto en hardware. Genera una tabla con 3 columnas (Entrada, Salida, Mixto) y 5 filas con ejemplos de periféricos modernos. Solo entrégame la tabla para copiarla, sin texto adicional."
+                    </div>
+                </li>
+                <li class="glass-card p-3 rounded-lg">Copia la tabla generada por la IA y pégala en <strong>Microsoft Excel</strong>.</li>
+                <li class="glass-card p-3 rounded-lg">Aplica el siguiente formato en Excel: 
+                    <ul class="list-disc list-inside ml-4 mt-2 text-sm text-gray-300">
+                        <li>Ajusta el ancho de las columnas.</li>
+                        <li>Cambia la tipografía de los encabezados (Ponlos en Negrita y centrados).</li>
+                        <li>Aplica colores de celda diferentes a cada columna.</li>
+                        <li>Busca en Google una imagen de UN dispositivo de cada columna e insértala en Excel debajo de la tabla.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section class="glass-panel rounded-3xl p-8">
+                <span class="bg-amber-500 text-white px-4 py-1.5 text-xs font-bold rounded-full uppercase tracking-wider shadow-lg mb-4 inline-block">
+                    🔍 INVESTIGACIÓN
+                </span>
+                <p class="text-gray-200 mt-4 italic">Abre una nueva pestaña y busca en Google la respuesta a esta pregunta profesional:</p>
+                <div class="bg-gray-800/50 p-4 rounded-xl mt-4 border-l-4 border-amber-500">
+                    <p class="font-bold text-white">¿Qué es la "latencia" en los periféricos de entrada (como teclados o mouses gamers) y por qué es importante para un profesional de e-sports?</p>
+                </div>
+            </section>
+
+            <section class="glass-panel rounded-3xl p-8">
+                <span class="bg-red-500 text-white px-4 py-1.5 text-xs font-bold rounded-full uppercase tracking-wider shadow-lg mb-4 inline-block">
+                    📄 TAREA EN HOJA SUELTA
+                </span>
+                <div class="flex flex-col items-center justify-center h-full text-center mt-4">
+                    <div class="bg-emerald-500/20 text-emerald-400 p-4 rounded-full mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">¡Misión Cumplida!</h3>
+                    <p class="text-gray-300 mt-2">Esta semana el enfoque fue netamente práctico. No hay entregable físico para la próxima clase.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="glass-panel rounded-3xl p-8">
+            <h3 class="text-2xl font-bold text-white mb-6">🎮 Micro-Quiz de Cierre</h3>
+            <div id="quiz-container" class="space-y-4">
+                <div class="glass-card p-4 rounded-xl quiz-q" data-correct="A">
+                    <p class="font-semibold text-white mb-3">1. ¿Qué tipo de periférico es una Impresora 3D?</p>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-slate-700 hover:bg-slate-600 py-2 rounded-lg transition-all opt-btn">A) Salida</button>
+                        <button class="flex-1 bg-slate-700 hover:bg-slate-600 py-2 rounded-lg transition-all opt-btn">B) Entrada</button>
+                        <button class="flex-1 bg-slate-700 hover:bg-slate-600 py-2 rounded-lg transition-all opt-btn">C) Mixto</button>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-xl quiz-q" data-correct="C">
+                    <p class="font-semibold text-white mb-3">2. Pantalla Táctil de un Cajero Automático es un periférico de:</p>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-slate-700 hover:bg-slate-600 py-2 rounded-lg transition-all opt-btn">A) Almacenamiento</button>
+                        <button class="flex-1 bg-slate-700 hover:bg-slate-600 py-2 rounded-lg transition-all opt-btn">B) Solo Entrada</button>
+                        <button class="flex-1 bg-slate-700 hover:bg-slate-600 py-2 rounded-lg transition-all opt-btn">C) Mixto (Entrada/Salida)</button>
+                    </div>
+                </div>
+            </div>
+            <p id="quiz-result" class="text-center mt-6 font-bold text-xl hidden"></p>
+        </section>
+
+        <footer class="text-center py-8">
+            <p class="text-gray-400 text-sm tracking-widest uppercase">
+                © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        // F) FUNCIÓN JS OBLIGATORIA
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    setTimeout(()=> t.classList.add('hidden'), 2000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        function copiarPrompt() {
+            const promptText = "Actúa como un experto en hardware. Genera una tabla con 3 columnas (Entrada, Salida, Mixto) y 5 filas con ejemplos de periféricos modernos. Solo entrégame la tabla para copiarla, sin texto adicional.";
+            navigator.clipboard.writeText(promptText);
+            alert("¡Prompt copiado! Pégalo en la IA.");
+        }
+
+        // LÓGICA DRAG & DROP
+        document.addEventListener("DOMContentLoaded", () => {
+            const draggables = document.querySelectorAll('.draggable');
+            const droppables = document.querySelectorAll('.droppable');
+            let draggedItem = null;
+            let correctCount = 0;
+
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', () => {
+                    draggedItem = draggable;
+                    setTimeout(() => draggable.classList.add('opacity-50'), 0);
+                });
+
+                draggable.addEventListener('dragend', () => {
+                    draggedItem = null;
+                    draggable.classList.remove('opacity-50');
+                });
+            });
+
+            droppables.forEach(droppable => {
+                droppable.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    droppable.classList.add('drag-over');
+                });
+
+                droppable.addEventListener('dragleave', () => {
+                    droppable.classList.remove('drag-over');
+                });
+
+                droppable.addEventListener('drop', e => {
+                    e.preventDefault();
+                    droppable.classList.remove('drag-over');
+                    
+                    if (draggedItem) {
+                        const expectedType = droppable.getAttribute('data-target');
+                        const itemType = draggedItem.getAttribute('data-type');
+                        
+                        if (expectedType === itemType) {
+                            droppable.appendChild(draggedItem);
+                            draggedItem.setAttribute('draggable', 'false');
+                            draggedItem.classList.replace('bg-slate-700', 'bg-emerald-600');
+                            draggedItem.classList.remove('cursor-grab');
+                            correctCount++;
+                            
+                            if (correctCount === 6) {
+                                document.getElementById('game-feedback').innerText = "¡Excelente! Has clasificado la arquitectura correctamente 🚀";
+                            }
+                        } else {
+                            // Feedback de error visual rápido
+                            droppable.classList.add('bg-red-500/20', 'border-red-500');
+                            setTimeout(() => {
+                                droppable.classList.remove('bg-red-500/20', 'border-red-500');
+                            }, 500);
+                        }
+                    }
+                });
+            });
+
+            // LÓGICA MICRO-QUIZ
+            const quizQuestions = document.querySelectorAll('.quiz-q');
+            let score = 0;
+            let answered = 0;
+
+            quizQuestions.forEach(q => {
+                const buttons = q.querySelectorAll('.opt-btn');
+                const correctAns = q.getAttribute('data-correct');
+
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Disable all buttons in this question
+                        buttons.forEach(b => {
+                            b.disabled = true;
+                            b.classList.remove('hover:bg-slate-600');
+                        });
+                        
+                        const text = btn.innerText.charAt(0); // A, B, o C
+                        
+                        if (text === correctAns) {
+                            btn.classList.replace('bg-slate-700', 'bg-emerald-500');
+                            score++;
+                        } else {
+                            btn.classList.replace('bg-slate-700', 'bg-red-500');
+                            // Resaltar la correcta
+                            buttons.forEach(b => {
+                                if(b.innerText.charAt(0) === correctAns) {
+                                    b.classList.replace('bg-slate-700', 'bg-emerald-500');
+                                }
+                            });
+                        }
+                        
+                        answered++;
+                        if (answered === quizQuestions.length) {
+                            const res = document.getElementById('quiz-result');
+                            res.classList.remove('hidden');
+                            res.innerText = `Puntuación Final: ${score} / ${quizQuestions.length}`;
+                            res.classList.add(score === quizQuestions.length ? 'text-emerald-400' : 'text-amber-400');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
