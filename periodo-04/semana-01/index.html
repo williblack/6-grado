@@ -1,1 +1,548 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase: Los Recursos y la Madera - 6° Grado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(164, 73%, 23%, 1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(38, 50%, 30%, 1) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #f8fafc;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .flip-card {
+            perspective: 1000px;
+            height: 250px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .flip-card-front {
+            background: linear-gradient(145deg, rgba(16, 185, 129, 0.2), rgba(6, 78, 59, 0.4));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .flip-card-back {
+            background: linear-gradient(145deg, rgba(217, 119, 6, 0.2), rgba(146, 64, 14, 0.4));
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            transform: rotateY(180deg);
+        }
+
+        .quiz-option.selected {
+            background-color: rgba(59, 130, 246, 0.5) !important;
+            border-color: #60a5fa !important;
+        }
+        .quiz-option.correct {
+            background-color: rgba(16, 185, 129, 0.5) !important;
+            border-color: #34d399 !important;
+            animation: pulse-green 1s;
+        }
+        .quiz-option.incorrect {
+            background-color: rgba(239, 68, 68, 0.5) !important;
+            border-color: #f87171 !important;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+        @keyframes pulse-green {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 4px; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 font-sans selection:bg-emerald-500 selection:text-white">
+
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-end gap-3 mb-6">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow border border-white/10 hover:scale-105 hover:bg-slate-700 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <i class="fas fa-home"></i> Inicio (Grado)
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600/80 text-white px-4 py-2 rounded-xl shadow border border-purple-400/30 hover:scale-105 hover:bg-purple-500 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <i class="fas fa-folder-open"></i> Menú del Periodo
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/80 text-white px-4 py-2 rounded-xl shadow border border-emerald-400/30 hover:scale-105 hover:bg-emerald-500 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <i class="fas fa-link"></i> Copiar enlace
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/90 border border-emerald-500 text-emerald-400 px-6 py-4 rounded-xl shadow-2xl backdrop-blur-md z-50 flex items-center gap-3 transition-opacity duration-300">
+        <i class="fas fa-check-circle text-xl"></i> <span class="font-bold">¡Enlace copiado con éxito!</span>
+    </div>
+
+    <main class="max-w-5xl mx-auto space-y-12">
+
+        <header class="glass-panel rounded-3xl p-8 md:p-12 text-center relative overflow-hidden group">
+            <div class="absolute -top-20 -left-20 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-400/30 transition-all duration-700"></div>
+            <div class="absolute -bottom-20 -right-20 w-40 h-40 bg-amber-500/20 rounded-full blur-3xl group-hover:bg-amber-400/30 transition-all duration-700"></div>
+            
+            <p class="text-emerald-400 font-bold tracking-widest uppercase text-sm mb-2 drop-shadow-md">
+                Colegio Santa Mariana de Jesús | Prof. William Fdo Bernal
+            </p>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-white to-amber-200 mb-6 drop-shadow-lg">
+                De la Naturaleza a mi Casa
+            </h1>
+            <h2 class="text-2xl text-slate-300 font-light mb-8">Los Recursos y la Madera</h2>
+            
+            <div class="inline-block glass-panel rounded-2xl p-6 border-l-4 border-l-emerald-500 max-w-3xl transform hover:-translate-y-1 transition-all duration-300">
+                <h3 class="text-xl font-bold text-white mb-2 flex items-center justify-center gap-2">
+                    <i class="fas fa-bullseye text-emerald-400"></i> Objetivo de Aprendizaje
+                </h3>
+                <p class="text-slate-200 text-lg">
+                    Comprender cómo transformamos los elementos de la naturaleza en objetos útiles para nuestro entorno, reconociendo la madera como un recurso fundamental.
+                </p>
+            </div>
+        </header>
+
+        <section class="glass-panel rounded-3xl p-8 transition-all duration-300 hover:shadow-emerald-900/50 hover:shadow-2xl">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-blue-400">📝 COPIAR AL CUADERNO</span>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-amber-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-link text-sm"></i> Conexión con el periodo pasado
+                    </h3>
+                    <p class="text-lg text-slate-300 mb-4 leading-relaxed">
+                        En el 3r periodo aprendimos sobre <strong>"Las Herramientas"</strong>. Pero, ¿sobre qué actúan esas herramientas? Exacto, sobre los materiales que sacamos de la naturaleza.
+                    </p>
+                    <ul class="space-y-3 text-slate-200">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-leaf text-emerald-400 mt-1"></i>
+                            <span><strong>Recurso Natural:</strong> Lo que nos da la Tierra (ej. un árbol).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-hammer text-amber-400 mt-1"></i>
+                            <span><strong>Transformación:</strong> Usar herramientas para cambiarlo (ej. cortar tablas).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-chair text-purple-400 mt-1"></i>
+                            <span><strong>Producto Final:</strong> Lo que usamos a diario (ej. una silla).</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-black/30 rounded-2xl p-6 border border-white/5">
+                    <h3 class="text-2xl font-bold text-emerald-300 mb-4">¿Por qué usamos la Madera?</h3>
+                    <p class="text-slate-300 mb-3">Anota estas 4 propiedades estrella:</p>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-200 font-medium">
+                        <li>Es <strong>Resistente</strong> (soporta peso).</li>
+                        <li>Es <strong>Fácil de trabajar</strong> (cortar, lijar).</li>
+                        <li>Es <strong>Aislante</strong> (protege del calor y frío).</li>
+                        <li>Es <strong>Estética</strong> (se ve muy bien).</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel rounded-3xl p-8">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-purple-400">💻 INTERACTUAR EN EL PC</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-center text-white mb-8">Módulo A: El Proceso de Transformación (Gira las tarjetas)</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="flip-card">
+                    <div class="flip-card-inner cursor-pointer shadow-lg hover:shadow-emerald-500/30 transition-all duration-300">
+                        <div class="flip-card-front">
+                            <i class="fas fa-tree text-5xl text-emerald-400 mb-4"></i>
+                            <h4 class="text-xl font-bold text-white">1. Materia Prima</h4>
+                            <p class="text-emerald-200 text-sm mt-2">Haz clic o pasa el mouse</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xl font-bold text-white mb-2">El Bosque</h4>
+                            <p class="text-amber-100 text-sm">El recurso en su estado natural. La madera se extrae del tronco de los árboles mediante la tala responsable.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner cursor-pointer shadow-lg hover:shadow-amber-500/30 transition-all duration-300">
+                        <div class="flip-card-front">
+                            <i class="fas fa-industry text-5xl text-amber-400 mb-4"></i>
+                            <h4 class="text-xl font-bold text-white">2. Transformación</h4>
+                            <p class="text-amber-200 text-sm mt-2">Haz clic o pasa el mouse</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xl font-bold text-white mb-2">El Aserradero</h4>
+                            <p class="text-amber-100 text-sm">Usamos herramientas (sierras, tornos) para quitar la corteza y cortar el tronco en tablas o listones.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner cursor-pointer shadow-lg hover:shadow-purple-500/30 transition-all duration-300">
+                        <div class="flip-card-front">
+                            <i class="fas fa-couch text-5xl text-purple-400 mb-4"></i>
+                            <h4 class="text-xl font-bold text-white">3. Producto Final</h4>
+                            <p class="text-purple-200 text-sm mt-2">Haz clic o pasa el mouse</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xl font-bold text-white mb-2">La Casa</h4>
+                            <p class="text-amber-100 text-sm">El carpintero ensambla las piezas para crear sillas, mesas, puertas o incluso la estructura de una casa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-slate-900/50 rounded-2xl p-6 border border-white/10">
+                <h3 class="text-2xl font-bold text-center text-white mb-6">Módulo B: Laboratorio de Materiales</h3>
+                <p class="text-center text-slate-300 mb-6 text-sm">Analicemos por qué preferimos la madera para un escritorio en lugar de otros materiales.</p>
+                
+                <div class="flex justify-center gap-4 mb-6">
+                    <button onclick="updateChart('madera')" class="bg-amber-700/80 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition-colors border border-amber-500/50 focus:ring-2 focus:ring-amber-400">🪵 Ver Madera</button>
+                    <button onclick="updateChart('metal')" class="bg-slate-600/80 hover:bg-slate-500 text-white px-4 py-2 rounded-lg transition-colors border border-slate-400/50 focus:ring-2 focus:ring-slate-400">⚙️ Ver Metal</button>
+                    <button onclick="updateChart('comparar')" class="bg-emerald-600/80 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg transition-colors border border-emerald-400/50 focus:ring-2 focus:ring-emerald-400">⚖️ Comparar Ambos</button>
+                </div>
+
+                <div class="relative w-full max-w-lg mx-auto aspect-square">
+                    <canvas id="materialsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel rounded-3xl p-8 border-l-4 border-l-pink-500">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-pink-400">🖥️ TRABAJO EN LA SALA</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-white mb-4">Reto Práctico: IA + Excel</h3>
+            <p class="text-slate-200 mb-6">Hoy usaremos Inteligencia Artificial para generar datos y Excel para darles formato. ¡Sigue estos pasos!</p>
+
+            <div class="space-y-4">
+                <div class="bg-black/40 p-4 rounded-xl border border-white/10 flex gap-4 items-start hover:bg-black/60 transition-colors">
+                    <div class="bg-pink-500/20 text-pink-400 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">1</div>
+                    <div>
+                        <h4 class="font-bold text-white">Abre un chat con IA (Ej. Gemini o ChatGPT).</h4>
+                        <p class="text-slate-300 text-sm mt-1">Copia y pega EXACTAMENTE el siguiente texto (prompt) en el chat:</p>
+                        <div class="mt-3 bg-slate-800 p-3 rounded-lg border border-slate-600 relative group">
+                            <code class="text-emerald-300 text-sm block pr-10" id="promptText">
+                                Actúa como un profesor de tecnología. Crea una tabla de 5 filas y 4 columnas. Las columnas deben llamarse: "Objeto de Madera", "Uso principal", "¿Qué herramienta lo fabricó?", "Propiedad clave". Llena la tabla con ejemplos cotidianos. Genera el resultado en formato de texto plano separado por tabulaciones, ideal para copiar y pegar directamente en Excel. No agregues texto extra.
+                            </code>
+                            <button onclick="copiarPrompt()" class="absolute top-2 right-2 text-slate-400 hover:text-white transition-colors p-2" title="Copiar texto">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black/40 p-4 rounded-xl border border-white/10 flex gap-4 items-start hover:bg-black/60 transition-colors">
+                    <div class="bg-pink-500/20 text-pink-400 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">2</div>
+                    <div>
+                        <h4 class="font-bold text-white">Pega en Excel</h4>
+                        <p class="text-slate-300 text-sm mt-1">Copia el resultado que te dé la IA, abre Microsoft Excel, selecciona la celda A1 y pégalo. Excel reconocerá las columnas automáticamente.</p>
+                    </div>
+                </div>
+
+                <div class="bg-black/40 p-4 rounded-xl border border-white/10 flex gap-4 items-start hover:bg-black/60 transition-colors">
+                    <div class="bg-pink-500/20 text-pink-400 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">3</div>
+                    <div>
+                        <h4 class="font-bold text-white">Edición Profesional (El toque tecnológico)</h4>
+                        <p class="text-slate-300 text-sm mt-1">Aplica los siguientes estilos a tu tabla en Excel:</p>
+                        <ul class="list-disc list-inside mt-2 text-sm text-slate-200 grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <li><span class="text-amber-300">Encabezados:</span> Color de fondo verde oscuro, letra blanca y en Negrita.</li>
+                            <li><span class="text-amber-300">Fuente:</span> Cambia el tipo de letra a 'Arial' o 'Calibri' tamaño 12.</li>
+                            <li><span class="text-amber-300">Alineación:</span> Todo el texto debe estar <strong>Centrado</strong>.</li>
+                            <li><span class="text-amber-300">Bordes:</span> Aplica la opción "Todos los bordes" a tu tabla.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <section class="glass-panel rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-amber-400">🔍 INVESTIGACIÓN</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Para el cuaderno:</h3>
+                <p class="text-slate-300">Abre Google y busca la respuesta a esta pregunta. Anótala en tu cuaderno:</p>
+                <div class="mt-4 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl">
+                    <p class="text-amber-200 font-medium text-center italic">"¿Cuál es la especie de árbol que crece más rápido en el mundo y que se utiliza mucho como recurso de madera sostenible?"</p>
+                </div>
+            </section>
+
+            <section class="glass-panel rounded-3xl p-6 flex flex-col justify-center items-center text-center hover:-translate-y-2 transition-transform duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-emerald-400">📄 TAREA EN HOJA SUELTA</span>
+                </div>
+                <i class="fas fa-glass-cheers text-4xl text-emerald-400 mb-3"></i>
+                <h3 class="text-2xl font-bold text-white mb-2">¡Excelente noticia!</h3>
+                <p class="text-slate-300 text-lg">Para esta semana <strong class="text-emerald-300">no hay tarea de entrega</strong> en hoja suelta. Repasa tus apuntes del cuaderno.</p>
+            </section>
+        </div>
+
+        <section class="glass-panel rounded-3xl p-8 border-t-4 border-t-purple-500 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl"></div>
+            
+            <h3 class="text-3xl font-bold text-center text-white mb-2 relative z-10 flex justify-center items-center gap-3">
+                <i class="fas fa-gamepad text-purple-400"></i> Micro-Quiz Interactivo
+            </h3>
+            <p class="text-center text-slate-300 mb-8 relative z-10">¡Pon a prueba lo que aprendiste hoy!</p>
+
+            <div id="quiz-container" class="max-w-2xl mx-auto space-y-8 relative z-10">
+                </div>
+            
+            <div class="text-center mt-8">
+                <button id="btn-evaluar" onclick="evaluarQuiz()" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg shadow-purple-500/30 hover:scale-105 hover:shadow-purple-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Verificar Respuestas
+                </button>
+            </div>
+            <div id="quiz-resultado" class="mt-6 text-center text-2xl font-bold hidden"></div>
+        </section>
+
+    </main>
+
+    <footer class="mt-16 bg-black/50 border-t border-white/10 py-8 backdrop-blur-md">
+        <p class="text-center text-slate-400 font-medium">
+            &copy; 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <script>
+        // Función Obligatoria: Copiar Enlace
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    setTimeout(()=> t.classList.add('hidden'), 3000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // Función extra para el prompt del reto
+        function copiarPrompt(){
+            const texto = document.getElementById('promptText').innerText;
+            navigator.clipboard.writeText(texto.trim()).then(() => {
+                const t = document.getElementById('toastCopiado');
+                t.innerHTML = '<i class="fas fa-code text-xl"></i> <span class="font-bold">¡Prompt copiado! Pégalo en la IA.</span>';
+                t.classList.remove('hidden');
+                setTimeout(()=> {
+                    t.classList.add('hidden');
+                    setTimeout(() => {
+                        t.innerHTML = '<i class="fas fa-check-circle text-xl"></i> <span class="font-bold">¡Enlace copiado con éxito!</span>';
+                    }, 500);
+                }, 3000);
+            });
+        }
+
+        // --- LÓGICA DE CHART.JS (Data Lab) ---
+        const ctx = document.getElementById('materialsChart').getContext('2d');
+        
+        const dataMadera = [90, 85, 80, 70, 95]; // Resistencia, Facilidad de corte, Aislamiento Térmico, Ligereza, Estética
+        const dataMetal = [95, 30, 10, 20, 60];
+        const labels = ['Resistencia', 'Fácil de Trabajar', 'Aislante Térmico', 'Ligereza', 'Estética'];
+
+        let materialsChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Madera 🪵',
+                        data: dataMadera,
+                        backgroundColor: 'rgba(217, 119, 6, 0.4)',
+                        borderColor: 'rgba(217, 119, 6, 1)',
+                        pointBackgroundColor: 'rgba(217, 119, 6, 1)',
+                        borderWidth: 2,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        pointLabels: { color: '#e2e8f0', font: { size: 12, family: 'Poppins' } },
+                        ticks: { display: false, min: 0, max: 100 }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: '#fff', font: { family: 'Poppins' } } }
+                }
+            }
+        });
+
+        function updateChart(view) {
+            materialsChart.data.datasets = [];
+            
+            if (view === 'madera' || view === 'comparar') {
+                materialsChart.data.datasets.push({
+                    label: 'Madera 🪵',
+                    data: dataMadera,
+                    backgroundColor: 'rgba(217, 119, 6, 0.4)',
+                    borderColor: 'rgba(217, 119, 6, 1)',
+                    pointBackgroundColor: 'rgba(217, 119, 6, 1)',
+                    borderWidth: 2,
+                });
+            }
+            if (view === 'metal' || view === 'comparar') {
+                materialsChart.data.datasets.push({
+                    label: 'Metal ⚙️',
+                    data: dataMetal,
+                    backgroundColor: 'rgba(148, 163, 184, 0.4)',
+                    borderColor: 'rgba(148, 163, 184, 1)',
+                    pointBackgroundColor: 'rgba(148, 163, 184, 1)',
+                    borderWidth: 2,
+                });
+            }
+            materialsChart.update();
+        }
+
+        // --- LÓGICA DE GAMIFICACIÓN (Micro-Quiz) ---
+        const preguntas = [
+            {
+                q: "1. ¿Qué es la materia prima en el proceso de la madera?",
+                options: ["Un mueble terminado", "El árbol en el bosque", "La pintura para madera"],
+                correct: 1
+            },
+            {
+                q: "2. ¿Por qué la madera es un buen material para construir casas en lugares fríos?",
+                options: ["Porque es metálica", "Porque es un buen aislante térmico", "Porque es transparente"],
+                correct: 1
+            },
+            {
+                q: "3. ¿Qué herramientas aprendidas en el periodo pasado se usarían en un aserradero?",
+                options: ["Destornillador y llave inglesa", "Sierra y serrucho", "Aguja e hilo"],
+                correct: 1
+            }
+        ];
+
+        let respuestasUsuario = new Array(preguntas.length).fill(null);
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            preguntas.forEach((pregunta, indexP) => {
+                let html = `
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-4">${pregunta.q}</h4>
+                        <div class="space-y-3">
+                `;
+                pregunta.options.forEach((opt, indexO) => {
+                    html += `
+                        <div class="quiz-option cursor-pointer p-4 rounded-xl border border-white/20 bg-black/20 text-slate-200 hover:bg-white/10 transition-all duration-300"
+                             onclick="seleccionarOpcion(${indexP}, ${indexO}, this)">
+                            ${opt}
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        function seleccionarOpcion(indexPregunta, indexOpcion, elemento) {
+            respuestasUsuario[indexPregunta] = indexOpcion;
+            
+            // Remover selección previa en la misma pregunta
+            const opciones = elemento.parentElement.children;
+            for(let op of opciones) {
+                op.classList.remove('selected');
+            }
+            // Añadir selección actual
+            elemento.classList.add('selected');
+        }
+
+        function evaluarQuiz() {
+            if(respuestasUsuario.includes(null)) {
+                alert("Por favor responde todas las preguntas antes de verificar.");
+                return;
+            }
+
+            let correctas = 0;
+            const container = document.getElementById('quiz-container');
+            const bloques = container.children;
+
+            preguntas.forEach((pregunta, i) => {
+                const opcionesElementos = bloques[i].querySelector('.space-y-3').children;
+                const seleccion = respuestasUsuario[i];
+                
+                // Resetear clases
+                for(let op of opcionesElementos) {
+                    op.classList.remove('correct', 'incorrect');
+                }
+
+                if(seleccion === pregunta.correct) {
+                    correctas++;
+                    opcionesElementos[seleccion].classList.add('correct');
+                } else {
+                    opcionesElementos[seleccion].classList.add('incorrect');
+                    opcionesElementos[pregunta.correct].classList.add('correct');
+                }
+            });
+
+            const resDiv = document.getElementById('quiz-resultado');
+            resDiv.classList.remove('hidden');
+            
+            if(correctas === preguntas.length) {
+                resDiv.innerHTML = `🌟 ¡Excelente! ${correctas}/${preguntas.length} correctas. ¡Eres un maestro de la madera! 🌟`;
+                resDiv.className = "mt-6 text-center text-2xl font-bold text-emerald-400 drop-shadow-md";
+            } else {
+                resDiv.innerHTML = `Sigue practicando. Obtuviste ${correctas} de ${preguntas.length}. Revisa las respuestas correctas en verde.`;
+                resDiv.className = "mt-6 text-center text-xl font-bold text-amber-400 drop-shadow-md";
+            }
+            
+            document.getElementById('btn-evaluar').disabled = true;
+        }
+
+        // Inicializar
+        renderQuiz();
+    </script>
+</body>
+</html>
