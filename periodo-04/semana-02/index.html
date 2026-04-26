@@ -1,1 +1,301 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase: El Mundo de la Madera | Prof. William Fdo Bernal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        /* Custom Scrollbar for Chrome */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner { transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { backface-visibility: hidden; }
+        .flip-card-back { transform: rotateY(180deg); }
+    </style>
+</head>
+<body class="text-gray-800 min-h-screen pb-10">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4 mt-4 px-4">
+        <a href="../../../index.html"
+           class="bg-slate-800/80 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 backdrop-blur z-50 flex items-center gap-2 font-medium">
+           ⬅ Inicio (Grado)
+        </a>
+
+        <a href="../../index.html"
+           class="bg-purple-600/90 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 z-50 flex items-center gap-2 font-medium">
+           ⬅ Menú del Periodo
+        </a>
+
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/90 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 z-50 flex items-center gap-2 font-medium">
+           🔗 Copiar enlace
+        </button>
+    </div>
+
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur z-50 transition-all">
+        Enlace copiado ✅
+    </div>
+
+    <header class="max-w-5xl mx-auto px-4 mb-10">
+        <div class="glass-card rounded-3xl p-8 relative overflow-hidden shadow-2xl border-t-4 border-t-amber-500">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-amber-300/30 rounded-full blur-3xl"></div>
+            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-green-300/30 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10 text-center">
+                <h3 class="text-amber-700 font-bold tracking-widest text-sm uppercase mb-2">Colegio Santa Mariana de Jesús</h3>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">El Mundo de la <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-500">Madera</span></h1>
+                <p class="text-lg text-gray-600 font-medium mb-6">Profesor: William Fdo Bernal | Grado 6°</p>
+                
+                <div class="inline-block bg-white/80 rounded-2xl px-6 py-3 shadow-sm border border-gray-100">
+                    <p class="font-semibold text-gray-700 text-sm">🎯 Objetivo: Comprender las propiedades de la madera, clasificarla según su dureza y utilizar IA para investigar sus usos modernos.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 space-y-8">
+
+        <section class="glass-card rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div class="mb-4">
+                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-sm">📝 COPIAR AL CUADERNO</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-200 pb-2">Conceptos Clave de la Madera</h2>
+            <p class="text-sm text-gray-500 mb-4 italic">Conexión: En la Semana 1 vimos cómo los materiales van "De la Naturaleza a mi Casa". Hoy nos enfocaremos en uno de los más antiguos y útiles.</p>
+            
+            <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+                <div class="bg-white/50 p-5 rounded-2xl border border-gray-100">
+                    <h4 class="font-bold text-amber-700 mb-2">¿Qué es?</h4>
+                    <p class="text-sm">Un material orgánico obtenido del tronco de los árboles. Destaca por su color, veta (dibujo), dureza y resistencia.</p>
+                </div>
+                <div class="bg-white/50 p-5 rounded-2xl border border-gray-100">
+                    <h4 class="font-bold text-amber-700 mb-2">Propiedades Especiales</h4>
+                    <ul class="list-disc pl-5 text-sm space-y-1">
+                        <li><strong>Aislante:</strong> Protege del calor y electricidad.</li>
+                        <li><strong>Biodegradable:</strong> Se descompone de forma natural.</li>
+                        <li><strong>Higroscópica:</strong> Absorbe humedad del ambiente.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div class="mb-4">
+                <span class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-sm">💻 INTERACTUAR EN EL PC</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Laboratorio de Datos: Duras vs Blandas</h2>
+            <p class="text-sm text-gray-600 mb-6">Analiza las diferencias entre una madera blanda (Pino) y una dura (Roble). Pasa el ratón por las barras para ver los valores exactos.</p>
+            
+            <div class="bg-white rounded-2xl p-4 shadow-inner">
+                <canvas id="maderaChart" height="100"></canvas>
+            </div>
+            <div class="mt-6 flex justify-center gap-4">
+                <button onclick="updateChart('dureza')" class="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-1">Comparar Dureza</button>
+                <button onclick="updateChart('crecimiento')" class="px-5 py-2 bg-green-500 hover:bg-green-600 text-white rounded-xl font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-1">Velocidad de Crecimiento</button>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-l-emerald-500">
+            <div class="mb-4">
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-sm">🖥️ TRABAJO EN LA SALA</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Reto: Detectives de la Madera con IA</h2>
+            <p class="mb-4 text-gray-600">Vamos a utilizar la Inteligencia Artificial como nuestra asistente de investigación para organizar datos en Excel.</p>
+            
+            <div class="space-y-4">
+                <div class="bg-white/60 p-4 rounded-xl flex gap-4 items-start shadow-sm hover:scale-[1.01] transition-transform">
+                    <div class="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">Pregunta a la IA (Copia este texto):</h4>
+                        <code class="block mt-2 bg-gray-800 text-green-400 p-3 rounded-lg text-sm select-all">"Explícame en palabras sencillas para un niño de 11 años: maderas duras, maderas blandas y maderas prefabricadas. Dame 1 ejemplo y 1 uso de cada una."</code>
+                    </div>
+                </div>
+
+                <div class="bg-white/60 p-4 rounded-xl flex gap-4 items-start shadow-sm hover:scale-[1.01] transition-transform">
+                    <div class="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">Abre Excel y crea esta tabla:</h4>
+                        <p class="text-sm mt-1 text-gray-600 font-mono bg-gray-100 p-2 rounded">Tipo de madera | Ejemplo | ¿Para qué se usa? | Dibujo/Emoji | Curiosidad</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/60 p-4 rounded-xl flex gap-4 items-start shadow-sm hover:scale-[1.01] transition-transform">
+                    <div class="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">Copia, completa y hazlo visual:</h4>
+                        <ul class="list-disc pl-5 text-sm text-gray-600 space-y-1 mt-1">
+                            <li>Pega la respuesta de la IA.</li>
+                            <li>Agrega un emoji (🌳, 🪑, 🎸).</li>
+                            <li>Aplica <strong>Formato como tabla</strong> en Excel y elige un color.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 bg-amber-50 p-4 rounded-xl border border-amber-200">
+                <p class="text-sm">📁 <strong>Nombre del archivo:</strong> <code>6_madera_fecha_TuNombre.xlsx</code><br>
+                ✨ <strong>Reto extra:</strong> Pídele a la IA: <em>"Dame un dato sorprendente sobre el árbol de Caoba"</em> y agrégalo al final.</p>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <section class="glass-card rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div class="mb-4">
+                    <span class="bg-rose-100 text-rose-800 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-sm">🔍 INVESTIGACIÓN</span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Búsqueda en Google</h3>
+                <p class="text-sm text-gray-600">Busca en internet la respuesta a esta pregunta para entender el impacto ambiental de nuestro consumo:</p>
+                <div class="mt-4 p-4 bg-white rounded-xl shadow-inner text-center font-semibold text-rose-700 italic">
+                    "¿Cómo afecta la deforestación al medio ambiente y qué es la madera certificada (Sello FSC)?"
+                </div>
+            </section>
+
+            <section class="glass-card rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div class="mb-4">
+                    <span class="bg-orange-100 text-orange-800 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-sm">📄 TAREA EN HOJA SUELTA</span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Entregable Físico</h3>
+                <p class="text-sm text-gray-600">En una hoja de block o cuaderno en blanco, escribe a mano la respuesta a la pregunta de investigación.</p>
+                <ul class="mt-4 space-y-2 text-sm text-gray-700 font-medium bg-white/50 p-3 rounded-xl">
+                    <li class="flex items-center gap-2">✅ Nombre completo</li>
+                    <li class="flex items-center gap-2">✅ Grado (6°)</li>
+                    <li class="flex items-center gap-2">✅ Fecha actual</li>
+                </ul>
+            </section>
+        </div>
+
+    </main>
+
+    <section class="max-w-3xl mx-auto mt-12 px-4">
+        <div class="bg-slate-800 rounded-3xl p-8 shadow-2xl text-white relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-blue-500/20 rounded-full blur-2xl"></div>
+            <h2 class="text-2xl font-bold mb-6 text-center">🎮 Micro-Quiz de Comprobación</h2>
+            
+            <div id="quiz-container" class="space-y-4">
+                <div class="quiz-question bg-slate-700/50 p-5 rounded-2xl border border-slate-600 transition-all duration-300">
+                    <p class="font-semibold mb-3">1. Las maderas blandas (como el pino) provienen de árboles de crecimiento...</p>
+                    <div class="flex gap-3">
+                        <button onclick="checkAnswer(this, true)" class="flex-1 bg-slate-600 hover:bg-slate-500 py-2 rounded-xl transition-all">Rápido</button>
+                        <button onclick="checkAnswer(this, false)" class="flex-1 bg-slate-600 hover:bg-slate-500 py-2 rounded-xl transition-all">Lento</button>
+                    </div>
+                </div>
+                <div class="quiz-question bg-slate-700/50 p-5 rounded-2xl border border-slate-600 transition-all duration-300">
+                    <p class="font-semibold mb-3">2. La propiedad de absorber la humedad del ambiente se llama:</p>
+                    <div class="flex gap-3">
+                        <button onclick="checkAnswer(this, false)" class="flex-1 bg-slate-600 hover:bg-slate-500 py-2 rounded-xl transition-all">Biodegradable</button>
+                        <button onclick="checkAnswer(this, true)" class="flex-1 bg-slate-600 hover:bg-slate-500 py-2 rounded-xl transition-all">Higroscópica</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="quiz-result" class="hidden mt-6 text-center animate-bounce">
+                <p class="text-xl font-bold text-green-400">¡Excelente trabajo investigador! 🚀</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mt-16 bg-gray-900 text-gray-400 py-8 text-center">
+        <p class="font-medium text-sm">© 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática</p>
+        <p class="text-xs mt-1">Colegio Santa Mariana de Jesús</p>
+    </footer>
+
+    <script>
+        // Función 1: Copiar Enlace
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    setTimeout(()=> t.classList.add('hidden'), 2000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // Función 2: Gráfico Interactivo Chart.js
+        const ctx = document.getElementById('maderaChart').getContext('2d');
+        const dataDureza = [30, 85]; // Pino vs Roble
+        const dataCrecimiento = [90, 20]; // Pino (rápido) vs Roble (lento)
+
+        let myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Madera Blanda (Ej. Pino)', 'Madera Dura (Ej. Roble)'],
+                datasets: [{
+                    label: 'Nivel de Dureza',
+                    data: dataDureza,
+                    backgroundColor: ['rgba(52, 211, 153, 0.7)', 'rgba(217, 119, 6, 0.7)'],
+                    borderColor: ['rgb(16, 185, 129)', 'rgb(180, 83, 9)'],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: { duration: 1000, easing: 'easeOutQuart' },
+                scales: { y: { beginAtZero: true, max: 100 } },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        titleFont: { family: 'Poppins', size: 14 },
+                        bodyFont: { family: 'Poppins', size: 14 },
+                        padding: 10,
+                        cornerRadius: 8
+                    }
+                }
+            }
+        });
+
+        function updateChart(tipo) {
+            if (tipo === 'dureza') {
+                myChart.data.datasets[0].data = dataDureza;
+                myChart.data.datasets[0].label = 'Nivel de Dureza';
+            } else {
+                myChart.data.datasets[0].data = dataCrecimiento;
+                myChart.data.datasets[0].label = 'Velocidad de Crecimiento';
+            }
+            myChart.update();
+        }
+
+        // Función 3: Lógica Gamificación (Quiz)
+        let correctas = 0;
+        function checkAnswer(btn, isCorrect) {
+            const parent = btn.parentElement.parentElement;
+            const buttons = parent.querySelectorAll('button');
+            
+            buttons.forEach(b => {
+                b.disabled = true;
+                b.classList.remove('hover:bg-slate-500');
+                if(b === btn && isCorrect) b.classList.replace('bg-slate-600', 'bg-green-600');
+                else if(b === btn && !isCorrect) b.classList.replace('bg-slate-600', 'bg-red-600');
+                else b.classList.add('opacity-50');
+            });
+
+            if(isCorrect) correctas++;
+            
+            const totalRespondidas = document.querySelectorAll('.quiz-question button:disabled').length / 2;
+            if(totalRespondidas === 2 && correctas === 2) {
+                document.getElementById('quiz-result').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
