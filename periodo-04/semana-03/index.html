@@ -1,1 +1,571 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 3: El Viaje de la Madera | Tecnología</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Custom CSS for Flip Cards and animations */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .group:hover .group-hover\:rotate-y-180 { transform: rotateY(180deg); }
+        
+        /* Glassmorphism utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Scrollbar styling for Chrome */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #059669; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(160, 100%, 20%, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(220, 100%, 20%, 0.3) 0px, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- ========================================== -->
+    <!-- BARRA DE NAVEGACIÓN Y BOTONES OBLIGATORIOS -->
+    <!-- ========================================== -->
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-8">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-slate-600 flex items-center gap-2">
+           <span>⬅ Inicio (Grado)</span>
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600/80 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-purple-400 flex items-center gap-2">
+           <span>⬅ Menú del Periodo</span>
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/80 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-emerald-400 flex items-center gap-2">
+           <span>🔗 Copiar enlace</span>
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur z-50 transform transition-all font-bold">
+        ¡Enlace copiado al portapapeles! ✅
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 1: HERO IMPACTANTE -->
+    <!-- ========================================== -->
+    <header class="max-w-5xl mx-auto glass rounded-3xl p-8 mb-10 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-[-50px] right-[-50px] w-40 h-40 bg-emerald-500 rounded-full blur-3xl opacity-20"></div>
+        
+        <div class="text-center">
+            <h2 class="text-emerald-400 font-bold tracking-widest uppercase text-sm mb-2">Colegio Santa Mariana de Jesús | Tecnología e Informática</h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                El Viaje de la Madera y sus Usos 🪵
+            </h1>
+            <p class="text-xl text-slate-300 mb-6 font-light">Grado 6° | Prof. William Fdo Bernal</p>
+            
+            <div class="inline-block glass rounded-2xl p-6 border-l-4 border-l-emerald-500 text-left max-w-2xl mx-auto">
+                <h3 class="text-lg font-bold text-emerald-300 mb-2">🎯 Objetivo de Aprendizaje</h3>
+                <p class="text-slate-200">Comprender los procesos de explotación y transformación de la madera, analizar sus ventajas y desventajas, e identificar sus aplicaciones en nuestro entorno diario mediante herramientas tecnológicas y análisis de datos.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto space-y-10">
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN: COPIAR AL CUADERNO -->
+        <!-- ========================================== -->
+        <section class="glass rounded-3xl p-8 shadow-xl relative">
+            <div class="absolute -top-4 left-8">
+                <span class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg border border-blue-400">
+                    📝 COPIAR AL CUADERNO
+                </span>
+            </div>
+            
+            <div class="mt-4">
+                <p class="text-slate-300 mb-6 italic">Conectando con la <strong>Semana 2 (El Mundo de la Madera)</strong>, hoy veremos cómo ese recurso natural se transforma y llega a nuestras manos.</p>
+                
+                <h3 class="text-2xl font-bold text-cyan-400 mb-4">1. El Proceso de Transformación 🏭</h3>
+                <ol class="list-decimal list-inside text-slate-200 space-y-2 mb-6 ml-4">
+                    <li><strong>Apeo o Tala:</strong> Corte responsable de los árboles en el bosque.</li>
+                    <li><strong>Transporte:</strong> Movilización de los troncos aserraderos.</li>
+                    <li><strong>Descortezado y Tronzado:</strong> Quitar la corteza y cortar en trozos manejables.</li>
+                    <li><strong>Secado:</strong> Eliminar la humedad para evitar que se deforme. (¡El paso más importante!).</li>
+                    <li><strong>Cepillado:</strong> Darle el acabado suave final.</li>
+                </ol>
+
+                <h3 class="text-2xl font-bold text-cyan-400 mb-4">2. Ventajas vs. Desventajas ⚖️</h3>
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-emerald-900/40 p-4 rounded-xl border border-emerald-500/30">
+                        <h4 class="text-emerald-400 font-bold mb-2">✅ Ventajas</h4>
+                        <ul class="list-disc list-inside text-slate-300">
+                            <li>Aislante térmico y eléctrico natural.</li>
+                            <li>Material 100% biodegradable.</li>
+                            <li>Fácil de trabajar y moldear.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-900/40 p-4 rounded-xl border border-red-500/30">
+                        <h4 class="text-red-400 font-bold mb-2">❌ Desventajas</h4>
+                        <ul class="list-disc list-inside text-slate-300">
+                            <li>Altamente combustible (se quema fácil).</li>
+                            <li>Vulnerable a plagas (termitas, hongos).</li>
+                            <li>Su uso excesivo causa deforestación.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-cyan-400 mb-2">3. Aplicaciones Diarias 🏠</h3>
+                <p class="text-slate-200 ml-4">
+                    <strong>Hogar:</strong> Muebles, puertas, pisos.<br>
+                    <strong>Escuela:</strong> Lápices, papel, pupitres.<br>
+                    <strong>Industria:</strong> Construcción, embalaje, barcos.
+                </p>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN: INTERACTUAR EN EL PC -->
+        <!-- ========================================== -->
+        <section class="glass rounded-3xl p-8 shadow-xl relative mt-12">
+            <div class="absolute -top-4 left-8">
+                <span class="bg-purple-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg border border-purple-400">
+                    💻 INTERACTUAR EN EL PC
+                </span>
+            </div>
+
+            <div class="mt-4">
+                <h3 class="text-2xl font-bold text-purple-400 mb-6 text-center">Data Lab: Análisis de Usos de la Madera</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6 items-center">
+                    <div class="md:col-span-1 space-y-4">
+                        <p class="text-slate-300 text-sm">Interactúa con el panel de datos. Observa cómo cambia la distribución del uso de la madera dependiendo de la región o situación de desarrollo.</p>
+                        
+                        <button onclick="updateChart('global')" class="w-full bg-slate-800 hover:bg-purple-600 text-white py-2 px-4 rounded-lg transition-all duration-300 border border-slate-600 hover:scale-105">
+                            🌍 Promedio Global
+                        </button>
+                        <button onclick="updateChart('industrial')" class="w-full bg-slate-800 hover:bg-emerald-600 text-white py-2 px-4 rounded-lg transition-all duration-300 border border-slate-600 hover:scale-105">
+                            🏙️ Países Industrializados
+                        </button>
+                    </div>
+                    <div class="md:col-span-2 glass p-4 rounded-xl relative h-64">
+                        <canvas id="woodUsageChart"></canvas>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-purple-400 mt-10 mb-6 text-center">Zona de Analogías: El Proceso en 3D</h3>
+                <p class="text-slate-400 text-center text-sm mb-6">Pasa el ratón sobre las tarjetas para revelar el proceso de transformación.</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <!-- Tarjetas Flip -->
+                    <script>
+                        const procesos = [
+                            { icono: '🪓', titulo: '1. Tala', desc: 'Corte de los árboles maduros.' },
+                            { icono: '🚛', titulo: '2. Transporte', desc: 'Llevar los troncos al aserradero.' },
+                            { icono: '🪵', titulo: '3. Tronzado', desc: 'Quitar corteza y cortar a medida.' },
+                            { icono: '☀️', titulo: '4. Secado', desc: 'Quitar humedad para dar fuerza.' },
+                            { icono: '🪚', titulo: '5. Cepillado', desc: 'Acabado liso y perfecto.' }
+                        ];
+                        
+                        procesos.forEach(p => {
+                            document.write(`
+                                <div class="group perspective-1000 h-40 cursor-pointer">
+                                    <div class="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+                                        <!-- Frente -->
+                                        <div class="absolute w-full h-full glass flex flex-col items-center justify-center rounded-xl backface-hidden border-t border-slate-600">
+                                            <span class="text-4xl mb-2">${p.icono}</span>
+                                            <h4 class="font-bold text-emerald-300 text-sm">${p.titulo}</h4>
+                                        </div>
+                                        <!-- Dorso -->
+                                        <div class="absolute w-full h-full glass bg-emerald-900/80 flex items-center justify-center rounded-xl backface-hidden rotate-y-180 p-3 text-center border-t border-emerald-400">
+                                            <p class="text-xs text-white">${p.desc}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN: TRABAJO EN LA SALA -->
+        <!-- ========================================== -->
+        <section class="glass rounded-3xl p-8 shadow-xl relative mt-12 border border-emerald-500/30">
+            <div class="absolute -top-4 left-8">
+                <span class="bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg border border-emerald-400">
+                    🖥️ TRABAJO EN LA SALA
+                </span>
+            </div>
+
+            <div class="mt-4">
+                <h3 class="text-2xl font-bold text-emerald-400 mb-2">Actividad: "Madera Mágica: De la Naturaleza a tu Hogar" 🌳</h3>
+                <div class="flex gap-4 text-sm text-slate-300 mb-6 bg-slate-900/50 p-3 rounded-lg w-fit border border-slate-700">
+                    <span><strong>Grado:</strong> 6°</span> |
+                    <span><strong>Duración:</strong> 40 min</span> |
+                    <span><strong>Herramientas:</strong> Chat IA + Excel</span>
+                </div>
+                
+                <p class="text-slate-200 mb-6"><strong>Objetivo:</strong> Organizar en Excel información sobre procesos, ventajas y usos de la madera aplicando 2 funciones básicas.</p>
+
+                <div class="space-y-6">
+                    <!-- Paso 1 -->
+                    <div class="bg-slate-800/50 p-5 rounded-xl border-l-4 border-emerald-500 hover:bg-slate-800 transition-colors">
+                        <h4 class="font-bold text-lg text-emerald-300 mb-2">🤖 Paso 1: Genera la estructura con IA (5 min)</h4>
+                        <p class="text-slate-300 text-sm mb-2">Copia y pega este prompt exacto en tu chat de IA:</p>
+                        <div class="bg-black/50 p-3 rounded text-cyan-300 text-sm font-mono relative group">
+                            "Soy estudiante de 6° grado. Necesito una lista sencilla con: (1) 3 procesos para transformar madera en productos, (2) 2 ventajas y 2 desventajas de usar madera, (3) 5 objetos de madera que uso en casa o escuela. Usa palabras fáciles y ejemplos concretos. Presenta la respuesta en formato de lista con viñetas."
+                            <button onclick="navigator.clipboard.writeText('Soy estudiante de 6° grado. Necesito una lista sencilla con: (1) 3 procesos para transformar madera en productos, (2) 2 ventajas y 2 desventajas de usar madera, (3) 5 objetos de madera que uso en casa o escuela. Usa palabras fáciles y ejemplos concretos. Presenta la respuesta en formato de lista con viñetas.'); alert('Prompt copiado');" class="absolute top-2 right-2 bg-emerald-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Copiar</button>
+                        </div>
+                        <p class="text-slate-400 text-xs mt-2 italic">Mantén la respuesta visible.</p>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="bg-slate-800/50 p-5 rounded-xl border-l-4 border-emerald-500 hover:bg-slate-800 transition-colors">
+                        <h4 class="font-bold text-lg text-emerald-300 mb-2">📊 Paso 2: Crea la tabla en Excel (10 min)</h4>
+                        <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
+                            <li>Abre Excel → Libro nuevo. En A1 escribe: <strong>'Proceso/Aplicación'</strong> | B1: <strong>'Tipo'</strong> | C1: <strong>'Ventaja/Desventaja'</strong> | D1: <strong>'Lugar de uso'</strong> | E1: <strong>'Puntuación (1-5)'</strong></li>
+                            <li>Copia los datos de la IA y pégalos desde A2.</li>
+                            <li>Selecciona A1:E6 → <strong>'Ctrl + T'</strong> → Aceptar.</li>
+                            <li>Selecciona fila 1 → <strong>'Ctrl + N'</strong> (negrita) → Aplica color de relleno suave.</li>
+                        </ul>
+                        <div class="mt-3 text-xs bg-yellow-900/30 text-yellow-300 p-2 rounded border border-yellow-700/50">
+                            💡 <strong>Concepto clave:</strong> La tabla organiza la información de manera estructurada.
+                        </div>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="bg-slate-800/50 p-5 rounded-xl border-l-4 border-emerald-500 hover:bg-slate-800 transition-colors">
+                        <h4 class="font-bold text-lg text-emerald-300 mb-2">⚙️ Paso 3: Aplica fórmulas (10 min)</h4>
+                        <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
+                            <li>En F1 escribe: <strong>'Evaluación'</strong></li>
+                            <li>En F2, escribe la fórmula: <code class="bg-black px-1 text-cyan-300">=SI(E2>=4;"¡Muy útil!";"Útil")</code></li>
+                            <li>Selecciona F2 → arrastra el cuadrado verde hasta F6 para copiar.</li>
+                            <li>En E8 escribe: <code class="bg-black px-1 text-cyan-300">=PROMEDIO(E2:E6)</code> → Esto calcula el promedio de utilidad.</li>
+                        </ul>
+                        <p class="text-xs text-red-300 mt-2">✅ Verifica: Si ves #¡VALOR!, revisa que E2:E6 solo tenga números del 1-5.</p>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="bg-slate-800/50 p-5 rounded-xl border-l-4 border-emerald-500 hover:bg-slate-800 transition-colors">
+                        <h4 class="font-bold text-lg text-emerald-300 mb-2">🔍 Paso 4: Reflexiona y valida (10 min)</h4>
+                        <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
+                            <li>Usa <strong>'Ctrl + Z'</strong> para corregir sin miedo.</li>
+                            <li>Pregunta a tu IA: <em>"¿Esta información sobre madera es correcta para 6° grado?"</em></li>
+                            <li>En A10 escribe: <strong>'Mi conclusión:'</strong></li>
+                            <li>En B10 responde: <em>"La madera es útil porque... pero debemos cuidarla porque..."</em> (2 líneas máx)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Paso 5 -->
+                    <div class="bg-slate-800/50 p-5 rounded-xl border-l-4 border-emerald-500 hover:bg-slate-800 transition-colors">
+                        <h4 class="font-bold text-lg text-emerald-300 mb-2">💾 Paso 5: Guarda con nombre EXACTO</h4>
+                        <p class="text-slate-300 text-sm"><strong>'Ctrl + Shift + S'</strong> → Usa OBLIGATORIAMENTE:</p>
+                        <p class="font-mono text-cyan-300 bg-black/50 p-2 rounded my-2 text-center">6_madera_ddmmaa_tunombre.xlsx</p>
+                        <p class="text-slate-400 text-xs">✅ Ejemplo: <code class="text-emerald-400">6_madera_040526_ana_lopez.xlsx</code></p>
+                        <p class="text-red-400 text-xs font-bold mt-2">⚠️ Regla técnica: Nunca uses espacios, ñ, tildes ni símbolos (@, #). Solo letras, números y guiones bajos.</p>
+                    </div>
+
+                    <!-- Reto Avanzado -->
+                    <div class="bg-gradient-to-r from-purple-900/60 to-indigo-900/60 p-4 rounded-xl border border-purple-500/50 text-center">
+                        <p class="text-sm text-purple-200">✨ <strong>Reto avanzado:</strong> Pídele a la IA: <em>"Genera una pregunta creativa sobre reciclar madera"</em> o usa <code class="bg-black/50 text-cyan-300 px-1">=CONTAR.SI(C2:C6;"Ventaja")</code> para contar ventajas automáticamente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN: GAMIFICACIÓN (QUIZ) -->
+        <!-- ========================================== -->
+        <section class="glass rounded-3xl p-8 shadow-xl">
+            <h3 class="text-2xl font-bold text-yellow-400 mb-6 text-center">🎮 Micro-Quiz Interactivo</h3>
+            <p class="text-center text-slate-300 mb-6">Demuestra lo que aprendiste hoy. Selecciona la respuesta correcta.</p>
+
+            <div id="quiz-container" class="space-y-6 max-w-2xl mx-auto">
+                <!-- Las preguntas se renderizan con JS -->
+            </div>
+            
+            <div id="quiz-result" class="hidden mt-6 text-center glass p-6 rounded-2xl border-emerald-500">
+                <h4 class="text-3xl font-bold text-emerald-400 mb-2" id="quiz-score"></h4>
+                <p class="text-slate-200">¡Buen trabajo en la clase de hoy!</p>
+                <button onclick="resetQuiz()" class="mt-4 bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-white transition">Reintentar</button>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- ========================================== -->
+            <!-- SECCIÓN: INVESTIGACIÓN -->
+            <!-- ========================================== -->
+            <section class="glass rounded-3xl p-6 shadow-xl relative mt-4">
+                <div class="absolute -top-3 left-6">
+                    <span class="bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-orange-400">
+                        🔍 INVESTIGACIÓN
+                    </span>
+                </div>
+                <div class="mt-4">
+                    <p class="text-slate-200 font-bold mb-2">Busca en Google y anota en tu cuaderno:</p>
+                    <p class="text-orange-300 italic">"¿Qué es la madera certificada (Sello FSC) y por qué es tan importante para salvar nuestros bosques?"</p>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECCIÓN: TAREA -->
+            <!-- ========================================== -->
+            <section class="glass rounded-3xl p-6 shadow-xl relative mt-4">
+                <div class="absolute -top-3 left-6">
+                    <span class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-rose-400">
+                        📄 TAREA EN HOJA SUELTA
+                    </span>
+                </div>
+                <div class="mt-4 flex h-full items-center justify-center">
+                    <p class="text-rose-300 text-lg font-bold text-center">¡Esta semana no hay tarea! 🎉<br><span class="text-sm font-normal text-slate-300">Repasa lo visto en clase.</span></p>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER OBLIGATORIO -->
+    <!-- ========================================== -->
+    <footer class="mt-20 bg-slate-950 py-8 border-t border-slate-800 text-center">
+        <p class="text-slate-400 font-medium tracking-wide">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- SCRIPTS INTERACTIVOS (JS) -->
+    <!-- ========================================== -->
+    <script>
+        // 1. FUNCIÓN COPIAR ENLACE (OBLIGATORIA)
+        function copiarEnlace() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if (t) {
+                    t.classList.remove('hidden');
+                    // Animación de entrada
+                    t.classList.add('translate-y-2');
+                    setTimeout(() => t.classList.remove('translate-y-2'), 10);
+                    
+                    setTimeout(() => {
+                        t.classList.add('hidden');
+                    }, 3000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // 2. LÓGICA DE CHART.JS (Data Lab)
+        const ctx = document.getElementById('woodUsageChart').getContext('2d');
+        let chartInstance;
+
+        const dataGlobal = [45, 30, 20, 5]; // Construcción, Papel, Combustible, Otros
+        const dataIndustrial = [60, 25, 5, 10]; 
+
+        function initChart() {
+            Chart.defaults.color = '#cbd5e1';
+            chartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Construcción/Muebles', 'Industria Papelera', 'Combustible', 'Otros usos'],
+                    datasets: [{
+                        label: '% de Uso',
+                        data: dataGlobal,
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.8)', // Emerald
+                            'rgba(14, 165, 233, 0.8)', // Sky
+                            'rgba(244, 63, 94, 0.8)',  // Rose
+                            'rgba(168, 85, 247, 0.8)'  // Purple
+                        ],
+                        borderColor: '#0f172a',
+                        borderWidth: 2,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) { return context.label + ': ' + context.parsed + '%'; }
+                            }
+                        }
+                    },
+                    animation: { animateScale: true, animateRotate: true }
+                }
+            });
+        }
+
+        function updateChart(dataset) {
+            if(dataset === 'global') {
+                chartInstance.data.datasets[0].data = dataGlobal;
+            } else {
+                chartInstance.data.datasets[0].data = dataIndustrial;
+            }
+            chartInstance.update();
+        }
+
+        // 3. LÓGICA DE GAMIFICACIÓN (Micro-Quiz)
+        const quizData = [
+            {
+                q: "¿Cuál es el paso más importante para evitar que la madera se deforme o pudra?",
+                options: ["El Descortezado", "El Secado", "El Cepillado"],
+                answer: 1
+            },
+            {
+                q: "Una DESVENTAJA de la madera es que...",
+                options: ["Es muy pesada", "Es biodegradable", "Es altamente combustible"],
+                answer: 2
+            },
+            {
+                q: "En el hogar, usamos la madera principalmente para...",
+                options: ["Crear electricidad", "Muebles, camas y puertas", "Fabricar ventanas transparentes"],
+                answer: 1
+            }
+        ];
+
+        let currentAnswers = new Array(quizData.length).fill(null);
+        let score = 0;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            
+            quizData.forEach((item, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'glass p-5 rounded-xl border border-slate-700 transition-all duration-300';
+                questionDiv.id = `q-block-${index}`;
+                
+                let optionsHtml = '';
+                item.options.forEach((opt, optIdx) => {
+                    optionsHtml += `
+                        <button onclick="selectOption(${index}, ${optIdx})" 
+                                id="btn-${index}-${optIdx}"
+                                class="w-full text-left p-3 mt-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-600 transition-colors">
+                            ${opt}
+                        </button>
+                    `;
+                });
+
+                questionDiv.innerHTML = `
+                    <p class="font-bold text-cyan-300 mb-3">${index + 1}. ${item.q}</p>
+                    ${optionsHtml}
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        function selectOption(qIndex, optIndex) {
+            // No permitir cambiar si ya se evaluó
+            if (document.getElementById('quiz-result').classList.contains('hidden') === false) return;
+
+            currentAnswers[qIndex] = optIndex;
+            
+            // Visual update
+            quizData[qIndex].options.forEach((_, idx) => {
+                const btn = document.getElementById(`btn-${qIndex}-${idx}`);
+                btn.classList.remove('bg-purple-600', 'border-purple-400');
+                btn.classList.add('bg-slate-800/80', 'border-slate-600');
+            });
+            
+            const selectedBtn = document.getElementById(`btn-${qIndex}-${optIndex}`);
+            selectedBtn.classList.remove('bg-slate-800/80', 'border-slate-600');
+            selectedBtn.classList.add('bg-purple-600', 'border-purple-400');
+
+            // Check if all answered
+            if (!currentAnswers.includes(null)) {
+                evaluateQuiz();
+            }
+        }
+
+        function evaluateQuiz() {
+            score = 0;
+            currentAnswers.forEach((ans, idx) => {
+                const block = document.getElementById(`q-block-${idx}`);
+                const selectedBtn = document.getElementById(`btn-${idx}-${ans}`);
+                
+                if (ans === quizData[idx].answer) {
+                    score++;
+                    block.classList.add('border-emerald-500', 'shadow-[0_0_15px_rgba(16,185,129,0.3)]');
+                    selectedBtn.classList.replace('bg-purple-600', 'bg-emerald-600');
+                } else {
+                    block.classList.add('border-red-500', 'shadow-[0_0_15px_rgba(239,68,68,0.3)]');
+                    selectedBtn.classList.replace('bg-purple-600', 'bg-red-600');
+                    // Mostrar correcta
+                    const correctBtn = document.getElementById(`btn-${idx}-${quizData[idx].answer}`);
+                    correctBtn.classList.replace('bg-slate-800/80', 'bg-emerald-600/50');
+                    correctBtn.classList.add('border-emerald-500');
+                }
+            });
+
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('quiz-score').innerText = `${score} / ${quizData.length} Correctas`;
+            
+            if(score === quizData.length) {
+                confettiEffect();
+            }
+        }
+
+        function resetQuiz() {
+            currentAnswers = new Array(quizData.length).fill(null);
+            document.getElementById('quiz-result').classList.add('hidden');
+            renderQuiz();
+        }
+
+        // Mini efecto visual para el score perfecto
+        function confettiEffect() {
+            // Efecto simple manipulando el DOM
+            for(let i=0; i<30; i++) {
+                const conf = document.createElement('div');
+                conf.className = 'fixed w-3 h-3 rounded-full z-50 pointer-events-none';
+                conf.style.backgroundColor = ['#10b981', '#f59e0b', '#3b82f6', '#ec4899'][Math.floor(Math.random()*4)];
+                conf.style.left = Math.random() * 100 + 'vw';
+                conf.style.top = '-10px';
+                conf.style.transition = 'all 2s ease-in';
+                document.body.appendChild(conf);
+                
+                setTimeout(() => {
+                    conf.style.top = '100vh';
+                    conf.style.transform = `rotate(${Math.random() * 360}deg) translateX(${Math.random() * 100 - 50}px)`;
+                }, 50);
+                
+                setTimeout(() => conf.remove(), 2000);
+            }
+        }
+
+        // Init
+        window.onload = () => {
+            initChart();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
