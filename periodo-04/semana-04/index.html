@@ -1,1 +1,493 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 4 - El Mundo de los Metales | Prof. William Fdo Bernal</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        metal: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            gold: '#fbbf24',
+                            silver: '#94a3b8',
+                            copper: '#b45309'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at 50% top, #1e293b 0%, #0f172a 100%);
+            color: #f8fafc;
+        }
+        
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            border-color: rgba(148, 163, 184, 0.3);
+        }
+
+        /* Flip Card Styles for Concepts */
+        .flip-card {
+            perspective: 1000px;
+            height: 150px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .flip-card-front {
+            background: linear-gradient(135deg, rgba(51, 65, 85, 0.8), rgba(30, 41, 59, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .flip-card-back {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            transform: rotateY(180deg);
+            color: white;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-4">
+
+    <!-- ================= BARRA DE BOTONES OBLIGATORIA ================= -->
+    <div class="max-w-5xl mx-auto w-full flex justify-end gap-3 mb-6 px-4">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-slate-700 transition-all duration-300 backdrop-blur border border-slate-600">
+           ⬅ Inicio (Grado)
+        </a>
+
+        <a href="../../index.html"
+           class="bg-purple-600/90 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-purple-500 transition-all duration-300 backdrop-blur border border-purple-400">
+           ⬅ Menú del Periodo
+        </a>
+
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/90 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-emerald-500 transition-all duration-300 backdrop-blur border border-emerald-400">
+           🔗 Copiar enlace
+        </button>
+    </div>
+
+    <!-- Toast de Confirmación -->
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur font-bold z-50 transform transition-all duration-300">
+        Enlace copiado ✅
+    </div>
+    <!-- ================================================================ -->
+
+    <main class="max-w-5xl mx-auto w-full px-4 flex-grow space-y-8 pb-12">
+        
+        <!-- HEADER / HERO SECTION -->
+        <header class="glass-panel rounded-3xl p-8 relative overflow-hidden text-center">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500"></div>
+            <h3 class="text-blue-400 font-semibold tracking-wider uppercase text-sm mb-2">Colegio Santa Mariana de Jesús</h3>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500 mb-4 drop-shadow-lg">
+                EL MUNDO DE LOS METALES
+            </h1>
+            <p class="text-gray-400 mb-6">Prof. William Fdo Bernal | Grado 6° | Semana 4</p>
+            
+            <div class="bg-blue-900/40 border border-blue-500/30 rounded-xl p-4 inline-block shadow-inner max-w-2xl">
+                <p class="text-blue-200 text-lg">
+                    <strong>Objetivo de Aprendizaje:</strong> Comprender el origen de los metales como recurso natural, sus propiedades físicas fundamentales y utilizar IA junto a Excel para estructurar datos y calcular su impacto en nuestra vida cotidiana.
+                </p>
+            </div>
+        </header>
+
+        <!-- SECCIÓN 1: COPIAR AL CUADERNO -->
+        <section class="glass-panel rounded-3xl p-8 card-hover">
+            <div class="mb-4">
+                <span class="bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-blue-400 uppercase tracking-wide">📝 COPIAR AL CUADERNO</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-4 text-white">De la Madera a los Metales</h2>
+            <div class="space-y-4 text-gray-300 leading-relaxed">
+                <p>En la <strong class="text-blue-300">semana 3 exploramos "El Viaje de la Madera y sus Usos"</strong>, aprendiendo cómo un recurso natural vivo se transforma. Hoy daremos un salto a materiales inorgánicos mucho más duros y resistentes: <strong>Los Metales</strong>.</p>
+                
+                <h3 class="text-xl font-semibold text-emerald-400 mt-6 border-b border-gray-700 pb-2">1. Origen y Presencia</h3>
+                <p>Los metales no crecen en los árboles. Se extraen como minerales de las rocas subterráneas en las minas. Mediante un proceso de altas temperaturas llamado <strong>metalurgia</strong>, se separan de la roca para crear objetos de uso diario (cables, vigas, celulares).</p>
+
+                <h3 class="text-xl font-semibold text-emerald-400 mt-6 border-b border-gray-700 pb-2">2. Propiedades Físicas Clave</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2">
+                    <li><strong class="text-white">Dureza:</strong> Resistencia a ser rayado o cortado (Ej. Acero).</li>
+                    <li><strong class="text-white">Brillo:</strong> Capacidad de reflejar la luz.</li>
+                    <li><strong class="text-white">Conductividad:</strong> Facilidad para transportar calor y electricidad (Ej. Cobre).</li>
+                    <li><strong class="text-white">Maleabilidad:</strong> Capacidad de aplanarse en láminas sin romperse (Ej. Aluminio).</li>
+                    <li><strong class="text-white">Resistencia:</strong> Capacidad de soportar grandes pesos sin romperse.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: INTERACTUAR EN EL PC (Flip Cards & Chart.js) -->
+        <section class="glass-panel rounded-3xl p-8">
+            <div class="mb-6 flex items-center justify-between">
+                <span class="bg-purple-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-purple-400 uppercase tracking-wide">💻 INTERACTUAR EN EL PC</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">Laboratorio de Propiedades Metálicas</h2>
+            
+            <!-- Grid de Conceptos Interactivos -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front shadow-lg">
+                            <span class="text-4xl mb-2">⚡</span>
+                            <h3 class="font-bold text-gray-200">Conductividad</h3>
+                        </div>
+                        <div class="flip-card-back shadow-lg">
+                            <p class="text-sm">Permite que los electrones fluyan libremente. Por eso usamos cables de cobre.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front shadow-lg">
+                            <span class="text-4xl mb-2">🛡️</span>
+                            <h3 class="font-bold text-gray-200">Dureza</h3>
+                        </div>
+                        <div class="flip-card-back shadow-lg bg-emerald-600">
+                            <p class="text-sm">Difícil de rayar. El diamante (carbono) es el rey, pero el acero le sigue de cerca.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front shadow-lg">
+                            <span class="text-4xl mb-2">📜</span>
+                            <h3 class="font-bold text-gray-200">Maleabilidad</h3>
+                        </div>
+                        <div class="flip-card-back shadow-lg bg-orange-600">
+                            <p class="text-sm">Se dobla en láminas. Piensa en el papel de aluminio de tu cocina.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front shadow-lg">
+                            <span class="text-4xl mb-2">🏗️</span>
+                            <h3 class="font-bold text-gray-200">Resistencia</h3>
+                        </div>
+                        <div class="flip-card-back shadow-lg bg-red-600">
+                            <p class="text-sm">Soporta cargas. Usado en las vigas que sostienen tu casa o colegio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart.js Canvas -->
+            <div class="bg-gray-800/50 rounded-2xl p-4 border border-gray-700 shadow-inner">
+                <h3 class="text-center text-gray-300 mb-4 font-semibold text-sm">Comparativa de Metales (Escala 1-10)</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="metalChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: TRABAJO EN LA SALA -->
+        <section class="glass-panel rounded-3xl p-8 card-hover border-l-4 border-l-emerald-500">
+            <div class="mb-4">
+                <span class="bg-emerald-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-emerald-400 uppercase tracking-wide">🖥️ TRABAJO EN LA SALA</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-4 text-white">Actividad: Análisis de Metales con IA + Excel</h2>
+            <p class="text-gray-300 mb-6 text-sm">Hoy actuaremos como analistas de datos. Usaremos Inteligencia Artificial para generar información estructurada y Excel para calcular el impacto de los metales en nuestro entorno.</p>
+
+            <div class="space-y-6">
+                <!-- Paso 1 -->
+                <div class="bg-slate-800/80 rounded-xl p-5 border border-slate-600">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2 flex items-center"><span class="text-2xl mr-2">🤖</span> Paso 1: Genera tu tabla de metales con IA</h3>
+                    <p class="text-gray-300 text-sm mb-3">Abre tu asistente de IA (ej. Gemini o ChatGPT) y copia/pega <strong>exactamente</strong> el siguiente texto (Prompt):</p>
+                    <div class="relative group">
+                        <pre class="bg-slate-900 p-4 rounded-lg text-emerald-300 text-xs md:text-sm font-mono overflow-x-auto whitespace-pre-wrap border border-slate-700">"Genera una tabla en formato TSV con exactamente 5 columnas con estos encabezados: Metal, Origen, Dureza (1-10), Conductividad (1-10), Objetos_hogar. Incluye exactamente 10 filas de datos sobre metales comunes en la vida diaria. Para 'Origen' usa solo: Natural, Reciclado o Aleación. Para 'Dureza' y 'Conductividad' usa números enteros del 1 al 10. Para 'Objetos_hogar' usa números enteros del 1 al 25. Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas."</pre>
+                    </div>
+                    <p class="text-gray-400 text-xs mt-3">💡 Copia el resultado de la IA y pégalo en la <strong>celda A1 de Excel</strong>. Al ser formato TSV (Valores Separados por Tabulaciones), Excel organizará todo en columnas automáticamente.</p>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="bg-slate-800/80 rounded-xl p-5 border border-slate-600">
+                    <h3 class="text-lg font-bold text-blue-400 mb-2 flex items-center"><span class="text-2xl mr-2">📊</span> Paso 2: Aplica formato visual</h3>
+                    <ul class="list-decimal list-inside text-gray-300 text-sm space-y-2">
+                        <li>Selecciona los encabezados (A1:E1), aplica <strong>relleno gris oscuro</strong>, fuente blanca y céntralos.</li>
+                        <li>En columna B (Origen), aplica color a la fuente: <span class="text-green-400 font-bold">Verde</span> para "Natural", <span class="text-blue-400 font-bold">Azul</span> para "Reciclado" y <span class="text-orange-400 font-bold">Naranja</span> para "Aleación".</li>
+                        <li>Columnas C, D, E (números): alineación a la derecha, tamaño 11.</li>
+                        <li>Columna A (Metal): aplica <strong>Negrita</strong>.</li>
+                    </ul>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="bg-slate-800/80 rounded-xl p-5 border border-slate-600">
+                    <h3 class="text-lg font-bold text-purple-400 mb-2 flex items-center"><span class="text-2xl mr-2">⚙️</span> Paso 3: Calcula índices con fórmulas</h3>
+                    <p class="text-gray-300 text-sm mb-3">En Excel, las fórmulas nos permiten automatizar cálculos lógicos basados en las propiedades de los metales.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                            <p class="text-xs text-gray-400 mb-1">En F1 escribe: <strong>Puntuación_propiedades</strong></p>
+                            <p class="text-xs text-gray-400">En F2 escribe:</p>
+                            <code class="block bg-black text-purple-400 p-2 rounded mt-1 font-mono text-center text-lg">=C2+D2</code>
+                            <p class="text-xs text-gray-500 mt-1 italic">Propósito: Suma Dureza + Conductividad.</p>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                            <p class="text-xs text-gray-400 mb-1">En G1 escribe: <strong>Impacto_estimado</strong></p>
+                            <p class="text-xs text-gray-400">En G2 escribe:</p>
+                            <code class="block bg-black text-blue-400 p-2 rounded mt-1 font-mono text-center text-lg">=E2*F2</code>
+                            <p class="text-xs text-gray-500 mt-1 italic">Propósito: Multiplica objetos por puntuación.</p>
+                        </div>
+                    </div>
+                    <p class="text-yellow-400/90 text-xs mt-3">⚠️ Arrastra las fórmulas hacia abajo hasta la fila 11. Si ves un error como <code>#¡VALOR!</code>, verifica la sintaxis de tu Excel.</p>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="bg-slate-800/80 rounded-xl p-5 border border-slate-600">
+                    <h3 class="text-lg font-bold text-orange-400 mb-2 flex items-center"><span class="text-2xl mr-2">💾</span> Paso Final: Guardar y Reto</h3>
+                    <p class="text-gray-300 text-sm">Guarda tu archivo con la siguiente nomenclatura, asegurándote que termine en <code>.xlsx</code> (sin tildes ni espacios):</p>
+                    <code class="block bg-slate-900 text-orange-300 p-3 rounded mt-2 font-mono border border-slate-700 text-center">6_metales_110526_tuapellido.xlsx</code>
+                    <div class="mt-4 p-3 bg-yellow-900/30 border border-yellow-700/50 rounded-lg">
+                        <p class="text-sm text-yellow-200"><strong>✨ Reto Avanzado:</strong> Usa la herramienta "Ordenar" de Excel para ordenar tu tabla de <em>Mayor a Menor</em> usando la columna 'Impacto_estimado'. ¿Qué metal lidera la lista en tu hogar?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: GAMIFICACIÓN (Micro-Quiz) -->
+        <section class="glass-panel rounded-3xl p-8">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center flex justify-center items-center gap-2">
+                🎮 Comprueba tus conocimientos
+            </h2>
+            <div id="quiz-container" class="space-y-4">
+                <!-- P1 -->
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700" id="q1-box">
+                    <p class="font-semibold text-gray-200 mb-3">1. ¿Qué propiedad permite que el aluminio se convierta en el papel que usamos en la cocina?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <button onclick="checkAnswer('q1', false, this)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-2 rounded-lg transition-colors">A) Dureza</button>
+                        <button onclick="checkAnswer('q1', true, this)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-2 rounded-lg transition-colors">B) Maleabilidad</button>
+                        <button onclick="checkAnswer('q1', false, this)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-2 rounded-lg transition-colors">C) Conductividad</button>
+                        <button onclick="checkAnswer('q1', false, this)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-2 rounded-lg transition-colors">D) Brillo</button>
+                    </div>
+                </div>
+                <!-- P2 -->
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700" id="q2-box">
+                    <p class="font-semibold text-gray-200 mb-3">2. Si multiplicamos <code>=E2*F2</code> en Excel, estamos realizando un cálculo lógico para estimar:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <button onclick="checkAnswer('q2', false, this)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-2 rounded-lg transition-colors">A) El peso del metal</button>
+                        <button onclick="checkAnswer('q2', false, this)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-2 rounded-lg transition-colors">B) Su temperatura de fusión</button>
+                        <button onclick="checkAnswer('q2', true, this)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-2 rounded-lg transition-colors">C) Su impacto estimado en el hogar</button>
+                    </div>
+                </div>
+            </div>
+            <p id="quiz-feedback" class="text-center mt-4 font-bold hidden"></p>
+        </section>
+
+        <!-- SECCIÓN 5: INVESTIGACIÓN Y TAREA -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="glass-panel rounded-3xl p-8 card-hover border-t-4 border-t-orange-500">
+                <div class="mb-4">
+                    <span class="bg-orange-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-orange-400 uppercase tracking-wide">🔍 INVESTIGACIÓN</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Abre el buscador de Google y consulta:<br><br>
+                    <strong class="text-orange-300">"¿Por qué es importante reciclar los metales y cuál es su impacto en el medio ambiente?"</strong><br><br>
+                    Lee al menos dos páginas diferentes para formar tu propia respuesta.
+                </p>
+            </section>
+
+            <section class="glass-panel rounded-3xl p-8 card-hover border-t-4 border-t-red-500">
+                <div class="mb-4">
+                    <span class="bg-red-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-red-400 uppercase tracking-wide">📄 TAREA EN HOJA SUELTA</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Escribe a mano, con tus propias palabras, la respuesta a la investigación (bloque izquierdo).<br><br>
+                    <strong class="text-white">Requisitos de entrega:</strong><br>
+                    - Hoja de block blanca o rayada.<br>
+                    - Nombre completo y Grado (6°) en la parte superior.<br>
+                    - Excelente ortografía.
+                </p>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- FOOTER OBLIGATORIO -->
+    <footer class="bg-[#050b14] py-8 text-center border-t border-slate-800 mt-auto">
+        <p class="text-slate-500 font-medium tracking-wide">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <!-- LOGICA JAVASCRIPT -->
+    <script>
+        // 1. FUNCIÓN OBLIGATORIA: Copiar enlace
+        function copiarEnlace() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if (t) {
+                    t.classList.remove('hidden');
+                    t.classList.add('translate-y-2');
+                    setTimeout(() => {
+                        t.classList.add('hidden');
+                        t.classList.remove('translate-y-2');
+                    }, 2500);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // 2. INICIALIZAR CHART.JS (Laboratorio)
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('metalChart').getContext('2d');
+            
+            Chart.defaults.color = '#94a3b8';
+            Chart.defaults.font.family = 'Inter';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Acero (Hierro)', 'Cobre', 'Aluminio', 'Oro'],
+                    datasets: [
+                        {
+                            label: 'Dureza',
+                            data: [8.5, 3, 2.5, 2.5],
+                            backgroundColor: 'rgba(56, 189, 248, 0.7)',
+                            borderColor: 'rgba(56, 189, 248, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Conductividad',
+                            data: [2, 9.5, 6, 8],
+                            backgroundColor: 'rgba(250, 204, 21, 0.7)',
+                            borderColor: 'rgba(250, 204, 21, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#cbd5e1',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 10
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10,
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        });
+
+        // 3. LÓGICA DEL MICRO-QUIZ
+        let score = 0;
+        let answered = { q1: false, q2: false };
+
+        function checkAnswer(question, isCorrect, btnElement) {
+            if (answered[question]) return;
+            
+            answered[question] = true;
+            const parentBox = document.getElementById(question + '-box');
+            
+            // Estilos visuales feedback
+            if (isCorrect) {
+                btnElement.classList.replace('bg-slate-700', 'bg-emerald-600');
+                btnElement.classList.replace('hover:bg-slate-600', 'hover:bg-emerald-500');
+                parentBox.classList.add('border-emerald-500', 'shadow-[0_0_15px_rgba(16,185,129,0.3)]');
+                score++;
+            } else {
+                btnElement.classList.replace('bg-slate-700', 'bg-red-600');
+                btnElement.classList.replace('hover:bg-slate-600', 'hover:bg-red-500');
+                parentBox.classList.add('border-red-500', 'animate-pulse');
+                setTimeout(() => parentBox.classList.remove('animate-pulse'), 1000);
+            }
+
+            // Deshabilitar otros botones
+            const siblings = btnElement.parentElement.children;
+            for(let sibling of siblings) {
+                sibling.disabled = true;
+                if(sibling !== btnElement) sibling.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+
+            // Mostrar feedback final si terminó
+            if (answered.q1 && answered.q2) {
+                const fb = document.getElementById('quiz-feedback');
+                fb.classList.remove('hidden');
+                if(score === 2) {
+                    fb.innerHTML = "¡Excelente analista! Entiendes tanto las propiedades físicas como las lógicas de Excel. 🌟";
+                    fb.className = "text-center mt-6 font-bold text-emerald-400 text-lg animate-bounce";
+                } else {
+                    fb.innerHTML = "Buen intento. Revisa la sección del cuaderno y el laboratorio para reforzar. 📘";
+                    fb.className = "text-center mt-6 font-bold text-yellow-400 text-lg";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
