@@ -1,1 +1,565 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 5 - Los Metales y su Transformación | Prof. William Fdo Bernal</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* CSS Personalizado y Animaciones */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Flip Cards 3D */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        
+        .flip-card-inner {
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Animación Flecha Izquierda */
+        @keyframes bounceLeft {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-15px); }
+        }
+        .animate-bounce-left {
+            animation: bounceLeft 1.5s infinite;
+            display: inline-block;
+        }
+
+        /* Scrollbar estilizado */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden p-4 md:p-8">
+
+    <!-- ==========================================
+         BARRA DE BOTONES (RUTAS OBLIGATORIAS)
+         ========================================== -->
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-end gap-3 mb-6 relative z-50">
+        <a href="../../../index.html"
+           class="bg-slate-800/80 text-white px-5 py-2.5 rounded-xl shadow-lg border border-slate-600 hover:scale-105 hover:bg-slate-700 transition-all duration-300 backdrop-blur flex items-center gap-2 font-semibold">
+           ⬅ Inicio (Grado)
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600/90 text-white px-5 py-2.5 rounded-xl shadow-lg border border-purple-400 hover:scale-105 hover:bg-purple-500 transition-all duration-300 backdrop-blur flex items-center gap-2 font-semibold">
+           ⬅ Menú del Periodo
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/90 text-white px-5 py-2.5 rounded-xl shadow-lg border border-emerald-400 hover:scale-105 hover:bg-emerald-500 transition-all duration-300 backdrop-blur flex items-center gap-2 font-semibold">
+           🔗 Copiar enlace
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/90 text-emerald-400 px-6 py-4 rounded-xl shadow-2xl backdrop-blur border border-emerald-500/50 z-[100] font-bold text-lg transform transition-all duration-300">
+        ¡Enlace copiado al portapapeles! ✅
+    </div>
+
+    <main class="max-w-6xl mx-auto space-y-12">
+
+        <!-- ==========================================
+             SECCIÓN 1: HERO
+             ========================================== -->
+        <header class="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase mb-2">Colegio Santa Mariana de Jesús | Grado 6°</h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mb-4 animate-pulse">
+                ¡El Asombroso Mundo de los Metales!
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-6">Y cómo los transformamos (Semana 5)</p>
+            
+            <div class="inline-block glass-card border-blue-500/30 px-6 py-3 rounded-2xl">
+                <p class="text-sm text-blue-200">👨‍🏫 <strong>Profesor:</strong> William Fdo Bernal - Área de Tecnología e Informática</p>
+            </div>
+        </header>
+
+        <!-- ==========================================
+             SECCIÓN: [📝 COPIAR AL CUADERNO]
+             ========================================== -->
+        <section class="glass-card rounded-3xl p-8 border-t-4 border-t-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all duration-500">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="text-xs font-bold rounded-full bg-cyan-500 text-white px-4 py-1.5 shadow-lg shadow-cyan-500/50 tracking-wide uppercase">
+                    📝 COPIAR AL CUADERNO
+                </span>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-cyan-300">Conectando saberes...</h3>
+            <p class="text-slate-300 mb-4 leading-relaxed text-lg">
+                La <strong class="text-white">semana 4</strong> exploramos el origen general de los materiales. Hoy damos un paso gigante hacia la ingeniería: <strong>La clasificación y transformación de los metales</strong>. 
+            </p>
+            <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700">
+                <ul class="space-y-3 text-slate-300 list-disc list-inside">
+                    <li><strong class="text-cyan-400">Metales Ferrosos:</strong> Contienen Hierro (Fe). Son magnéticos y muy fuertes, pero se oxidan fácil. Ej: Acero.</li>
+                    <li><strong class="text-purple-400">Metales No Ferrosos:</strong> NO contienen Hierro. Resisten la corrosión y son más ligeros. Ej: Aluminio, Cobre.</li>
+                    <li><strong class="text-emerald-400">Aleaciones:</strong> Mezcla de dos o más metales (o un metal y no metal) para mejorar sus propiedades. Ej: Bronce, Acero inoxidable.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECCIÓN: [💻 INTERACTUAR EN EL PC]
+             ========================================== -->
+        <section class="glass-card rounded-3xl p-8 border-t-4 border-t-purple-500 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)] transition-all duration-500">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="text-xs font-bold rounded-full bg-purple-500 text-white px-4 py-1.5 shadow-lg shadow-purple-500/50 tracking-wide uppercase">
+                    💻 INTERACTUAR EN EL PC
+                </span>
+            </div>
+            
+            <h3 class="text-2xl font-bold mb-6 text-purple-300">Módulo A: Zona de Analogías (Gira las tarjetas)</h3>
+            
+            <!-- Grid de Tarjetas 3D -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Tarjeta 1 -->
+                <div class="flip-card perspective-1000 h-64 w-full cursor-pointer">
+                    <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                        <div class="absolute w-full h-full backface-hidden bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl flex flex-col items-center justify-center border border-slate-600 shadow-xl">
+                            <span class="text-6xl mb-4">🧲</span>
+                            <h4 class="text-xl font-bold text-white">Ferrosos</h4>
+                            <p class="text-sm text-slate-400 mt-2">Pasa el mouse</p>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-red-600 to-orange-600 rounded-2xl p-6 flex flex-col justify-center text-center shadow-xl">
+                            <h4 class="text-lg font-bold text-white mb-2">¡Los Forzudos!</h4>
+                            <p class="text-sm text-white/90">Soportan puentes y rascacielos. Son el músculo de la construcción. Su criptonita: el agua y el oxígeno (¡Se oxidan!).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta 2 -->
+                <div class="flip-card perspective-1000 h-64 w-full cursor-pointer">
+                    <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                        <div class="absolute w-full h-full backface-hidden bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl flex flex-col items-center justify-center border border-slate-600 shadow-xl">
+                            <span class="text-6xl mb-4">✈️</span>
+                            <h4 class="text-xl font-bold text-white">No Ferrosos</h4>
+                            <p class="text-sm text-slate-400 mt-2">Pasa el mouse</p>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl p-6 flex flex-col justify-center text-center shadow-xl">
+                            <h4 class="text-lg font-bold text-white mb-2">¡Los Ágiles!</h4>
+                            <p class="text-sm text-white/90">Ligeros como el aluminio de los aviones o excelentes conductores como el cobre de tus cables. ¡No temen al agua!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="flip-card perspective-1000 h-64 w-full cursor-pointer">
+                    <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                        <div class="absolute w-full h-full backface-hidden bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl flex flex-col items-center justify-center border border-slate-600 shadow-xl">
+                            <span class="text-6xl mb-4">🧪</span>
+                            <h4 class="text-xl font-bold text-white">Aleaciones</h4>
+                            <p class="text-sm text-slate-400 mt-2">Pasa el mouse</p>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl p-6 flex flex-col justify-center text-center shadow-xl">
+                            <h4 class="text-lg font-bold text-white mb-2">¡El Equipo Perfecto!</h4>
+                            <p class="text-sm text-white/90">Como hacer un jugo mixto. Mezclamos para ganar superpoderes. Ej: Acero + Cromo = Acero Inoxidable (¡Adiós óxido!).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4 text-purple-300">Módulo B: Data Lab - Temperaturas de Fusión (°C)</h3>
+            <p class="text-slate-300 mb-6">Para transformar los metales (darles forma de bicicleta o moneda), debemos derretirlos. Observa cuánta energía en forma de calor se necesita:</p>
+            
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/10 h-80 relative">
+                <canvas id="fusionChart"></canvas>
+            </div>
+            <div class="mt-4 flex justify-center gap-4">
+                <button onclick="updateChart('ferrosos')" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors border border-slate-500">Ver Ferrosos</button>
+                <button onclick="updateChart('noferrosos')" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors border border-slate-500">Ver No Ferrosos</button>
+                <button onclick="updateChart('todos')" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg transition-colors font-bold shadow-lg shadow-purple-500/30">Ver Todos</button>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECCIÓN: [🖥️ TRABAJO EN LA SALA]
+             ========================================== -->
+        <section class="glass-card rounded-3xl p-8 border-t-4 border-t-emerald-500 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-500">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="text-xs font-bold rounded-full bg-emerald-500 text-white px-4 py-1.5 shadow-lg shadow-emerald-500/50 tracking-wide uppercase">
+                    🖥️ TRABAJO EN LA SALA
+                </span>
+            </div>
+            
+            <h3 class="text-3xl font-extrabold mb-2 text-emerald-400">Mi solución con IA + Excel</h3>
+            <p class="text-slate-300 mb-8">Vamos a simular el inventario de una planta metalúrgica usando Inteligencia Artificial para generar los datos y Excel para calcular los costos de transformación.</p>
+
+            <div class="space-y-6">
+                <!-- Paso 1 -->
+                <div class="bg-slate-800/50 border border-slate-600 p-6 rounded-2xl hover:bg-slate-800 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3"><span class="bg-emerald-500 text-black w-8 h-8 inline-flex items-center justify-center rounded-full mr-2">1</span> Generación de datos con IA 🤖</h4>
+                    <p class="text-slate-300 mb-4">Abre tu asistente de IA (ChatGPT, Gemini, etc.) y pégale EXACTAMENTE este prompt:</p>
+                    
+                    <div class="relative group">
+                        <pre class="bg-black/80 text-emerald-300 p-4 rounded-xl overflow-x-auto text-sm border border-emerald-900 font-mono">"Genera una tabla de 10 metales industriales con las siguientes columnas exactas: Codigo, Nombre, Tipo (Ferroso/No Ferroso/Aleacion), Peso (kg), Precio (COP/kg). Incluye metales reales como acero, aluminio, latón, cobre, hierro fundido, bronce, titanio, zinc, níquel y una aleación inventada pero realista. Los precios deben estar entre 5000 y 85000 COP/kg. Los pesos entre 50 y 500 kg. Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas. Usa tabulaciones reales como separador."</pre>
+                        <button onclick="copiarPrompt()" class="absolute top-2 right-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Copiar Prompt</button>
+                    </div>
+                    <p class="text-sm text-yellow-400 mt-3 flex items-center gap-2">
+                        <span>⚠️</span> Pega el resultado en la celda A1 de Excel. Si los encabezados no coinciden, ¡repite el prompt!
+                    </p>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="bg-slate-800/50 border border-slate-600 p-6 rounded-2xl hover:bg-slate-800 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3"><span class="bg-emerald-500 text-black w-8 h-8 inline-flex items-center justify-center rounded-full mr-2">2</span> Formato visual y organización 📊</h4>
+                    <ul class="list-disc list-inside text-slate-300 space-y-2">
+                        <li><strong>Encabezados (A1:E1):</strong> Negrita, fondo azul oscuro, letra blanca.</li>
+                        <li><strong>Columna Tipo:</strong> Color verde para "Ferroso", amarillo para "No Ferroso", naranja para "Aleacion".</li>
+                        <li><strong>Peso y Precio:</strong> Formato número/moneda sin decimales.</li>
+                    </ul>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="bg-slate-800/50 border border-slate-600 p-6 rounded-2xl hover:bg-slate-800 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3"><span class="bg-emerald-500 text-black w-8 h-8 inline-flex items-center justify-center rounded-full mr-2">3</span> Cálculos de Ingeniería ⚙️</h4>
+                    <p class="text-slate-300 mb-4">Calcularemos costos y material de fundición usando estas fórmulas:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-black/40 p-4 rounded-xl border border-slate-700">
+                            <span class="text-cyan-400 font-mono block mb-1">G2 (Valor Total)</span>
+                            <code class="text-white text-lg bg-slate-900 px-2 py-1 rounded">=D2*E2</code>
+                            <p class="text-xs text-slate-400 mt-2">Arrastra hasta G11</p>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl border border-slate-700">
+                            <span class="text-cyan-400 font-mono block mb-1">H2 (Doble Peso Fundición)</span>
+                            <code class="text-white text-lg bg-slate-900 px-2 py-1 rounded">=D2*2</code>
+                            <p class="text-xs text-slate-400 mt-2">Arrastra hasta H11</p>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl border border-slate-700">
+                            <span class="text-cyan-400 font-mono block mb-1">J2 (Suma Total Costos)</span>
+                            <code class="text-white text-lg bg-slate-900 px-2 py-1 rounded">=SUMA(G2:G11)</code>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl border border-slate-700">
+                            <span class="text-cyan-400 font-mono block mb-1">J5 (Promedio Peso)</span>
+                            <code class="text-white text-lg bg-slate-900 px-2 py-1 rounded">=PROMEDIO(D2:D11)</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="bg-slate-800/50 border border-slate-600 p-6 rounded-2xl hover:bg-slate-800 transition-colors border-l-4 border-l-blue-500">
+                    <h4 class="text-xl font-bold text-white mb-2"><span class="bg-blue-500 text-white w-8 h-8 inline-flex items-center justify-center rounded-full mr-2">4</span> Guarda tu archivo 💾</h4>
+                    <p class="text-slate-300">Nomenclatura obligatoria (todo minúsculas, sin espacios):<br>
+                    <code class="text-emerald-400 bg-black/50 px-2 py-1 rounded mt-2 inline-block">6_metales_180526_tuapellido.xlsx</code></p>
+                </div>
+
+                <!-- Reto Avanzado -->
+                <div class="bg-gradient-to-r from-orange-900/40 to-red-900/40 border border-orange-500/50 p-6 rounded-2xl hover:shadow-[0_0_20px_rgba(249,115,22,0.2)] transition-all">
+                    <h4 class="text-xl font-bold text-orange-400 mb-2">✨ Reto de Nivel Jefe</h4>
+                    <p class="text-slate-300 text-sm">Agrega columna "Proceso" (Fundición, Laminado, etc.). Usa <code class="text-yellow-300 bg-black/50 px-1 rounded">=CONTAR.SI(F2:F11;"Fundicion")</code> para ver cuántos metales se derriten completamente.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECCIÓN: GAMIFICACIÓN (QUIZ)
+             ========================================== -->
+        <section class="glass-card rounded-3xl p-8 border-t-4 border-t-yellow-500 hover:shadow-[0_0_30px_rgba(234,179,8,0.2)] transition-all duration-500">
+            <h3 class="text-3xl font-extrabold mb-2 text-yellow-400">🧠 Micro-Quiz de Transformación</h3>
+            <p class="text-slate-300 mb-6">Demuestra lo que aprendiste. Selecciona la respuesta correcta:</p>
+
+            <div id="quiz-container" class="space-y-4">
+                <!-- Las preguntas se inyectan via JS -->
+            </div>
+            
+            <div id="quiz-result" class="hidden mt-6 p-4 rounded-xl text-center font-bold text-xl transition-all duration-500">
+                <!-- Resultado -->
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECCIÓN: INVESTIGACIÓN Y TAREA
+             ========================================== -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- [🔍 INVESTIGACIÓN] -->
+            <section class="glass-card rounded-3xl p-8 border-t-4 border-t-pink-500 relative">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-xs font-bold rounded-full bg-pink-500 text-white px-4 py-1.5 shadow-lg shadow-pink-500/50 tracking-wide uppercase">
+                        🔍 INVESTIGACIÓN
+                    </span>
+                </div>
+                <h3 class="text-xl font-bold text-pink-300 mb-3">Para investigar en casa</h3>
+                <p class="text-slate-300 mb-4 text-sm leading-relaxed">
+                    Abre Google y busca: <strong>"¿Cuál es el metal más abundante en la corteza terrestre y por qué necesitamos tanta energía para transformarlo?"</strong>
+                </p>
+                <p class="text-slate-400 text-xs italic">Anota 3 líneas en tu cuaderno con la respuesta.</p>
+            </section>
+
+            <!-- [📄 TAREA EN HOJA SUELTA] -->
+            <section class="glass-card rounded-3xl p-8 border-t-4 border-t-red-500 bg-red-900/10 flex flex-col justify-center items-center text-center">
+                <div class="mb-4">
+                    <span class="text-xs font-bold rounded-full bg-red-500 text-white px-4 py-1.5 shadow-lg shadow-red-500/50 tracking-wide uppercase">
+                        📄 TAREA EN HOJA SUELTA
+                    </span>
+                </div>
+                <div class="flex items-center justify-center gap-4">
+                    <span class="text-4xl text-red-400 animate-bounce-left">⬅️</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-300">¡Esta semana NO hay entregable!</h3>
+                        <p class="text-slate-300 text-sm mt-2">Concéntrate en el trabajo en sala (Excel) y la investigación del cuaderno (apuntada a la izquierda).</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer class="max-w-6xl mx-auto mt-12 mb-8 bg-black/60 rounded-2xl p-6 text-center border border-white/5 backdrop-blur-sm">
+        <p class="text-slate-400 text-sm font-semibold tracking-wide">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+        <p class="text-slate-600 text-xs mt-1">Colegio Santa Mariana de Jesús | Diseño Pedagógico Inverso</p>
+    </footer>
+
+    <!-- ==========================================
+         SCRIPTS (LOGICA DE NEGOCIO Y UI)
+         ========================================== -->
+    <script>
+        // 1. FUNCIÓN OBLIGATORIA DE COPIAR ENLACE
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    t.classList.add('scale-100', 'opacity-100');
+                    setTimeout(() => {
+                        t.classList.add('hidden');
+                    }, 2500);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // Función auxiliar para copiar el prompt
+        function copiarPrompt() {
+            const promptText = "Genera una tabla de 10 metales industriales con las siguientes columnas exactas: Codigo, Nombre, Tipo (Ferroso/No Ferroso/Aleacion), Peso (kg), Precio (COP/kg). Incluye metales reales como acero, aluminio, latón, cobre, hierro fundido, bronce, titanio, zinc, níquel y una aleación inventada pero realista. Los precios deben estar entre 5000 y 85000 COP/kg. Los pesos entre 50 y 500 kg. Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas. Usa tabulaciones reales como separador.";
+            navigator.clipboard.writeText(promptText).then(() => {
+                const t = document.getElementById('toastCopiado');
+                t.innerText = "¡Prompt copiado para la IA! 🤖";
+                t.classList.remove('hidden');
+                setTimeout(() => { 
+                    t.classList.add('hidden');
+                    t.innerText = "¡Enlace copiado al portapapeles! ✅"; // reset
+                }, 2500);
+            });
+        }
+
+        // 2. LÓGICA DE CHART.JS (Data Lab)
+        const ctx = document.getElementById('fusionChart').getContext('2d');
+        Chart.defaults.color = '#cbd5e1';
+        Chart.defaults.font.family = "'Poppins', sans-serif";
+
+        const dataMetales = {
+            ferrosos: {
+                labels: ['Acero', 'Hierro Fundido'],
+                data: [1370, 1200],
+                color: 'rgba(239, 68, 68, 0.7)' // Red
+            },
+            noferrosos: {
+                labels: ['Aluminio', 'Cobre', 'Zinc'],
+                data: [660, 1085, 419],
+                color: 'rgba(59, 130, 246, 0.7)' // Blue
+            },
+            todos: {
+                labels: ['Acero', 'Hierro Fund.', 'Aluminio', 'Cobre', 'Zinc', 'Bronce'],
+                data: [1370, 1200, 660, 1085, 419, 950],
+                color: [
+                    'rgba(239, 68, 68, 0.7)', 'rgba(239, 68, 68, 0.7)',
+                    'rgba(59, 130, 246, 0.7)', 'rgba(59, 130, 246, 0.7)', 'rgba(59, 130, 246, 0.7)',
+                    'rgba(16, 185, 129, 0.7)' // Emerald for Alloy
+                ]
+            }
+        };
+
+        let currentChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dataMetales.todos.labels,
+                datasets: [{
+                    label: 'Punto de Fusión (°C)',
+                    data: dataMetales.todos.data,
+                    backgroundColor: dataMetales.todos.color,
+                    borderRadius: 8,
+                    borderWidth: 1,
+                    borderColor: 'rgba(255,255,255,0.2)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleFont: { size: 14 },
+                        bodyFont: { size: 14 },
+                        padding: 12,
+                        cornerRadius: 8,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return `🔥 Se derrite a ${context.parsed.y}°C`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        title: { display: true, text: 'Grados Celsius (°C)', color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        function updateChart(tipo) {
+            currentChart.data.labels = dataMetales[tipo].labels;
+            currentChart.data.datasets[0].data = dataMetales[tipo].data;
+            currentChart.data.datasets[0].backgroundColor = dataMetales[tipo].color;
+            currentChart.update();
+        }
+
+        // 3. LÓGICA DE GAMIFICACIÓN (Micro-Quiz)
+        const questions = [
+            {
+                q: "¿Cuál es la principal debilidad de los metales ferrosos?",
+                options: ["Se derriten a baja temperatura", "Se oxidan fácilmente con el agua", "Son muy frágiles"],
+                correct: 1
+            },
+            {
+                q: "Si mezclamos dos o más metales para mejorarlos, creamos...",
+                options: ["Un metal no ferroso", "Un plástico duro", "Una aleación"],
+                correct: 2
+            },
+            {
+                q: "En Excel, si quieres calcular el doble del peso (D2), ¿qué fórmula usas?",
+                options: ["=D2*2", "=SUMA(D2)", "=D2/2"],
+                correct: 0
+            }
+        ];
+
+        let score = 0;
+        let currentQuestion = 0;
+        const quizContainer = document.getElementById('quiz-container');
+        const quizResult = document.getElementById('quiz-result');
+
+        function renderQuiz() {
+            quizContainer.innerHTML = '';
+            questions.forEach((question, index) => {
+                const div = document.createElement('div');
+                div.className = 'bg-slate-800/60 p-5 rounded-xl border border-slate-600 mb-4';
+                div.id = `q-block-${index}`;
+                
+                const qText = document.createElement('h4');
+                qText.className = 'text-lg font-semibold text-white mb-3';
+                qText.innerText = `${index + 1}. ${question.q}`;
+                div.appendChild(qText);
+
+                const optsDiv = document.createElement('div');
+                optsDiv.className = 'flex flex-col gap-2';
+
+                question.options.forEach((opt, oIndex) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'w-full text-left px-4 py-3 bg-slate-700/50 hover:bg-slate-600 rounded-lg text-slate-200 transition-colors border border-transparent hover:border-slate-500';
+                    btn.innerText = opt;
+                    btn.onclick = () => checkAnswer(index, oIndex, btn, div);
+                    optsDiv.appendChild(btn);
+                });
+
+                div.appendChild(optsDiv);
+                quizContainer.appendChild(div);
+            });
+        }
+
+        function checkAnswer(qIndex, oIndex, btnElem, blockElem) {
+            // Deshabilitar todos los botones de este bloque
+            const buttons = blockElem.querySelectorAll('button');
+            buttons.forEach(b => {
+                b.onclick = null;
+                b.classList.remove('hover:bg-slate-600', 'hover:border-slate-500');
+                b.classList.add('cursor-not-allowed', 'opacity-50');
+            });
+
+            // Verificar respuesta
+            if(oIndex === questions[qIndex].correct) {
+                score++;
+                btnElem.classList.remove('bg-slate-700/50', 'opacity-50');
+                btnElem.classList.add('bg-emerald-600/80', 'border-emerald-400', 'text-white', 'opacity-100');
+                btnElem.innerText += " ✅ ¡Correcto!";
+            } else {
+                btnElem.classList.remove('bg-slate-700/50', 'opacity-50');
+                btnElem.classList.add('bg-red-600/80', 'border-red-400', 'text-white', 'opacity-100');
+                btnElem.innerText += " ❌ Incorrecto";
+                // Resaltar la correcta
+                buttons[questions[qIndex].correct].classList.remove('bg-slate-700/50', 'opacity-50');
+                buttons[questions[qIndex].correct].classList.add('bg-emerald-900/80', 'border-emerald-600', 'opacity-100');
+            }
+
+            currentQuestion++;
+            if(currentQuestion === questions.length) {
+                showFinalResult();
+            }
+        }
+
+        function showFinalResult() {
+            quizResult.classList.remove('hidden');
+            if(score === questions.length) {
+                quizResult.className = "mt-6 p-4 rounded-xl text-center font-bold text-xl transition-all duration-500 bg-emerald-500/20 text-emerald-400 border border-emerald-500";
+                quizResult.innerHTML = `🏆 ¡Puntaje Perfecto! (${score}/${questions.length}) ¡Eres un maestro metalúrgico!`;
+            } else if (score >= questions.length / 2) {
+                quizResult.className = "mt-6 p-4 rounded-xl text-center font-bold text-xl transition-all duration-500 bg-yellow-500/20 text-yellow-400 border border-yellow-500";
+                quizResult.innerHTML = `👍 ¡Buen trabajo! Obtuviste ${score} de ${questions.length}. ¡Sigue practicando!`;
+            } else {
+                quizResult.className = "mt-6 p-4 rounded-xl text-center font-bold text-xl transition-all duration-500 bg-red-500/20 text-red-400 border border-red-500";
+                quizResult.innerHTML = `📚 Obtuviste ${score} de ${questions.length}. ¡Repasa las tarjetas 3D y vuelve a intentarlo!`;
+            }
+        }
+
+        // Inicializar
+        renderQuiz();
+    </script>
+</body>
+</html>
