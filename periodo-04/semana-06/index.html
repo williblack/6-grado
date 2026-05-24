@@ -1,1 +1,642 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 6 - Word Intermedio: Herramientas y Tablas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#6366f1',
+                            success: '#10b981',
+                            warning: '#f59e0b',
+                            danger: '#ef4444'
+                        }
+                    },
+                    animation: {
+                        'bounce-horizontal': 'bounceH 1s infinite',
+                    },
+                    keyframes: {
+                        bounceH: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '50%': { transform: 'translateX(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19;
+            color: #f8fafc;
+        }
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-hover:hover {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 p-4 md:p-8">
+
+    <!-- ================================================ -->
+    <!-- 🔒 BARRA DE BOTONES OBLIGATORIA                  -->
+    <!-- ================================================ -->
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-end gap-3 mb-6">
+        <a href="../../../index.html"
+           class="bg-slate-800/80 text-slate-200 px-4 py-2.5 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 backdrop-blur border border-slate-700/50 flex items-center gap-2 text-sm font-semibold">
+            <span>⬅</span> Inicio (Grado)
+        </a>
+
+        <a href="../../index.html"
+           class="bg-indigo-600 text-white px-4 py-2.5 rounded-xl shadow-lg hover:scale-105 hover:bg-indigo-500 transition-all duration-300 flex items-center gap-2 text-sm font-semibold">
+            <span>⬅</span> Menú del Periodo
+        </a>
+
+        <button type="button" onclick="copiarEnlace()"
+                class="bg-emerald-600 text-white px-4 py-2.5 rounded-xl shadow-lg hover:scale-105 hover:bg-emerald-500 transition-all duration-300 flex items-center gap-2 text-sm font-semibold">
+            <span>🔗</span> Copiar enlace
+        </button>
+    </div>
+
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-slate-900/90 text-emerald-400 border border-emerald-500/30 px-5 py-3 rounded-xl shadow-2xl backdrop-blur z-50 animate-fade-in font-medium">
+        Enlace copiado al portapapeles ✅
+    </div>
+
+    <!-- ================================================ -->
+    <!-- >> SECCIÓN 1: HERO                              -->
+    <!-- ================================================ -->
+    <header class="max-w-6xl mx-auto mb-10 relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-8 md:p-12 border border-slate-800 shadow-2xl">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.15),transparent_45%)]"></div>
+        <div class="relative z-10">
+            <span class="bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-indigo-500/20">
+                Colegio Santa Mariana de Jesús
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-4 bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">
+                Word Intermedio: Herramientas y Tablas
+            </h1>
+            <p class="text-sm md:text-base text-indigo-200/70 mt-2 font-medium">
+                Área de Tecnología e Informática | <span class="text-indigo-400">Prof. William Fdo Bernal</span> | Año Lectivo 2026
+            </p>
+
+            <!-- Tarjeta de Cristal: Objetivo de Aprendizaje -->
+            <div class="mt-8 p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 max-w-3xl">
+                <div class="flex items-start gap-4">
+                    <div class="p-3 bg-indigo-500/20 rounded-xl text-indigo-400">
+                        🎯
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-indigo-300">Objetivo de Aprendizaje</h3>
+                        <p class="text-slate-300 mt-1 text-sm md:text-base leading-relaxed">
+                            Aprender a estructurar, ordenar y automatizar datos tabulares en Microsoft Word utilizando técnicas avanzadas de conversión de datos (TSV) y funciones integradas de cálculo y ordenamiento, integrando flujos de trabajo asistidos por Inteligencia Artificial.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+        
+        <!-- COLUMNA IZQUIERDA: CONTENIDOS Y PASOS (8 columnas) -->
+        <div class="lg:col-span-8 flex flex-col gap-8">
+            
+            <!-- [📝 COPIAR AL CUADERNO] -->
+            <section class="glass rounded-3xl p-6 md:p-8 relative shadow-xl">
+                <div class="absolute top-6 right-6">
+                    <span class="bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full px-3 py-1 border border-blue-500/20 uppercase">
+                        📝 COPIAR AL CUADERNO
+                    </span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-slate-100 flex items-center gap-2 mb-6 border-b border-slate-800 pb-4">
+                    <span class="text-blue-400">📚</span> Fundamentos Teóricos
+                </h2>
+
+                <div class="space-y-6 text-slate-300 text-sm md:text-base leading-relaxed">
+                    <p class="italic text-slate-400 bg-slate-900/50 p-4 rounded-xl border-l-4 border-indigo-500">
+                        <strong>Conexión con el tema anterior:</strong> Así como en la <em>Semana 5</em> analizamos cómo los humanos transformamos las propiedades físicas de los <strong>Metales</strong> mediante herramientas industriales, en el ecosistema digital transformamos los datos planos en estructuras de información profesionales utilizando las herramientas intermedias de un procesador de texto.
+                    </p>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-300 mb-2">1. El Entorno Intermedio de Word</h3>
+                        <p class="mb-3">Para dominar flujos de trabajo estructurados, debemos clasificar nuestras herramientas de la <strong>Cinta de Opciones</strong> por su función técnica:</p>
+                        <ul class="list-disc pl-6 space-y-2 text-slate-300">
+                            <li><strong class="text-white">Pestaña Inicio:</strong> Controla el diseño tipográfico avanzado (Fuentes, estilos, jerarquía y alineación de párrafos).</li>
+                            <li><strong class="text-white">Pestaña Insertar:</strong> Permite inyectar objetos complejos y contenedores estructurados como <span class="text-indigo-400 font-semibold">Tablas</span>, formas y gráficos.</li>
+                            <li><strong class="text-white">Pestaña Disposición / Formato:</strong> Administra la geometría del documento (márgenes métricos, orientación espacial y saltos de sección).</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-300 mb-2">2. Anatomía de una Tabla de Datos</h3>
+                        <p class="mb-3">Una tabla es un sistema matricial bidimensional que organiza datos lógicos en tres componentes fundamentales:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                                <div class="text-xl mb-1">↕️</div>
+                                <h4 class="text-white font-bold text-sm">Columnas (Eje Vertical)</h4>
+                                <p class="text-xs text-slate-400 mt-1">Definen el tipo de variable o categoría de los datos de arriba a abajo.</p>
+                            </div>
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                                <div class="text-xl mb-1">↔️</div>
+                                <h4 class="text-white font-bold text-sm">Filas (Eje Horizontal)</h4>
+                                <p class="text-xs text-slate-400 mt-1">Representan un registro único o conjunto ordenado de datos de izquierda a derecha.</p>
+                            </div>
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                                <div class="text-xl mb-1">⏹️</div>
+                                <h4 class="text-white font-bold text-sm">Celdas (Intersección)</h4>
+                                <p class="text-xs text-slate-400 mt-1">La unidad mínima de almacenamiento donde se cruza una columna y una fila.</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-indigo-300 bg-indigo-950/40 p-3 rounded-lg border border-indigo-900/50">
+                            💡 <strong>Regla de Nomenclatura Estándar:</strong> Una tabla referenciada como <strong>"3x4"</strong> indica estrictamente la existencia de <strong>3 Columnas</strong> y <strong>4 Filas</strong>.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- [🖥️ TRABAJO EN LA SALA] -->
+            <section class="glass rounded-3xl p-6 md:p-8 relative shadow-xl">
+                <div class="absolute top-6 right-6">
+                    <span class="bg-amber-500/10 text-amber-400 text-xs font-bold rounded-full px-3 py-1 border border-amber-500/20 uppercase">
+                        🖥️ TRABAJO EN LA SALA
+                    </span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-slate-100 flex items-center gap-2 mb-6 border-b border-slate-800 pb-4">
+                    <span class="text-amber-400">🚀</span> Reto Práctico: Automatización con IA e Intermediarios
+                </h2>
+
+                <div class="space-y-6 text-sm md:text-base text-slate-300">
+                    
+                    <!-- PASO 1 -->
+                    <div class="bg-slate-900/40 p-5 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-all">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">Paso 1</span>
+                            <h3 class="text-white font-bold">Generación Estructurada de Datos con IA</h3>
+                        </div>
+                        <p class="text-slate-300 mb-3 text-xs md:text-sm">
+                            Copia y pega el siguiente prompt exactamente en una herramienta de Inteligencia Artificial (Gemini, ChatGPT) para obtener la base de datos cruda en formato <strong>TSV (Tab-Separated Values)</strong>:
+                        </p>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs font-mono text-indigo-300 relative select-all cursor-pointer group" title="Haz doble clic para seleccionar todo">
+                            "Genera una tabla de 4 columnas (Producto, Cantidad, Precio unitario (COP), Total) con 10 filas de datos sobre útiles escolares. Producto: nombres como 'Cuaderno', 'Lápiz', 'Borrador'. Cantidad: número entero entre 1 y 50. Precio unitario: número entero entre 500 y 20000. Columna Total: déjala vacía (sin datos). Entrega SOLO la tabla en formato TSV (valores separados por tabulación) con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas. Usa tabulaciones reales como separador."
+                            <div class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">Ctrl+C para copiar</div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">
+                            💡 <strong>Concepto Avanzado:</strong> TSV almacena datos estructurados donde cada tabulación representa un cambio de columna y cada salto de línea representa una nueva fila.
+                        </p>
+                    </div>
+
+                    <!-- PASO 2 -->
+                    <div class="bg-slate-900/40 p-5 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-all">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">Paso 2</span>
+                            <h3 class="text-white font-bold">Parsing de Datos y Formato Estético</h3>
+                        </div>
+                        <ul class="list-decimal pl-5 space-y-2 text-xs md:text-sm text-slate-300">
+                            <li>Pega el texto crudo en Word (<kbd class="bg-slate-800 px-1 py-0.5 rounded text-white text-[11px]">Ctrl+V</kbd>) y selecciónalo completo.</li>
+                            <li>Ejecuta la ruta: <strong class="text-white">Pestaña Insertar ➔ Tabla ➔ Convertir texto en tabla...</strong></li>
+                            <li>En el cuadro modal, valida que el separador esté configurado en <strong class="text-indigo-400">Tabulaciones</strong> y presiona Aceptar.</li>
+                            <li>Selecciona la fila superior de encabezados, ve a <strong class="text-white">Diseño de Tabla ➔ Sombreado</strong> y aplica Gris Claro, agregando estilo de fuente <strong class="text-white">Negrita</strong>.</li>
+                            <li>Alineación de datos métricos: Selecciona las columnas de Cantidad y Precio unitario, y haz clic en <strong class="text-white">Alinear vertical y horizontalmente al centro</strong> en las opciones de Presentación.</li>
+                            <li>Aplica bordes uniformes: Selecciona toda la matriz y activa <strong class="text-white">Todos los bordes</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- PASO 3 -->
+                    <div class="bg-slate-900/40 p-5 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-all">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">Paso 3</span>
+                            <h3 class="text-white font-bold">Inyección de Fórmulas Matemáticas y Ordenamiento</h3>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-3 text-xs md:text-sm text-slate-300">
+                            <li>
+                                <strong class="text-white">Cálculo de Totales:</strong> Posiciona el cursor en la celda vacía de la fila 2 de la columna Total. Dirígete a <strong class="text-white">Pestaña Presentación / Herramientas de tabla ➔ Datos ➔ Fórmula</strong>. Escribe la operación algebraica: <code class="text-emerald-400 bg-slate-950 px-1.5 py-0.5 rounded font-mono">=B2*C2</code>. Copia la celda resultante en las filas inferiores y actualiza los cálculos presionando <kbd class="bg-slate-800 px-1 py-0.5 rounded text-white text-[11px]">F9</kbd> sobre cada una.
+                            </li>
+                            <li>
+                                <strong class="text-white">Ordenamiento Algorítmico:</strong> Selecciona la tabla completa. Haz clic en <strong class="text-white">Datos ➔ Ordenar</strong>. Configura la columna clave como <strong class="text-indigo-400">"Cantidad"</strong>, tipo <strong class="text-indigo-400">"Número"</strong> y selecciona orden <strong class="text-indigo-400">"Descendente"</strong> para priorizar el inventario más alto.
+                            </li>
+                            <li>
+                                <strong class="text-white">Fila de Consolidación (Resumen):</strong> Inserta una fila al final del documento. Selecciona las primeras 3 celdas horizontales y haz clic en <strong class="text-white">Combinar Celdas</strong>. Escribe el texto <code class="text-slate-300">"TOTALES - Suma de Totales:"</code>. En la celda final de esa fila, usa la función automatizada <code class="text-emerald-400 bg-slate-950 px-1.5 py-0.5 rounded font-mono">=SUM(ABOVE)</code> y aplica un sombreado amarillo claro para destacar el balance económico global.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- REQUISITOS DE ENTREGA -->
+                    <div class="bg-slate-900/80 p-5 rounded-2xl border border-indigo-500/20">
+                        <h4 class="text-sm font-bold text-indigo-400 uppercase tracking-wider mb-2">💾 Estándar de Almacenamiento</h4>
+                        <p class="text-xs text-slate-300 mb-2">El archivo debe compilarse estrictamente bajo la siguiente nomenclatura técnica sin caracteres especiales ni tildes:</p>
+                        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs font-mono text-center text-slate-300">
+                            6_tablas_word_140425_tu_nombre.docx
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2">Ejemplo real admitido por el sistema: <span class="text-emerald-400 font-mono">6_tablas_word_140425_ramirez.docx</span></p>
+                    </div>
+
+                    <!-- RETO AVANZADO -->
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-purple-950/50 to-indigo-950/50 border border-purple-500/30">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">✨</span>
+                            <h4 class="text-sm font-bold text-purple-300 uppercase tracking-wider">Reto Avanzado para Estudiantes de Alto Rendimiento</h4>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Agrega una columna adicional a la derecha titulada <strong class="text-white">"IVA (19%)"</strong> e inyecta la fórmula de cálculo porcentual <code class="text-purple-400 font-mono">=D2*0.19</code>. Posteriormente, calcula el gran total absoluto en una columna subsiguiente mediante la suma indexada de celdas. Reordena la matriz completa en función del valor total final de forma descendente.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- COLUMNA DERECHA: INTERACTIVIDAD Y EVALUACIÓN (4 columnas) -->
+        <div class="lg:col-span-4 flex flex-col gap-8">
+            
+            <!-- [💻 INTERACTUAR EN EL PC] -->
+            <section class="glass rounded-3xl p-6 relative shadow-xl">
+                <div class="mb-4">
+                    <span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold rounded-full px-2.5 py-1 border border-emerald-500/20 uppercase">
+                        💻 INTERACTUAR EN EL PC
+                    </span>
+                </div>
+
+                <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2 mb-4">
+                    <span class="text-emerald-400">⚡</span> Laboratorio Interactivo TSV
+                </h2>
+                
+                <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                    Experimenta cómo un flujo de texto plano separado por tabulaciones (TSV) es analizado y transformado algorítmicamente por la memoria interna del ordenador en una interfaz estructurada de base de datos.
+                </p>
+
+                <!-- Simulador Visual -->
+                <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800 mb-6">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Estado del Buffer</span>
+                        <span id="txtEstado" class="text-[10px] font-bold bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded border border-amber-500/30">Datos Planos (TSV)</span>
+                    </div>
+
+                    <!-- Datos Crudos Visibles -->
+                    <div id="containerTSV" class="bg-slate-950 p-3 rounded-xl border border-slate-900 font-mono text-xs text-indigo-300 h-40 overflow-y-auto mb-4 leading-normal whitespace-pre-wrap">Producto	Cantidad	Precio_Unitario	Total
+Cuaderno	45	5500	
+Lápiz	30	1200	
+Borrador	15	800	
+Regla	22	2500	
+Marcador	50	3800	</div>
+
+                    <!-- Tabla Oculta Inicialmente -->
+                    <div id="containerTable" class="hidden overflow-x-auto h-40 mb-4 border border-slate-800 rounded-xl bg-slate-950">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-slate-800 text-slate-200 border-b border-slate-700">
+                                    <th class="p-2 font-bold">Producto</th>
+                                    <th class="p-2 font-bold text-center">Cant.</th>
+                                    <th class="p-2 font-bold text-right">Precio</th>
+                                    <th class="p-2 font-bold text-right text-emerald-400">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-300 divide-y divide-slate-900" id="tableBodySim">
+                                <!-- Filas dinámicas -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <button id="btnTransform" onclick="transformarTSV()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow transition-all duration-300">
+                            🔄 Convertir Texto a Tabla en Word
+                        </button>
+                        <button id="btnSortSim" onclick="ordenarSimulador()" disabled class="w-full bg-slate-800 text-slate-400 text-xs font-bold py-2.5 px-4 rounded-xl shadow transition-all duration-300 cursor-not-allowed">
+                            📊 Ordenar Descendente (Cantidad)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dashboard Estadístico Chart.js -->
+                <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800">
+                    <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-3">Gráfico Estadístico de Inventario</span>
+                    <div class="h-44 relative">
+                        <canvas id="chartInventario"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- [ZONA DE GAMIFICACIÓN / MICRO-QUIZ] -->
+            <section class="glass rounded-3xl p-6 relative shadow-xl">
+                <div class="mb-4">
+                    <span class="bg-purple-500/10 text-purple-400 text-[10px] font-bold rounded-full px-2.5 py-1 border border-purple-500/20 uppercase">
+                        🎮 EVALUACIÓN INTERACTIVA
+                    </span>
+                </div>
+
+                <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2 mb-4">
+                    <span class="text-purple-400">🧠</span> Comprobación de Saberes
+                </h2>
+
+                <div id="quizContainer" class="space-y-4">
+                    <!-- Pregunta 1 -->
+                    <div class="quiz-step bg-slate-900/60 p-4 rounded-xl border border-slate-800" data-question="1">
+                        <p class="text-xs font-semibold text-slate-300 mb-3">1. ¿Qué representa técnicamente la nomenclatura estructurada "5x3" al definir una tabla?</p>
+                        <div class="space-y-2">
+                            <button onclick="checkAnswer(this, 1, false)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">A) 5 filas horizontales y 3 columnas verticales.</button>
+                            <button onclick="checkAnswer(this, 1, true)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">B) 5 columnas verticales y 3 filas horizontales.</button>
+                            <button onclick="checkAnswer(this, 1, false)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">C) 15 celdas sin ningún orden específico.</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="quiz-step hidden bg-slate-900/60 p-4 rounded-xl border border-slate-800" data-question="2">
+                        <p class="text-xs font-semibold text-slate-300 mb-3">2. ¿Qué comando o función permite consolidar dinámicamente todos los valores numéricos superiores en Word?</p>
+                        <div class="space-y-2">
+                            <button onclick="checkAnswer(this, 2, false)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">A) =SUM(LEFT)</button>
+                            <button onclick="checkAnswer(this, 2, true)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">B) =SUM(ABOVE)</button>
+                            <button onclick="checkAnswer(this, 2, false)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">C) =TOTAL(SUM)</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="quiz-step hidden bg-slate-900/60 p-4 rounded-xl border border-slate-800" data-question="3">
+                        <p class="text-xs font-semibold text-slate-300 mb-3">3. ¿Qué instrucción de teclado fuerza la actualización de los motores de cálculo en una tabla de Word?</p>
+                        <div class="space-y-2">
+                            <button onclick="checkAnswer(this, 3, false)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">A) F5</button>
+                            <button onclick="checkAnswer(this, 3, false)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">B) Ctrl+Enter</button>
+                            <button onclick="checkAnswer(this, 3, true)" class="w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300">C) F9</button>
+                        </div>
+                    </div>
+
+                    <!-- Resultados -->
+                    <div id="quizResult" class="hidden bg-slate-900 p-5 rounded-xl border border-indigo-500/30 text-center">
+                        <span class="text-2xl">🏆</span>
+                        <h4 class="text-white font-bold mt-2 text-sm">Evaluación Finalizada</h4>
+                        <p id="quizScoreText" class="text-xs text-indigo-300 mt-1 font-medium"></p>
+                        <button onclick="resetQuiz()" class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-bold py-1.5 px-4 rounded-lg transition-all">Reintentar Diagnóstico</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- SECCIÓN INFERIOR: INVESTIGACIÓN Y TAREA (Grid 50/50 de alto impacto) -->
+    <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        
+        <!-- [🔍 INVESTIGACIÓN] -->
+        <div class="glass rounded-3xl p-6 md:p-8 relative shadow-xl border-l-4 border-cyan-500">
+            <div class="mb-4">
+                <span class="bg-cyan-500/10 text-cyan-400 text-xs font-bold rounded-full px-3 py-1 border border-cyan-500/20 uppercase">
+                    🔍 INVESTIGACIÓN
+                </span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-100 flex items-center gap-2 mb-3">
+                Consulta Científica de Estructuras de Datos
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                Investiga en motores de búsqueda académica o en la web abierta los siguientes conceptos y transcribe las conclusiones de forma clara y con tus propias palabras en tu cuaderno de tecnología:
+            </p>
+            <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800 text-xs md:text-sm text-slate-300 space-y-2">
+                <p><strong>Pregunta de Investigación:</strong> ¿Qué significan técnicamente las siglas <span class="text-cyan-400 font-mono">TSV</span> y <span class="text-cyan-400 font-mono">CSV</span>? Explica detalladamente cuál es el carácter invisible que se utiliza en cada formato para separar las columnas de datos y por qué estos archivos son tan importantes para enviar información entre la Inteligencia Artificial y programas de oficina como Word o Excel.</p>
+            </div>
+        </div>
+
+        <!-- [📄 TAREA EN HOJA SUELTA] -->
+        <div class="glass rounded-3xl p-6 md:p-8 relative shadow-xl border-l-4 border-rose-500 bg-gradient-to-br from-slate-900 via-slate-900 to-rose-950/10">
+            <div class="mb-4 flex justify-between items-center">
+                <span class="bg-rose-500/10 text-rose-400 text-xs font-bold rounded-full px-3 py-1 border border-rose-500/20 uppercase">
+                    📄 TAREA EN HOJA SUELTA
+                </span>
+                
+                <!-- Flecha Animada apuntando al bloque de investigación izquierdo -->
+                <div class="hidden md:flex items-center gap-1.5 text-rose-400 animate-bounce-horizontal font-bold text-xs bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20">
+                    <span>⬅</span> ¡Es la investigación de al lado!
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-100 flex items-center gap-2 mb-3">
+                Protocolo de Entrega de Evidencia
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                El entregable oficial para esta sesión corresponde exactamente a la resolución de la sección <strong class="text-cyan-400">🔍 INVESTIGACIÓN</strong> (ubicada en el bloque izquierdo). 
+            </p>
+            <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800 text-xs text-slate-400 space-y-2">
+                <p class="flex items-center gap-2 text-slate-200 font-semibold">
+                    <span class="text-rose-400">📌</span> Parámetros Técnicos de Presentación:
+                </p>
+                <ul class="list-disc pl-5 space-y-1.5 text-slate-300">
+                    <li>Debe desarrollarse a mano sobre una <span class="text-rose-400 font-semibold">hoja suelta cuadriculada</span> debidamente pulcra.</li>
+                    <li>Margen de presentación superior obligatoria con: <span class="text-slate-400 italic">Nombre completo, Grado (6°), Fecha de ejecución y firma del acudiente</span>.</li>
+                    <li>Sustentación en la próxima clase en sala de informática para validar originalidad de la autoría.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- >> SECCIÓN 4: FOOTER -->
+    <footer class="max-w-6xl mx-auto border-t border-slate-900 pt-8 pb-12 text-center">
+        <p class="text-xs md:text-sm text-slate-500 font-medium tracking-wide">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+        <p class="text-[10px] text-slate-600 mt-1">
+            Colegio Santa Mariana de Jesús • Entorno de Alta Fidelidad UI/UX para Procesamiento Frontend
+        </p>
+    </footer>
+
+    <!-- ================================================ -->
+    <!-- LÓGICA JAVASCRIPT DEL ENTORNO INTERACTIVO        -->
+    <!-- ================================================ -->
+    <script>
+        // --- FUNCIÓN OBLIGATORIA DE COPIADO ---
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    setTimeout(()=> t.classList.add('hidden'), 2000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente.");
+            });
+        }
+
+        // --- SIMULADOR DE DATOS TSV ---
+        const datasetOriginal = [
+            { prod: 'Cuaderno', cant: 45, precio: 5500 },
+            { prod: 'Lápiz', cant: 30, precio: 1200 },
+            { prod: 'Borrador', cant: 15, precio: 800 },
+            { prod: 'Regla', cant: 22, precio: 2500 },
+            { prod: 'Marcador', cant: 50, precio: 3800 }
+        ];
+
+        let currentData = [...datasetOriginal];
+        let chartInstance = null;
+
+        // Inicializar Gráfico Chart.js
+        function initChart(labels, dataValues) {
+            const ctx = document.getElementById('chartInventario').getContext('2d');
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Cantidad en Stock',
+                        data: dataValues,
+                        backgroundColor: 'rgba(99, 102, 241, 0.4)',
+                        borderColor: 'rgba(99, 102, 241, 1)',
+                        borderWidth: 2,
+                        borderRadius: 6,
+                        hoverBackgroundColor: 'rgba(16, 185, 129, 0.6)',
+                        hoverBorderColor: 'rgba(16, 185, 129, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { backgroundColor: '#1e293b', titleColor: '#f8fafc', bodyColor: '#cbd5e1' }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+                        y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        // Cargar gráfico base
+        window.addEventListener('DOMContentLoaded', () => {
+            const lbls = currentData.map(item => item.prod);
+            const vls = currentData.map(item => item.cant);
+            initChart(lbls, vls);
+        });
+
+        // Simulación de transformación estructural
+        function transformarTSV() {
+            const containerTSV = document.getElementById('containerTSV');
+            const containerTable = document.getElementById('containerTable');
+            const estado = document.getElementById('txtEstado');
+            const btnSortSim = document.getElementById('btnSortSim');
+            const body = document.getElementById('tableBodySim');
+
+            containerTSV.classList.add('hidden');
+            containerTable.classList.remove('hidden');
+
+            estado.innerText = "Estructura Convertida (Tabla Word)";
+            estado.className = "text-[10px] font-bold bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30";
+
+            // Renderizar filas e incluir la fórmula matemática automáticamente
+            body.innerHTML = '';
+            currentData.forEach(item => {
+                const totalCalculado = item.cant * item.precio;
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-900/80 transition-colors";
+                tr.innerHTML = `
+                    <td class="p-2 font-medium text-white">${item.prod}</td>
+                    <td class="p-2 text-center text-slate-300">${item.cant}</td>
+                    <td class="p-2 text-right text-slate-400">$${item.precio.toLocaleString()}</td>
+                    <td class="p-2 text-right text-emerald-400 font-semibold">$${totalCalculado.toLocaleString()}</td>
+                `;
+                body.appendChild(tr);
+            });
+
+            // Habilitar botón de ordenamiento algorítmico
+            btnSortSim.removeAttribute('disabled');
+            btnSortSim.className = "w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow transition-all duration-300 cursor-pointer";
+        }
+
+        // Ordenamiento algorítmico descendente
+        function ordenarSimulador() {
+            currentData.sort((a, b) => b.cant - a.cant);
+            
+            // Volver a renderizar tabla estructurada
+            transformarTSV();
+
+            // Actualizar Chart.js con animaciones fluidas
+            const lbls = currentData.map(item => item.prod);
+            const vls = currentData.map(item => item.cant);
+            initChart(lbls, vls);
+        }
+
+        // --- SISTEMA DEL MICRO-QUIZ INTERACTIVO ---
+        let respuestasCorrectas = 0;
+        let preguntasRespondidas = 0;
+
+        function checkAnswer(btn, questionId, isCorrect) {
+            // Desactivar todos los botones de la misma sección
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('button');
+            buttons.forEach(b => {
+                b.setAttribute('disabled', 'true');
+                b.className = "w-full text-left text-xs p-2.5 rounded-lg border border-slate-900 text-slate-500 bg-slate-950/40 cursor-not-allowed";
+            });
+
+            // Resaltar selección del estudiante
+            if (isCorrect) {
+                respuestasCorrectas++;
+                btn.className = "w-full text-left text-xs bg-emerald-950 text-emerald-400 p-2.5 rounded-lg border border-emerald-500 transition-all font-semibold";
+            } else {
+                btn.className = "w-full text-left text-xs bg-rose-950 text-rose-400 p-2.5 rounded-lg border border-rose-500 transition-all font-semibold animate-shake";
+            }
+
+            preguntasRespondidas++;
+
+            // Transición controlada al siguiente paso o visualización de métrica final
+            setTimeout(() => {
+                const currentBox = document.querySelector(`[data-question="${questionId}"]`);
+                if (currentBox) {
+                    currentBox.classList.add('hidden');
+                }
+
+                const nextBox = document.querySelector(`[data-question="${questionId + 1}"]`);
+                if (nextBox) {
+                    nextBox.classList.remove('hidden');
+                } else {
+                    // Fin del cuestionario
+                    const resBox = document.getElementById('quizResult');
+                    const scoreText = document.getElementById('quizScoreText');
+                    resBox.classList.remove('hidden');
+                    scoreText.innerText = `Has consolidado de forma correcta ${respuestasCorrectas} de 3 criterios analizados.`;
+                }
+            }, 1000);
+        }
+
+        function resetQuiz() {
+            respuestasCorrectas = 0;
+            preguntasRespondidas = 0;
+            
+            document.getElementById('quizResult').classList.add('hidden');
+            
+            // Reestablecer todas las cajas de preguntas
+            const steps = document.querySelectorAll('.quiz-step');
+            steps.forEach((step, idx) => {
+                if(idx === 0) step.classList.remove('hidden');
+                else step.classList.add('hidden');
+
+                const buttons = step.querySelectorAll('button');
+                buttons.forEach(b => {
+                    b.removeAttribute('disabled');
+                    b.className = "w-full text-left text-xs bg-slate-950 hover:bg-slate-800 p-2.5 rounded-lg border border-slate-800 transition-all text-slate-300";
+                });
+            });
+        }
+    </script>
+</body>
+</html>
