@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clase 4 - Evolución Tecnológica | Prof. William Fdo Bernal</title>
+    <title>Semana 4 - Informática, Internet y Web 2.0 | Prof. William Fdo Bernal</title>
     
     <!-- Tailwind CSS (Full Power) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +17,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e1b4b, #0f172a);
+            background: linear-gradient(135deg, #0f172a, #0284c7, #0f172a);
             background-size: 200% 200%;
             animation: gradientMove 15s ease infinite;
             color: #e2e8f0;
@@ -31,188 +31,197 @@
 
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 1rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .glass-card:hover {
             border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
         }
 
-        /* Animación para la flecha de la tarea */
-        @keyframes bounce-x {
+        /* Animación para la flecha de la tarea a ambos lados */
+        @keyframes bounce-horizontal {
             0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(-20px); }
+            25% { transform: translateX(-15px); }
+            75% { transform: translateX(15px); }
         }
-        .animate-bounce-x {
+        .animate-bounce-horizontal {
             display: inline-block;
-            animation: bounce-x 1.5s infinite ease-in-out;
+            animation: bounce-horizontal 2s infinite ease-in-out;
         }
 
-        /* Ocultar barra de scroll para estetica */
+        /* Ocultar barra de scroll para estética */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 10px; }
         
         .quiz-option.selected {
-            background-color: rgba(99, 102, 241, 0.8) !important;
-            border-color: #a5b4fc !important;
+            background-color: rgba(14, 165, 233, 0.8) !important;
+            border-color: #7dd3fc !important;
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col pt-4 pb-8">
+<body class="antialiased min-h-screen flex flex-col pt-4 pb-8 overflow-x-hidden">
 
-    <!-- BARRA DE BOTONES (RUTAS OBLIGATORIAS) -->
-    <div class="max-w-5xl mx-auto w-full flex justify-end gap-3 mb-8 px-6">
+    <!-- ========================================== -->
+    <!-- BARRA DE BOTONES (RUTAS OBLIGATORIAS)      -->
+    <!-- ========================================== -->
+    <div class="max-w-5xl mx-auto w-full flex justify-end gap-3 mb-8 px-6 relative z-50">
         <a href="../../../index.html"
-           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 hover:bg-slate-700 transition-all duration-300 backdrop-blur border border-slate-600">
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur">
            ⬅ Inicio (Grado)
         </a>
 
         <a href="../../index.html"
-           class="bg-purple-600/90 text-white px-4 py-2 rounded-xl shadow hover:scale-105 hover:bg-purple-500 transition-all duration-300 backdrop-blur border border-purple-400">
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
            ⬅ Menú del Periodo
         </a>
 
         <button type="button" onclick="copiarEnlace()"
-           class="bg-emerald-600/90 text-white px-4 py-2 rounded-xl shadow hover:scale-105 hover:bg-emerald-500 transition-all duration-300 backdrop-blur border border-emerald-400">
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
            🔗 Copiar enlace
         </button>
     </div>
 
     <!-- TOAST DE COPIA -->
-    <div id="toastCopiado" class="fixed top-6 right-6 hidden z-50 bg-black/80 text-emerald-400 px-6 py-3 rounded-xl shadow-2xl backdrop-blur border border-emerald-500 font-bold text-lg transition-all duration-300">
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur z-50">
         Enlace copiado ✅
     </div>
 
-    <!-- SECCIÓN 1: HERO IMPACTANTE -->
+    <!-- ========================================== -->
+    <!-- SECCIÓN 1: HERO IMPACTANTE                 -->
+    <!-- ========================================== -->
     <header class="max-w-5xl mx-auto px-6 mb-12 text-center w-full">
-        <div class="inline-block px-4 py-1 rounded-full bg-slate-800/50 border border-slate-600 text-cyan-300 text-sm font-bold tracking-widest mb-4 uppercase shadow-lg">
+        <div class="inline-block px-4 py-1 rounded-full bg-slate-800/60 border border-slate-500 text-sky-300 text-sm font-bold tracking-widest mb-4 uppercase shadow-lg backdrop-blur">
             Colegio Santa Mariana de Jesús | Prof. William Fdo Bernal
         </div>
-        <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mb-6 drop-shadow-lg filter drop-shadow-[0_0_10px_rgba(56,189,248,0.4)]">
-            De los primeros artefactos a Internet
+        <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-300 mb-6 drop-shadow-lg filter drop-shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+            Informática, Internet y la Web 2.0 🌐
         </h1>
         
-        <div class="glass-card p-6 max-w-3xl mx-auto border-l-4 border-l-cyan-400 text-left">
+        <div class="glass-card p-6 max-w-3xl mx-auto border-l-4 border-l-sky-400 text-left">
             <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">
                 <span>🎯</span> Objetivo de Aprendizaje
             </h3>
-            <p class="text-slate-300 text-lg leading-relaxed">
-                ¡Gran repaso de la Semana 1 a la 4! Hoy uniremos las piezas para diferenciar ciencia, tecnología e informática, reconocer la evolución de los artefactos y entender los elementos básicos de nuestra conexión a Internet y la Web 2.0.
+            <p class="text-slate-200 text-lg leading-relaxed">
+                Reconocer Internet como una red mundial para compartir información, identificar los equipos necesarios para conectarnos y descubrir las posibilidades creativas de las herramientas de la Web 2.0.
             </p>
         </div>
     </header>
 
     <!-- CONTENEDOR PRINCIPAL -->
-    <main class="max-w-5xl mx-auto w-full px-6 space-y-8">
+    <main class="max-w-5xl mx-auto w-full px-6 space-y-10">
 
-        <!-- BLOQUE: COPIAR AL CUADERNO -->
-        <section class="glass-card p-8 border-t-4 border-t-blue-500 relative overflow-hidden group">
+        <!-- ========================================== -->
+        <!-- SECCIÓN 2: COPIAR AL CUADERNO              -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 border-t-4 border-t-cyan-500 relative overflow-hidden group">
             <div class="absolute top-4 right-4">
-                <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-blue-500/50">
+                <span class="bg-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-cyan-500/50">
                     📝 COPIAR AL CUADERNO
                 </span>
             </div>
             
-            <h2 class="text-3xl font-bold text-blue-400 mb-4">Conectando los Puntos 🧩</h2>
+            <h2 class="text-3xl font-bold text-cyan-400 mb-4">La Gran Autopista Digital 🛣️</h2>
             <div class="text-slate-300 space-y-4 text-lg">
-                <p><strong>Lo que vimos (Semanas 1 a 3):</strong> Descubrimos cómo la <em>Ciencia</em> entiende la naturaleza, la <em>Tecnología</em> inventa artefactos (como herramientas de piedra o la imprenta) y cómo muchas veces la tecnología surge por el azar. También entendimos que los <em>sistemas tecnológicos</em> son elementos trabajando juntos.</p>
-                <p><strong>Lo que vemos hoy:</strong> Todo confluye en la <em>Informática</em> y el Internet. Internet no es solo cables, es un sistema donde necesitamos artefactos (módems, routers, computadores). Y gracias a la <strong>Web 2.0</strong>, dejamos de ser solo lectores para convertirnos en creadores.</p>
+                <p class="italic text-yellow-300 mb-4">"Conectando con la clase anterior: Ya aprendimos que la tecnología crea sistemas. Hoy exploraremos el sistema tecnológico más grande del mundo: ¡Internet!"</p>
                 
-                <div class="bg-slate-900/50 p-4 rounded-lg mt-4 border border-slate-700">
-                    <h3 class="text-xl text-yellow-400 font-bold mb-2">Conceptos Clave:</h3>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li><strong>Artefacto:</strong> Objeto físico (Ej: El Router).</li>
-                        <li><strong>Proceso:</strong> Los pasos a seguir (Ej: Conectarse a WiFi).</li>
-                        <li><strong>Producto:</strong> El resultado (Ej: Página cargada).</li>
-                        <li><strong>Sistema Tecnológico:</strong> La red mundial de computadores (Internet).</li>
-                    </ul>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold text-white mb-2 text-cyan-300">1. ¿Qué es Internet? 🌍</h3>
+                        <p>Es una inmensa red de computadores conectados a nivel mundial. Funciona como una gran autopista invisible por donde viajan textos, imágenes, videos y sonidos a toda velocidad.</p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold text-white mb-2 text-cyan-300">2. El Kit de Conexión 🔌</h3>
+                        <p>Para entrar a esta autopista necesitas:</p>
+                        <ul class="list-disc ml-5 mt-2 text-sm space-y-1 text-slate-400">
+                            <li><strong class="text-white">Dispositivo:</strong> Computador, tableta o celular.</li>
+                            <li><strong class="text-white">Módem/Router:</strong> Aparatos que reciben y reparten la señal Wi-Fi.</li>
+                            <li><strong class="text-white">Proveedor (ISP):</strong> La empresa que te vende el Internet (Claro, Movistar, etc).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-blue-900/30 p-5 rounded-xl border-l-4 border-blue-400 mt-6">
+                    <h3 class="text-xl font-bold text-white mb-2">3. La Magia de la Web 2.0 ✨</h3>
+                    <p class="mb-2"><strong>Antes (Web 1.0):</strong> Solo podíamos <em>consultar y leer</em> información. Éramos espectadores.</p>
+                    <p><strong>Ahora (Web 2.0):</strong> Las herramientas nos permiten <em>crear, comentar, publicar y compartir</em> contenidos. ¡Ahora somos los creadores! (Ejemplos: YouTube, TikTok, Blogs, Canva).</p>
                 </div>
             </div>
         </section>
 
-        <!-- BLOQUE: INTERACTUAR EN EL PC (DATA LAB) -->
-        <section class="glass-card p-8 border-t-4 border-t-emerald-500 relative group">
+        <!-- ========================================== -->
+        <!-- SECCIÓN 3: INTERACTUAR EN EL PC            -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 border-t-4 border-t-blue-500 relative group">
             <div class="absolute top-4 right-4">
-                <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-emerald-500/50">
+                <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-blue-500/50">
                     💻 INTERACTUAR EN EL PC
                 </span>
             </div>
             
-            <h2 class="text-3xl font-bold text-emerald-400 mb-2">Simulador: Laboratorio de Datos 📊</h2>
-            <p class="text-slate-300 mb-6">Para prepararte para el reto de Excel, analiza cómo cambian los precios de los artefactos tecnológicos a lo largo del tiempo. Haz clic en los botones para filtrar los datos en la gráfica.</p>
+            <h2 class="text-3xl font-bold text-blue-400 mb-2">Data Lab: La Evolución de la Web 📈</h2>
+            <p class="text-slate-300 mb-6 text-lg">Observa en la gráfica la enorme diferencia entre la Web antigua (donde solo consumíamos) y la Web 2.0 (donde todos participamos y creamos datos).</p>
 
-            <div class="flex flex-wrap gap-4 mb-6 justify-center">
-                <button onclick="updateChart('antiguo')" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 px-6 rounded-lg transition-colors border border-slate-500 shadow-lg">Ver Precio Antiguo</button>
-                <button onclick="updateChart('actual')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-6 rounded-lg transition-colors border border-indigo-400 shadow-lg">Ver Precio Actual</button>
-                <button onclick="updateChart('ambos')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-6 rounded-lg transition-colors border border-emerald-400 shadow-lg">Comparar Ambos</button>
-            </div>
-
-            <div class="bg-white/5 p-4 rounded-xl border border-white/10 w-full h-80 relative">
-                <canvas id="techChart"></canvas>
+            <div class="bg-black/40 p-4 rounded-xl border border-white/10 w-full h-80 relative shadow-inner">
+                <canvas id="webChart"></canvas>
             </div>
         </section>
 
-        <!-- BLOQUE: TRABAJO EN LA SALA -->
-        <section class="glass-card p-8 border-t-4 border-t-purple-500 relative group">
+        <!-- ========================================== -->
+        <!-- SECCIÓN 4: TRABAJO EN LA SALA              -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 border-t-4 border-t-indigo-500 relative group">
             <div class="absolute top-4 right-4">
-                <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-purple-500/50">
+                <span class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md shadow-indigo-500/50">
                     🖥️ TRABAJO EN LA SALA
                 </span>
             </div>
             
-            <h2 class="text-3xl font-bold text-purple-400 mb-4">Reto: Mi solución con IA y Excel 🚀</h2>
+            <h2 class="text-3xl font-bold text-indigo-400 mb-4">Reto: Diseñando con Inteligencia Artificial 🤖</h2>
             
-            <div class="space-y-6 text-slate-300">
-                <!-- Paso 1 -->
-                <div class="bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
-                    <h3 class="text-xl font-bold text-white mb-2">🤖 Paso 1: Pide a la IA los datos</h3>
-                    <p class="mb-3">Abre tu asistente de IA y pégale este prompt exacto:</p>
-                    <div class="bg-black/60 p-4 rounded text-emerald-300 font-mono text-sm shadow-inner relative group/copy">
-                        "Genera una tabla con 5 columnas y exactamente 10 filas de datos sobre inventos importantes en la historia de la tecnología, desde la imprenta hasta Internet. Encabezados exactos: Código, Artefacto, Año_Invento, Precio_Antiguo (COP), Precio_Actual (COP). El Código debe ser único (INV01 a INV10), el Artefacto un nombre breve, el Año_Invento un año entre 1440 y 1990, el Precio_Antiguo (COP) un precio histórico redondo entre 100000 y 2000000, y el Precio_Actual (COP) un precio de hoy mayor que el antiguo, entre 500000 y 5000000. Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas"
+            <div class="space-y-6 text-slate-200">
+                <p class="text-lg">Vamos a usar la Inteligencia Artificial para que nos ayude a estructurar nuestra evidencia de hoy: Un mapa conceptual creativo.</p>
+
+                <div class="flex gap-4 items-start bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
+                    <div class="bg-indigo-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shrink-0">1</div>
+                    <div class="w-full">
+                        <h3 class="text-xl font-bold text-white mb-2">El Prompt (La instrucción)</h3>
+                        <p>Abre la IA que el profesor te indique y copia exactamente este texto:</p>
+                        <div class="bg-black/60 p-4 rounded text-indigo-300 font-mono text-sm shadow-inner relative mt-3 border border-slate-700">
+                            "Actúa como un profesor de informática. Ayúdame a organizar un mapa conceptual bien creativo sobre 'Internet'. Debe tener como tema central a 'Internet' y conectar a su alrededor los elementos necesarios para conectarse: Computador, Módem, Router y Proveedor. Dame ideas visuales de cómo dibujarlo, sugiriendo usar nubes o pantallas en lugar de simples cuadros."
+                        </div>
                     </div>
-                    <p class="mt-3 text-sm text-yellow-300">⚠️ Copia el resultado y pégalo en la celda <strong>A1</strong> de Excel. Verifica tener 11 filas (1 encabezado + 10 datos).</p>
                 </div>
 
-                <!-- Paso 2 -->
-                <div class="bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
-                    <h3 class="text-xl font-bold text-white mb-2">📊 Paso 2: Da formato visual</h3>
-                    <ul class="list-decimal list-inside space-y-2">
-                        <li>Selecciona <strong>A1:E1</strong> (encabezados): color de relleno azul, fuente blanca y negrita.</li>
-                        <li>Selecciona <strong>D2:E11</strong>: clic derecho > 'Formato de celdas' > 'Moneda'.</li>
-                        <li>Centra las columnas <em>Código</em> y <em>Año_Invento</em>.</li>
-                    </ul>
+                <div class="flex gap-4 items-start bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
+                    <div class="bg-indigo-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shrink-0">2</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Manos a la obra (Diseño)</h3>
+                        <p>Lee las ideas que te dio la IA. Abre una herramienta de dibujo (como Paint, Canva, o en tu mismo cuaderno si el profe lo indica) y diseña el mapa conceptual siguiendo sus consejos creativos.</p>
+                    </div>
                 </div>
 
-                <!-- Paso 3 -->
-                <div class="bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
-                    <h3 class="text-xl font-bold text-white mb-2">⚙️ Paso 3: Fórmulas (El verdadero poder)</h3>
-                    <ul class="list-decimal list-inside space-y-2">
-                        <li>En <strong>G1</strong> escribe <em>Aumento (COP)</em> y en <strong>G2</strong> la fórmula <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">=E2-D2</code>. Arrastra hasta G11.</li>
-                        <li>En <strong>H1</strong> escribe <em>Antigüedad (años)</em> y en <strong>H2</strong> la fórmula <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">=2026-C2</code>. Arrastra hasta H11.</li>
-                        <li>En <strong>I1</strong> escribe <em>Veces más caro</em> y en <strong>I2</strong> la fórmula <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">=E2/D2</code>. Arrastra hasta I11.</li>
-                    </ul>
-                    <p class="mt-2 text-sm italic text-gray-400">💡 La Informática (Excel) maneja y calcula los datos de forma automática. ¡Esa es la diferencia!</p>
-                </div>
-
-                <!-- Paso 4 -->
-                <div class="bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
-                    <h3 class="text-xl font-bold text-white mb-2">💾 Paso final: Guardar y Reto Avanzado</h3>
-                    <p>Guarda el archivo: <code class="text-emerald-400">grado_tema_fecha(ddmmaa)_nombre.xlsx</code></p>
-                    <div class="mt-3 bg-yellow-900/30 border border-yellow-600 p-3 rounded text-yellow-200">
-                        <strong>✨ Reto Avanzado:</strong> Identifica el invento más antiguo de tu tabla que todavía usamos hoy conectado a Internet, y escribe tu conclusión en la celda <strong>K1</strong>.
+                <div class="flex gap-4 items-start bg-slate-800/40 p-5 rounded-xl border border-slate-600 hover:bg-slate-800/60 transition-all">
+                    <div class="bg-indigo-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shrink-0">3</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Evidencia Final</h3>
+                        <p>Imprime tu mapa conceptual (o terminalo a mano) y <strong>pégalo en tu cuaderno</strong>. Esta será tu evidencia de la clase de hoy.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- BLOQUE: INVESTIGACIÓN & HOJA SUELTA -->
+        <!-- ========================================== -->
+        <!-- SECCIÓN 5: INVESTIGACIÓN & HOJA SUELTA     -->
+        <!-- ========================================== -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             <!-- INVESTIGACIÓN -->
@@ -222,86 +231,96 @@
                         🔍 INVESTIGACIÓN
                     </span>
                 </div>
-                <h2 class="text-2xl font-bold text-pink-400 mb-4 mt-8">Explorador de la Red</h2>
-                <div class="bg-slate-800/50 p-4 rounded-lg">
-                    <p class="text-slate-200">Abre una nueva pestaña en Google y busca:</p>
-                    <p class="text-xl font-bold text-white mt-3 italic">"¿Cuál fue la primera página web de la historia, en qué año se creó y cómo se veía?"</p>
-                    <p class="mt-4 text-sm text-pink-300">Escribe un breve resumen de tu hallazgo en el cuaderno.</p>
+                <h2 class="text-2xl font-bold text-pink-400 mb-4 mt-6">Análisis Web</h2>
+                <div class="bg-slate-800/50 p-5 rounded-lg border border-pink-500/30 h-full">
+                    <p class="text-slate-200 text-lg mb-3">Reflexiona y responde en tu cuaderno:</p>
+                    <p class="text-xl font-bold text-white bg-black/40 p-4 rounded border-l-4 border-pink-500 shadow-inner">
+                        "¿Qué diferencia existe entre consultar información y crear contenido en Internet mediante la Web 2.0?"
+                    </p>
+                    <p class="mt-4 text-sm text-pink-300">Pista: Piensa en la diferencia entre leer un periódico en papel y subir un video a TikTok.</p>
                 </div>
             </section>
 
-            <!-- TAREA HOJA SUELTA -->
-            <section class="glass-card p-6 border-t-4 border-t-yellow-500 relative overflow-visible">
+            <!-- TAREA HOJA SUELTA (TEXTO EXACTO CON FLECHA A AMBOS LADOS) -->
+            <section class="glass-card p-6 border-t-4 border-t-yellow-500 relative overflow-visible flex items-center">
                 <div class="absolute top-4 right-4">
                     <span class="bg-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md">
                         📄 TAREA EN HOJA SUELTA
                     </span>
                 </div>
                 
-                <h2 class="text-2xl font-bold text-yellow-400 mb-4 mt-8">Evaluación Escrita</h2>
-                
-                <div class="flex items-center gap-4 bg-slate-900/60 p-5 rounded-xl border border-yellow-500/30">
-                    <div class="flex-1 text-slate-200 text-sm space-y-3">
-                        <p class="font-bold text-white border-b border-slate-700 pb-2">Responde y dibuja en tu cuaderno:</p>
-                        <ol class="list-decimal list-inside space-y-2">
-                            <li>¿Cuál es la diferencia entre <strong>Tecnología</strong> e <strong>Informática</strong>?</li>
-                            <li><strong>¡A dibujar!</strong> Dibuja la evolución de un artefacto en 3 momentos (Ej: Carta ➔ Teléfono ➔ Smartphone).</li>
-                            <li>Menciona 3 aparatos físicos necesarios en casa para conectarte a Internet.</li>
-                            <li>Web 2.0: ¿Qué es lo que más te gusta crear o compartir en Internet?</li>
-                        </ol>
+                <div class="w-full flex items-center gap-4 bg-slate-900/70 p-5 rounded-xl border border-yellow-500/50 shadow-lg mt-8">
+                    
+                    <div class="flex-1 text-slate-200 text-sm space-y-4 font-medium">
+                        <p class="font-bold text-white border-b border-slate-600 pb-2 text-lg text-yellow-400">Entregable para el profesor:</p>
+                        
+                        <ul class="space-y-4 text-base">
+                            <li class="bg-black/40 p-3 rounded border border-slate-700">
+                                <strong>1.</strong> Menciona 3 elementos físicos indispensables para acceder a Internet en tu casa.
+                            </li>
+                            <li class="bg-black/40 p-3 rounded border border-slate-700">
+                                <strong>2.</strong> Escribe 2 ejemplos de herramientas web 2.0 que uses en tu vida diaria o en el colegio.
+                            </li>
+                        </ul>
                     </div>
-                    <!-- FLECHA ANIMADA HACIA LA IZQUIERDA REQUERIDA -->
-                    <div class="text-6xl animate-bounce-x text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]">
-                        ⬅️
+
+                    <!-- FLECHA ANIMADA A AMBOS LADOS SEÑALANDO A LA IZQUIERDA -->
+                    <div class="text-6xl animate-bounce-horizontal text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.8)] shrink-0">
+                        ↔️
                     </div>
+
                 </div>
             </section>
         </div>
 
-        <!-- SECCIÓN DE GAMIFICACIÓN -->
-        <section class="glass-card p-8 border-t-4 border-t-cyan-500">
-            <h2 class="text-3xl font-bold text-cyan-400 mb-6 text-center">🎮 Micro-Quiz de Repaso</h2>
+        <!-- ========================================== -->
+        <!-- SECCIÓN 6: GAMIFICACIÓN                    -->
+        <!-- ========================================== -->
+        <section class="glass-card p-8 border-t-4 border-t-emerald-500">
+            <h2 class="text-3xl font-bold text-emerald-400 mb-6 text-center">🎮 Micro-Quiz: El Navegante Digital</h2>
             <div id="quiz-container" class="max-w-2xl mx-auto">
                 
                 <!-- Pregunta 1 -->
-                <div class="quiz-question mb-6" id="q1">
-                    <p class="text-lg font-bold text-white mb-3">1. Según lo visto, la Ciencia estudia la naturaleza, mientras que la Tecnología...</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button class="quiz-option bg-slate-800 p-3 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left" onclick="selectAnswer(1, this, false)">A. Solo maneja información en el computador</button>
-                        <button class="quiz-option bg-slate-800 p-3 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left" onclick="selectAnswer(1, this, true)">B. Usa los conocimientos para crear inventos y soluciones</button>
+                <div class="quiz-question mb-6 transition-all duration-300" id="q1">
+                    <p class="text-xl font-bold text-white mb-4">1. Internet se puede definir de manera sencilla como:</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(1, this, false)">A. Un programa que instalas en el computador para jugar.</button>
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(1, this, true)">B. Una gran red mundial que conecta millones de dispositivos.</button>
                     </div>
                 </div>
 
                 <!-- Pregunta 2 -->
-                <div class="quiz-question mb-6 hidden" id="q2">
-                    <p class="text-lg font-bold text-white mb-3">2. ¿Qué diferencia a la Web 2.0 de la versión anterior de Internet?</p>
+                <div class="quiz-question mb-6 hidden transition-all duration-300" id="q2">
+                    <p class="text-xl font-bold text-white mb-4">2. ¿Qué par de aparatos necesitas físicamente en casa para repartir la señal de Internet a tus dispositivos?</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button class="quiz-option bg-slate-800 p-3 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left" onclick="selectAnswer(2, this, true)">A. Nos permite crear, publicar y comentar, no solo leer.</button>
-                        <button class="quiz-option bg-slate-800 p-3 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left" onclick="selectAnswer(2, this, false)">B. Nos quitó la posibilidad de ver videos.</button>
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(2, this, true)">A. Módem y Router 📶</button>
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(2, this, false)">B. Mouse y Teclado 🖱️</button>
                     </div>
                 </div>
 
                 <!-- Pregunta 3 -->
-                <div class="quiz-question mb-6 hidden" id="q3">
-                    <p class="text-lg font-bold text-white mb-3">3. Un conjunto de computadores, módems y routers trabajando juntos para darnos Internet es un ejemplo de:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button class="quiz-option bg-slate-800 p-3 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left" onclick="selectAnswer(3, this, false)">A. Un producto natural</button>
-                        <button class="quiz-option bg-slate-800 p-3 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left" onclick="selectAnswer(3, this, true)">B. Un Sistema Tecnológico</button>
+                <div class="quiz-question mb-6 hidden transition-all duration-300" id="q3">
+                    <p class="text-xl font-bold text-white mb-4">3. La principal característica de la "Web 2.0" es que los usuarios:</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(3, this, false)">A. Solo pueden leer información como en un periódico impreso.</button>
+                        <button class="quiz-option bg-slate-800 p-4 rounded-lg border border-slate-600 hover:bg-slate-700 transition text-left text-lg" onclick="selectAnswer(3, this, true)">B. Pueden interactuar, crear, comentar y compartir contenido.</button>
                     </div>
                 </div>
 
-                <div class="text-center mt-6">
-                    <button id="next-btn" class="hidden bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-3 rounded-full font-bold shadow-lg transition-all" onclick="nextQuestion()">Siguiente Pregunta</button>
-                    <div id="quiz-result" class="hidden text-2xl font-bold text-emerald-400 mt-4 p-4 bg-emerald-900/30 rounded-xl border border-emerald-500"></div>
+                <div class="text-center mt-8">
+                    <button id="next-btn" class="hidden bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-full font-bold shadow-[0_0_15px_rgba(16,185,129,0.5)] transition-all hover:scale-105" onclick="nextQuestion()">Siguiente Pregunta</button>
+                    <div id="quiz-result" class="hidden text-2xl font-bold text-sky-400 mt-4 p-6 bg-sky-900/30 rounded-xl border border-sky-500 shadow-lg"></div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER REGLA DE ORO -->
-    <footer class="mt-16 py-6 bg-black/60 border-t border-slate-800 text-center backdrop-blur-md w-full">
-        <p class="text-slate-400 font-semibold tracking-wide">
+    <!-- ========================================== -->
+    <!-- FOOTER REGLA DE ORO                        -->
+    <!-- ========================================== -->
+    <footer class="mt-16 py-8 bg-black/80 border-t border-slate-800 text-center backdrop-blur-md w-full shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+        <p class="text-slate-400 font-semibold tracking-widest uppercase text-sm">
             © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
         </p>
     </footer>
@@ -317,7 +336,6 @@
                 const toast = document.getElementById('toastCopiado');
                 if (toast) {
                     toast.classList.remove('hidden');
-                    // Efecto de entrada
                     toast.animate([
                         { opacity: 0, transform: 'translateY(-20px)' },
                         { opacity: 1, transform: 'translateY(0)' }
@@ -340,33 +358,37 @@
         // ==========================================
         // 2. MÓDULO INTERACTIVO: Data Lab (Chart.js)
         // ==========================================
-        const ctx = document.getElementById('techChart').getContext('2d');
+        const ctx = document.getElementById('webChart').getContext('2d');
         
-        // Datos de ejemplo simulando el output de la IA
-        const labels = ['Primer Computador', 'Primer Celular', 'Primera Consola'];
-        const precioAntiguo = [2000000, 1500000, 800000];
-        const precioActual = [4500000, 3200000, 2500000];
+        // Simulación: Crecimiento de participación (Lectores vs Creadores)
+        const years = ['2000 (Web 1.0)', '2005', '2010 (Web 2.0)', '2015', '2020', 'Actualidad'];
+        const soloLectores = [95, 80, 50, 30, 15, 5]; // Porcentaje
+        const creadores = [5, 20, 50, 70, 85, 95];    // Porcentaje
 
-        let techChart = new Chart(ctx, {
-            type: 'bar',
+        new Chart(ctx, {
+            type: 'line',
             data: {
-                labels: labels,
+                labels: years,
                 datasets: [
                     {
-                        label: 'Precio Antiguo (COP)',
-                        data: precioAntiguo,
-                        backgroundColor: 'rgba(99, 102, 241, 0.7)',
-                        borderColor: 'rgba(99, 102, 241, 1)',
-                        borderWidth: 2,
-                        borderRadius: 6
+                        label: '% Usuarios que Solo Leen (Consumidores)',
+                        data: soloLectores,
+                        backgroundColor: 'rgba(239, 68, 68, 0.2)', // Red
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#ef4444',
+                        fill: true,
+                        tension: 0.4
                     },
                     {
-                        label: 'Precio Actual (COP)',
-                        data: precioActual,
-                        backgroundColor: 'rgba(16, 185, 129, 0.7)',
-                        borderColor: 'rgba(16, 185, 129, 1)',
-                        borderWidth: 2,
-                        borderRadius: 6
+                        label: '% Usuarios que Crean y Comparten (Web 2.0)',
+                        data: creadores,
+                        backgroundColor: 'rgba(56, 189, 248, 0.2)', // Sky blue
+                        borderColor: 'rgba(56, 189, 248, 1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#38bdf8',
+                        fill: true,
+                        tension: 0.4
                     }
                 ]
             },
@@ -377,46 +399,28 @@
                 scales: {
                     y: {
                         beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Porcentaje de Usuarios (%)', color: '#93c5fd' },
                         grid: { color: 'rgba(255, 255, 255, 0.1)' },
                         ticks: { color: '#94a3b8' }
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { color: '#94a3b8', font: { size: 14 } }
+                        ticks: { color: '#94a3b8' }
                     }
                 },
                 plugins: {
                     legend: { labels: { color: '#e2e8f0', font: { size: 14 } } },
                     tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.dataset.label || '';
-                                if (label) { label += ': '; }
-                                if (context.parsed.y !== null) {
-                                    label += new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(context.parsed.y);
-                                }
-                                return label;
-                            }
-                        }
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleFont: { size: 16 },
+                        bodyFont: { size: 14 }
                     }
                 }
             }
         });
-
-        // Función para actualizar la gráfica con animaciones
-        function updateChart(mode) {
-            if (mode === 'antiguo') {
-                techChart.data.datasets[0].hidden = false;
-                techChart.data.datasets[1].hidden = true;
-            } else if (mode === 'actual') {
-                techChart.data.datasets[0].hidden = true;
-                techChart.data.datasets[1].hidden = false;
-            } else {
-                techChart.data.datasets[0].hidden = false;
-                techChart.data.datasets[1].hidden = false;
-            }
-            techChart.update();
-        }
 
         // ==========================================
         // 3. GAMIFICACIÓN: Lógica del Micro-Quiz
@@ -426,11 +430,9 @@
         let answeredCurrent = false;
 
         function selectAnswer(qNum, btn, isCorrect) {
-            if (answeredCurrent) return; // Solo una respuesta por pregunta
+            if (answeredCurrent) return;
             
             answeredCurrent = true;
-            
-            // Remover estilos previos de los botones hermanos
             const siblings = btn.parentElement.children;
             for(let el of siblings) {
                 el.classList.remove('selected', 'border-emerald-500', 'border-red-500');
@@ -438,17 +440,14 @@
 
             btn.classList.add('selected');
 
-            // Feedback visual
             if (isCorrect) {
                 score++;
-                btn.style.backgroundColor = 'rgba(16, 185, 129, 0.5)'; // Verde
+                btn.style.backgroundColor = 'rgba(16, 185, 129, 0.4)'; 
                 btn.style.borderColor = '#34d399';
-                // Vibración de éxito
-                btn.animate([{transform:'scale(1)'},{transform:'scale(1.05)'},{transform:'scale(1)'}], 300);
+                btn.animate([{transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}], 300);
             } else {
-                btn.style.backgroundColor = 'rgba(239, 68, 68, 0.5)'; // Rojo
+                btn.style.backgroundColor = 'rgba(239, 68, 68, 0.4)'; 
                 btn.style.borderColor = '#f87171';
-                // Shake (fallo)
                 btn.animate([{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}], 300);
             }
 
@@ -474,17 +473,17 @@
             resDiv.classList.remove('hidden');
             
             if (score === 3) {
-                resDiv.innerHTML = "¡Excelente! 🏆 Eres un Máster de la Tecnología. Has conectado todo perfectamente.";
+                resDiv.innerHTML = "¡Excelente! 🏆 Eres un Ciudadano Digital Nivel Experto. Conoces perfectamente la red.";
             } else if (score === 2) {
-                resDiv.innerHTML = "¡Muy bien! 🥈 Casi perfecto. Ya dominas la mayor parte de la historia.";
-                resDiv.classList.replace('text-emerald-400', 'text-yellow-400');
-                resDiv.classList.replace('bg-emerald-900/30', 'bg-yellow-900/30');
-                resDiv.classList.replace('border-emerald-500', 'border-yellow-500');
+                resDiv.innerHTML = "¡Muy bien! 🥈 Has comprendido muy bien la clase. Repasa los componentes de conexión.";
+                resDiv.classList.replace('text-sky-400', 'text-yellow-400');
+                resDiv.classList.replace('bg-sky-900/30', 'bg-yellow-900/30');
+                resDiv.classList.replace('border-sky-500', 'border-yellow-500');
             } else {
-                resDiv.innerHTML = "¡Buen intento! 💪 Revisa tus apuntes del cuaderno y seguro la próxima lo haces genial.";
-                resDiv.classList.replace('text-emerald-400', 'text-blue-400');
-                resDiv.classList.replace('bg-emerald-900/30', 'bg-blue-900/30');
-                resDiv.classList.replace('border-emerald-500', 'border-blue-500');
+                resDiv.innerHTML = "¡Buen intento! 💪 Vuelve a leer la sección 'Copiar al cuaderno' para recordar la diferencia entre Web 1.0 y 2.0.";
+                resDiv.classList.replace('text-sky-400', 'text-orange-400');
+                resDiv.classList.replace('bg-sky-900/30', 'bg-orange-900/30');
+                resDiv.classList.replace('border-sky-500', 'border-orange-500');
             }
         }
     </script>
