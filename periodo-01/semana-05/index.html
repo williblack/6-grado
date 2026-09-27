@@ -1,1 +1,281 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navegación segura y autocuidado digital | Grado 6°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 6,
+  edad: 11,
+  periodo: 1,
+  semana: 5,
+  tema: "Navegación segura y autocuidado digital",
+  temaAnterior: "Informática, Internet y la Web 2.0",
+  video: "",
+  estilo: "coral",
+  emoji: "🛡️",
+  objetivo: "Reconocer las ventajas y los riesgos de Internet y aplicar normas de autocuidado digital.",
+  competencia: "Identifica oportunidades y riesgos en la red, aplicando reglas esenciales de protección de datos, respeto digital y búsqueda de ayuda.",
+  preguntaGancho: "¿Saber usar Internet todos los días significa que sabemos cómo protegernos de sus peligros ocultos?",
+  agenda: [
+    { min: 5, titulo: "Conexión y Pregunta Gancho", texto: "Reflexión inicial sobre la diferencia entre navegar por diversión y navegar con seguridad." },
+    { min: 15, titulo: "Explicación en Cuaderno", texto: "Registro de conceptos clave: ventajas, riesgos, semáforo digital y reglas de oro." },
+    { min: 15, titulo: "Reto Práctico con IA y Excel", texto: "Generación de tabla sobre seguridad con IA, copiado y aplicación de formato en Excel." },
+    { min: 10, titulo: "Evaluación y Cierre", texto: "Resolución del quiz de comprobación e instrucciones para la tarea entregable en hoja suelta." }
+  ],
+  cuaderno: {
+    conexion: "En la clase anterior estudiamos el funcionamiento de Informática, Internet y la Web 2.0. Hoy daremos un paso adelante para comprender cómo navegar en esta red global con responsabilidad, cuidado y seguridad.",
+    bloques: [
+      {
+        icono: "🌐",
+        titulo: "1. Las Ventajas de Internet",
+        puntos: [
+          { icono: "📚", termino: "Aprender", texto: "Acceder a información, tutoriales y fuentes académicas para tareas escolares." },
+          { icono: "💬", termino: "Comunicarnos", texto: "Conectar al instante con familiares, profesores y amigos en cualquier lugar." },
+          { icono: "🎮", termino: "Entretenimiento", texto: "Disfrutar de juegos, música y videos apropiados para nuestra edad." }
+        ],
+        ampliacion: "Internet ha transformado la manera en que aprendemos y nos relacionamos con el mundo. Sin embargo, **aprovechar sus beneficios exige reconocer sus límites**. Al igual que al transitar por una vía pública en Buga respetamos las señales de tránsito para evitar accidentes, en el entorno digital debemos adoptar hábitos de navegación consciente para disfrutar de sus recursos sin poner en riesgo nuestra integridad personal ni la de nuestra familia."
+      },
+      {
+        icono: "⚠️",
+        titulo: "2. Los 4 Grandes Riesgos en la Red",
+        puntos: [
+          { icono: "🔒", termino: "Privacidad", texto: "Compartir datos personales como dirección, colegio o número telefónico con desconocidos." },
+          { icono: "👁️", termino: "Contenido", texto: "Encontrar imágenes, información falsa o videos violentos no aptos para nuestra edad." },
+          { icono: "👤", termino: "Contacto", texto: "Interactuar o aceptar solicitudes de amistad de personas extrañas." },
+          { icono: "⏳", termino: "Tiempo de conexión", texto: "Exceder las horas frente a la pantalla afectando el descanso, el estudio y la salud." }
+        ],
+        ampliacion: "Los riesgos digitales no siempre son evidentes a simple vista. **Un perfil falso o un enlace llamativo pueden ocultar intenciones peligrosas**. La pérdida de privacidad ocurre cuando publicamos información sensible sin pensar en las consecuencias a largo plazo, mientras que el exceso de tiempo de pantalla puede deteriorar la convivencia familiar y el rendimiento académico."
+      },
+      {
+        icono: "🚦",
+        titulo: "3. El Semáforo de la Seguridad Digital",
+        puntos: [
+          { icono: "🟢", termino: "Verde (Seguro)", texto: "Usar plataformas educativas institucionales y ver videos supervisados por adultos." },
+          { icono: "🟡", termino: "Amarillo (Dudoso)", texto: "Recibir mensajes de números desconocidos o anuncios que ofrecen premios falsos." },
+          { icono: "🔴", termino: "Rojo (Peligroso)", texto: "Compartir contraseñas, enviar fotos privadas o aceptar citarse con extraños." }
+        ],
+        ampliacion: "El semáforo digital es una herramienta guía para tomar decisiones rápidas antes de hacer clic. **Si una situación genera dudas o incomodidad, debemos clasificarla de inmediato en amarillo o rojo**. Evaluar el entorno digital con esta lógica nos permite prevenir ciberacoso, engaños y pérdidas de datos antes de que se conviertan en un problema grave."
+      },
+      {
+        icono: "🛡️",
+        titulo: "4. Las 3 Reglas de Oro",
+        puntos: [
+          { icono: "🔑", termino: "Protege tus datos", texto: "Mantén tus contraseñas en secreto y jamás publiques tu ubicación en tiempo real." },
+          { icono: "🤝", termino: "Respeta a los demás", texto: "Trata con empatía a los usuarios y no compartas información ni fotos ajenas sin permiso." },
+          { icono: "🙋‍♂️", termino: "Pide ayuda", texto: "Acude de inmediato a un adulto de confianza (padres o profesores) si algo te asusta." }
+        ],
+        ampliacion: "La seguridad en Internet se construye a través de hábitos diarios y de responsabilidad personal. **Pedir ayuda a tiempo es la regla más valiosa ante cualquier duda en la red**. Nunca sientas temor ni pena de consultar con tus padres o profesores si te encuentras con una situación incómoda en Internet; los adultos están preparados para orientarte y defender tu tranquilidad."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Autocuidado digital", definicion: "Conjunto de decisiones y prácticas orientadas a proteger la privacidad, salud y seguridad en plataformas virtuales." },
+    { termino: "Huella digital", definicion: "Rastro de datos e información que dejamos registrado al navegar, publicar o interactuar en Internet." },
+    { termino: "Cyberbullying", definicion: "Acoso, maltrato o intimidación sostenida entre compañeros a través de medios digitales y redes sociales." },
+    { termino: "Privacidad en línea", definicion: "Derecho a controlar quién accede a nuestra información personal y cómo se utilizan nuestros datos en la red." }
+  ],
+  sabiasQue: [
+    "La huella digital incluye tanto las fotos que publicas conscientemente como las búsquedas y páginas que visitas a diario.",
+    "Pedir ayuda a un adulto responsable ante una duda en línea previene en más de un 80% los problemas de seguridad digital escolar."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Analogías para Comprender la Ciberseguridad",
+      items: [
+        { icono: "🏠", frente: "La puerta de tu casa", reverso: "Es equivalente a tu contraseña: si la dejas abierta o se la entregas a desconocidos, cualquiera podrá ingresar." },
+        { icono: "🚦", frente: "Un semáforo de tránsito", reverso: "Es la evaluación de mensajes y enlaces: verde es seguro, amarillo exige cautela y rojo detenerse inmediatamente." },
+        { icono: "🗣️", frente: "Gritar en la plaza pública", reverso: "Es equivalente a publicar datos personales en redes abiertas: cualquier desconocido podrá escucharte y utilizar la información." },
+        { icono: "🎒", frente: "Tu mochila escolar", reverso: "Es como la huella digital: todo lo que guardas o dejas caer va marcando un camino de dónde has estado." }
+      ]
+    },
+    explorador: {
+      titulo: "Dimensiones del Autocuidado Digital",
+      items: [
+        {
+          icono: "🔒",
+          nombre: "Protección de Datos",
+          secciones: [
+            { titulo: "Recomendaciones", items: ["Crear claves secretas combinando letras y números.", "Cerrar sesión en computadores compartidos o del colegio.", "No enviar fotos del uniforme ni de la fachada de la casa."] }
+          ]
+        },
+        {
+          icono: "🤝",
+          nombre: "Convivencia y Respeto",
+          secciones: [
+            { titulo: "Netiqueta", items: ["Escribir con respeto y evitar mensajes ofensivos.", "Pedir permiso antes de publicar fotos con compañeros.", "No difundir cadenas o noticias sin verificar la fuente."] }
+          ]
+        },
+        {
+          icono: "🆘",
+          nombre: "Atención de Emergencias",
+          secciones: [
+            { titulo: "Qué hacer si hay riesgo", items: ["Guardar captura de pantalla como evidencia.", "Bloquear al contacto sospechoso o agresor.", "Contar de inmediato lo sucedido a tus padres o profesores."] }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasificación del Semáforo Digital",
+      categorias: ["🟢 Verde (Seguro)", "🟡 Amarillo (Dudoso)", "🔴 Rojo (Peligroso)"],
+      items: [
+        { texto: "Ingresar a la plataforma del colegio con tu usuario para descargar la tarea", categoria: 0 },
+        { texto: "Ver un video educativo recomendado por tu profesor de Tecnología", categoria: 0 },
+        { texto: "Recibir un mensaje de texto de un número desconocido ofreciendo un regalo", categoria: 1 },
+        { texto: "Un anuncio en un juego te pide descargar un archivo para regalarte monedas", categoria: 1 },
+        { texto: "Compartir tu dirección y número telefónico en un chat público de videojuegos", categoria: 2 },
+        { texto: "Prestar la contraseña de tu correo institucional a un compañero de clase", categoria: 2 },
+        { texto: "Aceptar la cita presencial de un desconocido contactado en redes sociales", categoria: 2 },
+        { texto: "Buscar información escolar en sitios educativos y enciclopedias virtuales", categoria: 0 }
+      ]
+    },
+    grafica: {
+      titulo: "Autoevaluación: Horas Diarias de Pantalla Recreativa",
+      instruccion: "Registra las horas aproximadas que dedicas cada día a pantallas por entretenimiento para analizar tu balance digital.",
+      unidad: "horas",
+      max: 8,
+      etiquetas: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+      referencia: {
+        nombre: "Límite recomendado por el docente",
+        valores: [2, 2, 2, 2, 2, 3, 3]
+      }
+    }
+  },
+  reto: {
+    titulo: "Ejercicio Práctico con Inteligencia Artificial y Microsoft Excel",
+    descripcion: "Utilizaremos una herramienta de Inteligencia Artificial para generar una tabla clasificada sobre seguridad digital y luego la pasaremos a Microsoft Excel para aplicarle formato de celdas.",
+    pasos: [
+      "Abre en el navegador la herramienta de IA (Gemini o ChatGPT).",
+      "Copia el Prompt (instrucción) proporcionado y pégalo en la ventana de chat de la IA.",
+      "Selecciona la tabla que genera la IA y presiona Ctrl + C para copiarla.",
+      "Abre Microsoft Excel en tu computador y ubícate en la celda A1.",
+      "Presiona Ctrl + V para pegar la tabla asegurando que respete filas y columnas.",
+      "Aplica color de relleno al encabezado (Fila 1), activa 'Todos los bordes' y ajusta el ancho de las columnas A y B."
+    ],
+    prompt: "Genera una tabla de 2 columnas y 5 filas sobre seguridad en Internet. La columna 1 se llamará 'Acción' y la columna 2 'Categoría (Segura, Dudosa o Peligrosa)'. Incluye 5 ejemplos cotidianos para estudiantes de 11 años.",
+    herramientas: [
+      { nombre: "Gemini AI", url: "https://gemini.google.com" },
+      { nombre: "ChatGPT", url: "https://chatgpt.com" }
+    ],
+    requisitos: [
+      "Tabla correctamente pegada a partir de la celda A1 de Excel.",
+      "Encabezado de la tabla formateado con fondo de color y texto destacado.",
+      "Bordes activos en todas las celdas de la tabla.",
+      "Columnas A y B ajustadas para visualizar todo el contenido sin cortes."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Cuál de las siguientes situaciones corresponde a una ventaja del uso de Internet?",
+      opciones: [
+        "Compartir claves con amigos para no olvidarlas",
+        "Acceder a información y recursos para realizar tareas y aprender",
+        "Pasar más de 6 horas continuas en juegos virtuales",
+        "Chatear con personas desconocidas en redes abiertas"
+      ],
+      correcta: 1,
+      explicacion: "Internet nos ofrece herramientas fundamentales para la investigación, el estudio y el aprendizaje colaborativo."
+    },
+    {
+      pregunta: "¿Qué riesgo se presenta cuando publicamos nuestra dirección o número de teléfono en redes sociales?",
+      opciones: [
+        "Riesgo de tiempo",
+        "Riesgo de privacidad",
+        "Riesgo de contenido",
+        "Riesgo de hardware"
+      ],
+      correcta: 1,
+      explicacion: "Exponer información personal en entornos públicos compromete de manera directa nuestra privacidad y seguridad."
+    },
+    {
+      pregunta: "Si recibes un anuncio emergente que dice «¡Ganaste un teléfono gratis, haz clic aquí!», ¿cómo lo clasificas?",
+      opciones: [
+        "Verde (Seguro)",
+        "Amarillo (Dudoso)",
+        "Rojo (Peligroso)",
+        "Azul (Recomendado)"
+      ],
+      correcta: 1,
+      explicacion: "Los anuncios con promesas sospechosas se clasifican en amarillo/rojo porque suelen ser trampas o estafas digitales."
+    },
+    {
+      pregunta: "¿Cuál es la regla de oro principal que debes aplicar si alguien te asusta o incomoda en Internet?",
+      opciones: [
+        "Guardar el secreto y apagar la pantalla",
+        "Responder con palabras hirientes al agresor",
+        "Pedir ayuda inmediatamente a un adulto de confianza",
+        "Compartir el mensaje con todos tus compañeros de clase"
+      ],
+      correcta: 2,
+      explicacion: "Acudir a un adulto de confianza (padres o profesores) garantiza apoyo, acompañamiento y soluciones efectivas."
+    },
+    {
+      pregunta: "En el reto práctico, ¿qué comando de teclado se utiliza para pegar en Excel la tabla copiada desde la IA?",
+      opciones: [
+        "Ctrl + C",
+        "Ctrl + V",
+        "Ctrl + Z",
+        "Ctrl + X"
+      ],
+      correcta: 1,
+      explicacion: "La combinación de teclas Ctrl + V se utiliza para pegar datos previamente copiados (Ctrl + C) en la celda activa."
+    },
+    {
+      pregunta: "¿A qué se refiere el concepto de «Huella Digital»?",
+      opciones: [
+        "La marca dactilar que usamos para desbloquear el celular",
+        "El rastro e historial de datos que dejamos registrados al navegar por Internet",
+        "Un tipo de virus informático que altera los archivos del sistema",
+        "La firma digital utilizada para comprar aplicaciones en la tienda"
+      ],
+      correcta: 1,
+      explicacion: "La huella digital está compuesta por toda la información, publicaciones y registros que generamos al usar la red."
+    }
+  ],
+  investigacion: {
+    titulo: "Investigación Corta en el Cuaderno",
+    instruccion: "Investiga y responde en tu cuaderno con tus propias palabras (máximo 4 renglones por respuesta):",
+    preguntas: [
+      "¿Qué es la Huella Digital y por qué debemos cuidar la información que dejamos registrada en Internet?",
+      "¿Qué es el Cyberbullying y qué acciones concretas debes realizar si observas que le ocurre a un compañero?"
+    ],
+    fuentes: [
+      "Manual de Ciudadanía Digital - Colombia Aprende",
+      "Guías de Orientación para la Prevención de Riesgos Digitales"
+    ]
+  },
+  tarea: {
+    titulo: "Tarea Entregable: Decálogo Ilustrado para el Uso Seguro de Internet",
+    instruccion: "Elabora un Decálogo Ilustrado en una hoja suelta aplicando las normas de autocuidado aprendidas en clase.",
+    renglones: 5,
+    indicacion: "Escríbela en una hoja block tamaño carta (blanca o cuadriculada) para entregar al docente.",
+    criterios: [
+      "Incluir 10 reglas cortas y claras para navegar de forma segura en la red.",
+      "Acompañar cada regla con un dibujo o símbolo coloreado representativo.",
+      "Excelente presentación, ortografía cuidada y encabezado completo (Nombre, Grado 6-X y Fecha).",
+      "Entrega puntual en la fecha programada."
+    ],
+    entrega: "Próxima sesión de clase"
+  },
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "¿Por qué es peligroso compartir datos como la dirección de tu casa o tu colegio en Internet?", lineas: 3 },
+      { id: "r2", texto: "Menciona una ventaja de Internet y explica de qué forma la aprovechas para tus estudios.", lineas: 3 },
+      { id: "r3", texto: "Si ves que un compañero recibe mensajes sospechosos de un extraño, ¿qué regla de oro le recomendarías aplicar?", lineas: 3 },
+      { id: "r4", texto: "Explica los pasos que realizaste para copiar la tabla desde la IA y darle formato en Microsoft Excel.", lineas: 3 },
+      { id: "r5", texto: "¿Qué aprendiste hoy sobre el autocuidado digital y cuál será tu compromiso al navegar en la red?", lineas: 3 }
+    ]
+  },
+  notasDocente: [
+    "Verificar previamente la conectividad a Internet en la sala de informática y el acceso a la IA seleccionada (Gemini o ChatGPT).",
+    "Supervisar el uso del portapapeles (Ctrl+C / Ctrl+V) durante la transferencia de datos entre el navegador y Microsoft Excel.",
+    "Fomentar un clima de confianza para que los estudiantes expresen dudas o inquietudes sobre ciberseguridad sin temor."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
