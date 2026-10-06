@@ -1,1 +1,463 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correo Electrónico y Comunicación Responsable | Grado 6°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  // ========== ✏️ DATOS RÁPIDOS (lo único que podrías querer cambiar) ==========
+  grado: 6,
+  edad: 11,
+  periodo: 1,
+  semana: 7,
+  tema: "Correo Electrónico y Comunicación Responsable",
+  temaAnterior: "Contraseñas Seguras e Interland",
+  video: "",            // ← enlace de YouTube, Vimeo, Drive o Canva (opcional)
+  estilo: "robot",
+
+  // ========== 🤖 CONTENIDO GENERADO POR LA IA (no hace falta tocarlo) ==========
+  "emoji": "📧",
+  "objetivo": "Identificar las partes de un correo electrónico, redactar mensajes académicos adecuados y reconocer correos sospechosos o de riesgo.",
+  "competencia": "Utiliza el correo electrónico de forma estructurada y segura, reconociendo riesgos de seguridad informática como el phishing.",
+  "preguntaGancho": "¿Sabías que los hackers casi nunca hackean computadores, sino que 'hackean' personas engañándolas con correos falsos?",
+  "agenda": [
+    {
+      "min": 5,
+      "titulo": "Activación y Repaso",
+      "texto": "¿Qué es el correo electrónico?"
+    },
+    {
+      "min": 15,
+      "titulo": "Conceptos Clave",
+      "texto": "Partes del correo y señales de riesgo (Phishing)"
+    },
+    {
+      "min": 20,
+      "titulo": "Reto en Sala",
+      "texto": "Crear tabla de riesgos con IA y formato en Excel"
+    },
+    {
+      "min": 5,
+      "titulo": "Cierre",
+      "texto": "Conclusiones y asignación de investigación"
+    }
+  ],
+  "cuaderno": {
+    "conexion": "La semana pasada aprendimos a crear contraseñas seguras. Hoy veremos cómo proteger esas contraseñas y nuestra información cuando usamos el correo electrónico, nuestra carta de identidad digital en el colegio y en la vida.",
+    "bloques": [
+      {
+        "icono": "📬",
+        "titulo": "1. ¿Qué es y cuáles son sus partes?",
+        "puntos": [
+          {
+            "icono": "👤",
+            "termino": "Para",
+            "texto": "Dirección de la persona a quien va dirigido el mensaje."
+          },
+          {
+            "icono": "👥",
+            "termino": "CC (Copia Carbón)",
+            "texto": "Envía una copia visible a otras personas interesadas."
+          },
+          {
+            "icono": "🕵️",
+            "termino": "CCO (Copia Oculta)",
+            "texto": "Envía copia sin que los demás vean los correos."
+          },
+          {
+            "icono": "🏷️",
+            "termino": "Asunto",
+            "texto": "Título breve y claro que resume el motivo."
+          },
+          {
+            "icono": "📎",
+            "termino": "Archivo adjunto",
+            "texto": "Documento o imagen anexada (ícono de clip)."
+          },
+          {
+            "icono": "🗑️",
+            "termino": "Spam",
+            "texto": "Carpeta de correos publicitarios o sospechosos."
+          }
+        ],
+        "ampliacion": "El **CCO (Copia Oculta)** es vital para la privacidad. Si le envías un correo a todos los estudiantes de 6° sin usar CCO, estás revelando los correos personales de todos tus compañeros. Es como publicar sus números de teléfono en la cartelera del colegio."
+      },
+      {
+        "icono": "🎓",
+        "titulo": "2. Estructura de un Correo Formal",
+        "puntos": [
+          {
+            "icono": "📌",
+            "termino": "Asunto claro",
+            "texto": "Ej: Entrega de Tarea de Tecnología - Grado 6-1."
+          },
+          {
+            "icono": "👋",
+            "termino": "Saludo",
+            "texto": "Ej: Buenos días, profesor William."
+          },
+          {
+            "icono": "📝",
+            "termino": "Mensaje",
+            "texto": "Explicar el motivo de forma clara y respetuosa."
+          },
+          {
+            "icono": "✍️",
+            "termino": "Despedida",
+            "texto": "Ej: Quedo atento. Atentamente, Juan (Grado 6-1)."
+          }
+        ],
+        "ampliacion": "Imagina que le escribes a un profesor del colegio en Buga. No le dirías «hola profe ahí va la tarea». Usar una **estructura formal** demuestra respeto, educación y asegura que tu profesor sepa exactamente quién eres y qué estás enviando."
+      },
+      {
+        "icono": "⚠️",
+        "titulo": "3. Señales de Riesgo (Phishing)",
+        "puntos": [
+          {
+            "icono": "👽",
+            "termino": "Remitente extraño",
+            "texto": "Direcciones con letras o números raros (admin123@xyz.net)."
+          },
+          {
+            "icono": "⏳",
+            "termino": "Urgencia",
+            "texto": "Amenazan con borrar tu cuenta si no haces clic ¡ya!"
+          },
+          {
+            "icono": "🎁",
+            "termino": "Promesas irreales",
+            "texto": "Premios de rifas en las que nunca participaste."
+          },
+          {
+            "icono": "🕷️",
+            "termino": "Archivos .exe",
+            "texto": "Programas ejecutables que suelen contener virus."
+          }
+        ],
+        "ampliacion": "El **Phishing** viene de la palabra en inglés para 'pescar'. El ciberdelincuente lanza un correo falso como si fuera un anzuelo (diciendo que ganaste un iPhone o que cerrarán tu cuenta). Esperan que te asustes, hagas clic y les entregues tu contraseña."
+      }
+    ]
+  },
+  "glosario": [
+    {
+      "termino": "Phishing",
+      "definicion": "Técnica de engaño por correo para robar contraseñas o datos personales."
+    },
+    {
+      "termino": "Spam",
+      "definicion": "Correo no deseado, generalmente publicidad masiva o mensajes fraudulentos."
+    },
+    {
+      "termino": "CC / CCO",
+      "definicion": "Copia Carbón (visible) y Copia Carbón Oculta (invisible para proteger la privacidad)."
+    },
+    {
+      "termino": "Adjunto (.exe)",
+      "definicion": "Archivo que ejecuta un programa; en correos desconocidos, suele ser un virus."
+    }
+  ],
+  "sabiasQue": [
+    "El primer correo electrónico de la historia se envió en 1971 por Ray Tomlinson. Él fue quien inventó usar el símbolo arroba (@) para separar el nombre del usuario y la computadora.",
+    "Más del 90% de los ataques de hackers a las grandes empresas no ocurren rompiendo complejos sistemas de seguridad, sino mediante un correo de phishing engañando a un empleado."
+  ],
+  "modulos": {
+    "tarjetas": {
+      "titulo": "Analogías del Correo Electrónico",
+      "items": [
+        {
+          "icono": "📬",
+          "frente": "Bandeja de Entrada",
+          "reverso": "Es como el buzón físico de tu casa donde llega la correspondencia."
+        },
+        {
+          "icono": "📄",
+          "frente": "CC (Copia Carbón)",
+          "reverso": "Es como sacarle una fotocopia a una carta y repartirla frente a todo el salón."
+        },
+        {
+          "icono": "🕵️️",
+          "frente": "CCO (Copia Oculta)",
+          "reverso": "Es como entregarle esa fotocopia a alguien en secreto; los demás no sabrán que la tiene."
+        },
+        {
+          "icono": "🗑️",
+          "frente": "Spam",
+          "reverso": "Son los folletos de pizzerías y publicidad que te tiran por debajo de la puerta todos los días."
+        },
+        {
+          "icono": "🎭",
+          "frente": "Phishing",
+          "reverso": "Es un extraño disfrazado de cartero pidiéndote las llaves de tu casa."
+        }
+      ]
+    },
+    "clasificador": {
+      "titulo": "Clasifica: ¿Seguro o Riesgoso?",
+      "categorias": [
+        "Mensaje Seguro",
+        "Señal de Phishing"
+      ],
+      "items": [
+        {
+          "texto": "Asunto: Tarea de Tecnología Grado 6",
+          "categoria": 0
+        },
+        {
+          "texto": "Remitente: premios-banco@gmail.xyz",
+          "categoria": 1
+        },
+        {
+          "texto": "Mensaje: ¡URGENTE! Tu cuenta se cerrará en 24h",
+          "categoria": 1
+        },
+        {
+          "texto": "Archivo adjunto: taller_final.pdf",
+          "categoria": 0
+        },
+        {
+          "texto": "Archivo adjunto: juego_gratis.exe",
+          "categoria": 1
+        },
+        {
+          "texto": "Saludo: Buenos días profesor William",
+          "categoria": 0
+        },
+        {
+          "texto": "Mensaje: Felicidades, eres el visitante 1 millón",
+          "categoria": 1
+        }
+      ]
+    },
+    "explorador": {
+      "titulo": "Anatomía de un Correo",
+      "items": [
+        {
+          "icono": "📨",
+          "nombre": "Destinatarios",
+          "secciones": [
+            {
+              "titulo": "Para:",
+              "items": [
+                "Persona principal a quien le hablas directamente."
+              ]
+            },
+            {
+              "titulo": "CC:",
+              "items": [
+                "Personas que deben estar enteradas de la conversación."
+              ]
+            },
+            {
+              "titulo": "CCO:",
+              "items": [
+                "Protege la privacidad. Oculta los correos de las personas en este campo."
+              ]
+            }
+          ]
+        },
+        {
+          "icono": "📝",
+          "nombre": "Estructura Formal",
+          "secciones": [
+            {
+              "titulo": "Asunto",
+              "items": [
+                "Corto y descriptivo (Ej: Envío de Taller)."
+              ]
+            },
+            {
+              "titulo": "Cuerpo",
+              "items": [
+                "Saludo, mensaje claro y respetuoso, despedida formal."
+              ]
+            },
+            {
+              "titulo": "Adjuntos",
+              "items": [
+                "Documentos verificados (.pdf, .docx, .jpg)."
+              ]
+            }
+          ]
+        },
+        {
+          "icono": "☢️",
+          "nombre": "Peligros",
+          "secciones": [
+            {
+              "titulo": "Phishing",
+              "items": [
+                "Se hace pasar por bancos o redes sociales para robar datos."
+              ]
+            },
+            {
+              "titulo": "Enlaces Raros",
+              "items": [
+                "Nunca hagas clic en links de correos que no solicitaste."
+              ]
+            },
+            {
+              "titulo": "Spam",
+              "items": [
+                "No respondas el spam, hacerlo confirma que tu correo está activo."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reto": {
+    "titulo": "Reto en Sala: Tabla de Riesgos con IA y Excel",
+    "descripcion": "Vamos a usar una Inteligencia Artificial para generar una tabla sobre los elementos del correo y sus riesgos, y luego le daremos un formato profesional y presentable en Microsoft Excel.",
+    "pasos": [
+      "1. Abre la herramienta de IA (ChatGPT, Gemini, o la que indique el profe).",
+      "2. Copia exactamente el 'prompt' de abajo y presiona Enviar.",
+      "3. Selecciona la tabla que generó la IA y cópiala (Ctrl + C).",
+      "4. Abre Microsoft Excel, haz clic en la celda A1 y presiona Ctrl + V. Verifica que los datos queden en filas y columnas.",
+      "5. Selecciona los encabezados (A1, B1, C1), ponles fondo azul oscuro y texto blanco en negrita.",
+      "6. Selecciona toda la tabla y aplícale 'Todos los bordes'.",
+      "7. Ajusta el ancho haciendo doble clic entre las letras de las columnas para que el texto no se corte.",
+      "8. Aplica fondo amarillo a las filas con riesgo 'Medio' y fondo rojo a las filas con riesgo 'Alto'."
+    ],
+    "prompt": "Genera una tabla en formato de texto tabulado con 6 filas y 3 columnas sobre comunicación por correo electrónico. Las columnas deben ser: 'Elemento o Término', 'Definición Sencilla' y 'Nivel de Riesgo (Bajo / Medio / Alto)'. Incluye los siguientes términos: Para, CC, CCO, Archivo Adjunto .exe, Enlace Desconocido, Correo de Spam. No agregues texto adicional antes ni después de la tabla.",
+    "herramientas": [
+      {
+        "nombre": "ChatGPT",
+        "url": "https://chatgpt.com"
+      },
+      {
+        "nombre": "Google Gemini",
+        "url": "https://gemini.google.com"
+      }
+    ],
+    "requisitos": [
+      "La tabla debe empezar en la celda A1.",
+      "Encabezados con fondo azul oscuro y letra blanca.",
+      "Toda la tabla debe tener bordes.",
+      "Ningún texto debe verse cortado (columnas ajustadas).",
+      "Colores correctos según el nivel de riesgo (Amarillo o Rojo)."
+    ]
+  },
+  "quiz": [
+    {
+      "pregunta": "Si quieres enviar una circular por correo a 50 padres de familia sin que se vean los correos entre sí, ¿qué campo debes usar?",
+      "opciones": [
+        "Para",
+        "CC",
+        "CCO",
+        "Asunto"
+      ],
+      "correcta": 2,
+      "explicacion": "El CCO (Copia Carbón Oculta) oculta las direcciones de todos los destinatarios, protegiendo su privacidad."
+    },
+    {
+      "pregunta": "¿Qué es lo más importante al redactar el 'Asunto' de un correo para un profesor?",
+      "opciones": [
+        "Que sea muy largo y detallado",
+        "Que sea breve y explique claramente el motivo",
+        "Que tenga muchos emojis",
+        "Dejarlo en blanco para que sea una sorpresa"
+      ],
+      "correcta": 1,
+      "explicacion": "El asunto es como el título del correo; debe permitir saber de qué trata el mensaje antes de abrirlo."
+    },
+    {
+      "pregunta": "¿Qué archivo adjunto NUNCA deberías abrir si viene de un correo desconocido?",
+      "opciones": [
+        "Un archivo .pdf",
+        "Una imagen .jpg",
+        "Un programa terminado en .exe",
+        "Un documento .docx"
+      ],
+      "correcta": 2,
+      "explicacion": "Los archivos .exe son ejecutables; si vienen de un desconocido, probablemente instalarán un virus en tu computador."
+    },
+    {
+      "pregunta": "Recibes un correo diciendo: '¡URGENTE! Tu cuenta será eliminada en 5 min. Haz clic aquí y pon tu clave'. ¿Qué es esto?",
+      "opciones": [
+        "Un error del sistema",
+        "Un ataque de Phishing",
+        "Un mensaje de Spam normal",
+        "Una actualización de seguridad"
+      ],
+      "correcta": 1,
+      "explicacion": "El Phishing usa la urgencia y el miedo para engañarte y hacer que entregues tu contraseña."
+    },
+    {
+      "pregunta": "¿Qué significa la sigla 'CC' en un correo electrónico?",
+      "opciones": [
+        "Correo Copiado",
+        "Copia Carbón",
+        "Comando Central",
+        "Contenido Cerrado"
+      ],
+      "correcta": 1,
+      "explicacion": "Significa 'Copia Carbón', un término que viene de cuando se usaba papel carbón para hacer copias en las máquinas de escribir."
+    },
+    {
+      "pregunta": "¿Por qué es fundamental incluir un saludo formal y una firma en un correo académico?",
+      "opciones": [
+        "Para gastar más teclado",
+        "Porque los servidores de correo lo exigen",
+        "Demuestra respeto y claridad de quién escribe",
+        "Para evitar que llegue a la bandeja de Spam"
+      ],
+      "correcta": 2,
+      "explicacion": "El saludo y la firma son reglas básicas de 'Netiqueta' (etiqueta en internet) y ayudan al profesor a identificarte."
+    }
+  ],
+  "investigacion": {
+    "titulo": "Investigación Breve en el Cuaderno",
+    "instruccion": "Responde en tu cuaderno las siguientes 3 preguntas breves basándote en la clase:",
+    "preguntas": [
+      "¿Qué es el Phishing y cuál es su objetivo principal?",
+      "¿Cuál es la diferencia de seguridad entre usar el campo CC y el campo CCO al enviar un correo a un grupo grande de personas?",
+      "¿Qué debes hacer si recibes un correo electrónico que te pide cambiar tu contraseña escolar de manera urgente?"
+    ],
+    "fuentes": [
+      "Apuntes de la clase",
+      "Interland (Google)"
+    ]
+  },
+  "hoja": {
+    "preguntas": [
+      {
+        "id": "r1",
+        "texto": "¿Por qué crees que un ciberdelincuente prefiere engañar a una persona con Phishing en lugar de intentar adivinar su contraseña con programas?",
+        "lineas": 3
+      },
+      {
+        "id": "r2",
+        "texto": "Describe un momento del año escolar en el que podrías necesitar escribir un correo formal a un profesor o directivo.",
+        "lineas": 2
+      },
+      {
+        "id": "r3",
+        "texto": "De la actividad en Excel, ¿qué fue lo más fácil y lo más difícil al pasar los datos de la Inteligencia Artificial a la tabla?",
+        "lineas": 2
+      },
+      {
+        "id": "r4",
+        "texto": "Nombra dos diferencias clave entre un correo basura inofensivo (Spam) y un correo peligroso (Phishing).",
+        "lineas": 3
+      },
+      {
+        "id": "r5",
+        "texto": "Si fueras el profesor, ¿qué consejo le darías a un estudiante de primaria para que no caiga en trampas de correos electrónicos?",
+        "lineas": 3
+      }
+    ]
+  },
+  "notasDocente": [
+    "Monitorea el uso de la IA; a veces los estudiantes copian el texto previo o posterior a la tabla. Enséñales a copiar solo los datos tabulados.",
+    "Para Excel, enfatiza el uso del doble clic entre las columnas (ej: A y B) para ajustar el ancho automáticamente, ya que a los estudiantes de 6° se les suele dificultar esto.",
+    "Aprovecha el espacio para recordar el cuidado de los datos personales en internet, relacionando el correo electrónico con la clase anterior de contraseñas seguras."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
