@@ -1,1 +1,239 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contraseñas Seguras e Interland | Grado 6°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 6,
+  edad: 11,
+  periodo: 1,
+  semana: 6,
+  tema: "Contraseñas Seguras e Interland",
+  temaAnterior: "Navegación segura y autocuidado digital",
+  video: "",
+  estilo: "coral",
+  emoji: "🔐",
+  objetivo: "Crear contraseñas seguras y aplicar criterios de autocuidado mediante situaciones simuladas en Interland.",
+  competencia: "Comprende la importancia de proteger su identidad digital y toma decisiones seguras al interactuar en la red.",
+  preguntaGancho: "¿Sabías que la contraseña más usada en el mundo sigue siendo '123456'? ¿Cuánto tiempo crees que tardaría un ciberdelincuente en adivinarla?",
+  agenda: [
+    { min: 5, titulo: "Gancho y Sabías que", texto: "Reflexión sobre el peligro de las contraseñas comunes." },
+    { min: 15, titulo: "Teoría en el Cuaderno", texto: "Reglas de oro y decálogo de autocuidado digital." },
+    { min: 15, titulo: "Reto en Sala (Excel)", texto: "Aplicación práctica estructurando datos en Excel." },
+    { min: 10, titulo: "Microquiz y Hoja de Reflexión", texto: "Evaluación de los conceptos aprendidos y toma de decisiones." }
+  ],
+  cuaderno: {
+    conexion: "La semana pasada aprendimos a navegar seguros y cuidarnos en línea. Ahora vamos a fabricar el candado principal para nuestra información: una contraseña invencible.",
+    bloques: [
+      {
+        icono: "🛡️",
+        titulo: "1. ¿Qué es una Contraseña Segura?",
+        puntos: [
+          { icono: "🔒", termino: "Candado Digital", texto: "Protege tu identidad, redes sociales y datos personales." },
+          { icono: "🚫", termino: "Defensa contra Bots", texto: "Evita que programas automáticos roben tu información." }
+        ],
+        ampliacion: "Imagina que tu cuenta de Instagram o tu correo del colegio son como tu diario personal o la puerta de tu casa en Buga. Si le pones una cerradura de papel, cualquiera entra sin esfuerzo. Una **contraseña segura** es como una bóveda de alta seguridad en un banco: protege tu identidad contra ciberdelincuentes y evita que programas automáticos rastreen y roben tu información privada para suplantarte. ¡Tu identidad digital vale mucho y debes cuidarla!"
+      },
+      {
+        icono: "🔑",
+        titulo: "2. Las 4 Reglas de Oro",
+        puntos: [
+          { icono: "📏", termino: "Longitud Mínima", texto: "Debe tener al menos 8 caracteres. Entre más larga, mejor." },
+          { icono: "🔀", termino: "Combinación Clave", texto: "Mezcla mayúsculas, minúsculas, números y símbolos (@, #, *)." },
+          { icono: "🤐", termino: "Privacidad Absoluta", texto: "Es personal e intransferible. Nunca la compartas." },
+          { icono: "♻️", termino: "Cero Reciclaje", texto: "Usa contraseñas distintas para cada plataforma (Instagram, correo, juegos)." }
+        ],
+        ampliacion: "Muchos usan fechas de nacimiento, el nombre de su mascota o el típico 'password' porque es fácil de recordar, pero ¡es un error gravísimo! Los hackers usan algo llamado **ataques de fuerza bruta**, donde computadores prueban millones de combinaciones en segundos. Al usar **símbolos, mayúsculas y números**, multiplicas la dificultad y los bloqueas. Además, recuerda la regla de no reciclar: nunca usarías la misma llave para tu casa y tu carro; de igual forma, no debes usar la misma clave para tu videojuego y tu correo."
+      },
+      {
+        icono: "📜",
+        titulo: "3. Decálogo de Autocuidado",
+        puntos: [
+          { icono: "🚨", termino: "Reacción Rápida", texto: "Si sospechas que alguien descubrió tu contraseña, cámbiala de inmediato." },
+          { icono: "🚪", termino: "Cierre de Sesión", texto: "Al usar computadores públicos o del colegio, siempre cierra tu cuenta al terminar." },
+          { icono: "🆘", termino: "Pedir Ayuda", texto: "Si recibes mensajes extraños pidiendo tus claves, avisa a un adulto de confianza." }
+        ],
+        ampliacion: "En el mundo digital, al igual que cuando caminamos por la calle, debemos estar siempre alerta. En plataformas interactivas como **Interland**, aprendemos que proteger la información no solo es crear una buena clave, sino saber dónde la escribimos. **Cerrar sesión** en los equipos de la sala de sistemas es vital para que nadie lea tus chats. Y si algo en línea te hace sentir incómodo, como un mensaje de un desconocido pidiendo datos personales, siempre debes **pedir ayuda a un adulto** sin miedo."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Fuerza Bruta", definicion: "Técnica usada por ciberdelincuentes donde un programa informático adivina una clave probando millones de combinaciones rápidamente." },
+    { termino: "Autenticación en Dos Pasos (2FA)", definicion: "Capa extra de protección que exige un código enviado a tu celular, además de tu contraseña, para poder ingresar." },
+    { termino: "Phishing", definicion: "Técnica de engaño donde se hacen pasar por una empresa o amigo para robarte contraseñas o información." }
+  ],
+  sabiasQue: [
+    "Un computador moderno con un buen procesador puede descifrar la contraseña 'micasa123' en menos de 1 segundo.",
+    "Interland es un juego de aventuras creado por Google para enseñar a niños y jóvenes sobre ciudadanía y seguridad digital."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Analogías de Seguridad",
+      items: [
+        { icono: "🏠", frente: "Tener una contraseña débil o fácil de adivinar.", reverso: "Es como dejar la llave de tu casa puesta en la cerradura por fuera." },
+        { icono: "🔑", frente: "Reutilizar la misma clave para todas tus cuentas.", reverso: "Es como usar la misma llave para abrir tu casa, tu casillero y tu diario." },
+        { icono: "📱", frente: "Tener Autenticación en Dos Pasos (2FA) activada.", reverso: "Es como tener una puerta de acero reforzada y además un perro guardián." },
+        { icono: "🗣️", frente: "Compartir tu contraseña con tus 'mejores amigos'.", reverso: "Es darle copias de las llaves de tu habitación a personas que podrían perderlas." }
+      ]
+    },
+    explorador: {
+      titulo: "Los Reinos de Interland",
+      items: [
+        {
+          icono: "🏔️",
+          nombre: "Montaña Sensata",
+          secciones: [
+            { titulo: "Cuidado al Compartir", items: ["Piensa antes de publicar.", "No compartas información privada de otros.", "Controla quién puede ver tus fotos."] }
+          ]
+        },
+        {
+          icono: "🏰",
+          nombre: "Torre del Tesoro",
+          secciones: [
+            { titulo: "Protección de Secretos", items: ["Crea contraseñas largas y combinadas.", "No uses datos fáciles de adivinar.", "Nunca anotes tus claves en papeles a la vista."] }
+          ]
+        },
+        {
+          icono: "🌊",
+          nombre: "Río de Realidad",
+          secciones: [
+            { titulo: "No Caigas en Trampas", items: ["Desconfía de premios falsos (Phishing).", "Asegúrate de que las páginas sean reales.", "Ante la duda, pregúntale a un adulto."] }
+          ]
+        },
+        {
+          icono: "💖",
+          nombre: "Reino Amable",
+          secciones: [
+            { titulo: "Cultura del Respeto", items: ["Bloquea y reporta a los acosadores.", "No seas cómplice del ciberbullying.", "Usa internet para esparcir positividad."] }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Auditoría Rápida: ¿Segura o Insegura?",
+      categorias: ["Contraseña Segura", "Contraseña Insegura"],
+      items: [
+        { texto: "carlos2009", categoria: 1 },
+        { texto: "C4rl0s!2026#", categoria: 0 },
+        { texto: "M1_p3rr0_T0by*", categoria: 0 },
+        { texto: "12345678", categoria: 1 },
+        { texto: "f3ch4d3N4c!", categoria: 0 },
+        { texto: "miNombreEsJuan", categoria: 1 },
+        { texto: "password", categoria: 1 },
+        { texto: "G4t0_N1nj4_99", categoria: 0 }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Auditoría de Contraseñas en Excel",
+    descripcion: "En este reto aplicarás formatos de tabla y celdas en Excel para organizar y clasificar rápidamente un registro de contraseñas. ¡Verás cómo la IA estructura los datos perfectamente en filas y columnas!",
+    pasos: [
+      "Abre una hoja de cálculo en blanco en Microsoft Excel.",
+      "Copia TODO el bloque de texto que se encuentra en la caja del 'prompt' más abajo.",
+      "Ve a Excel, haz clic en la celda A1 y presiona 'Ctrl + V' para pegar los datos.",
+      "Ajusta el ancho de las columnas haciendo doble clic entre las letras de arriba (A, B, C...) para que todo el texto sea visible.",
+      "Selecciona todos los datos y aplica 'Formato de Tabla' en la pestaña Inicio, asegurándote de marcar 'La tabla tiene encabezados'.",
+      "Aplica un color de fondo manual: Verde Claro a las celdas de las filas con estatus 'Segura' y Rojo Claro a las 'Insegura'."
+    ],
+    prompt: "Nivel\tEjemplo de Clave\tEstatus\tRiesgo o Diagnóstico\nDébil\tcarlos2009\tInsegura\tUtiliza datos personales y solo minúsculas.\nMedio\tCarlos_2009\tRegular\tIncluye mayúscula y número, pero mantiene el nombre personal.\nFuerte\tC4rl0s!2026#\tSegura\tCombina mayúsculas, minúsculas, números y caracteres especiales.",
+    herramientas: [
+      { nombre: "Microsoft Excel", url: "https://www.office.com" }
+    ],
+    requisitos: [
+      "Los datos están correctamente organizados en 4 columnas separadas (Nivel, Ejemplo, Estatus, Riesgo).",
+      "La tabla tiene un formato de diseño aplicado con encabezados de columna destacados.",
+      "Las contraseñas seguras están resaltadas en verde y las inseguras en rojo.",
+      "Todo el texto de las celdas es legible y ninguna palabra queda oculta."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Por qué es un riesgo enorme utilizar la misma contraseña para tu videojuego y el correo del colegio?",
+      opciones: [
+        "Porque si descubren una clave, los hackers acceden automáticamente a todas tus cuentas.",
+        "Porque el sistema borra tus datos si detecta claves repetidas.",
+        "Porque el colegio tiene reglas estrictas contra los videojuegos.",
+        "Porque usar la misma clave hace que la conexión a internet sea más lenta."
+      ],
+      correcta: 0,
+      explicacion: "Si un ciberdelincuente logra descifrar la clave de una plataforma débil, de inmediato intentará usar esa misma clave en tus redes sociales y correos importantes."
+    },
+    {
+      pregunta: "Según las Reglas de Oro vistas en clase, ¿cuál de estas opciones es la contraseña MÁS segura?",
+      opciones: [
+        "Carlos2012",
+        "cArLoS_bUgA",
+        "C4rl0s!2026#",
+        "micasa1234"
+      ],
+      correcta: 2,
+      explicacion: "Es la más segura porque tiene buena longitud y combina mayúsculas, minúsculas, números y símbolos especiales, siendo difícil para un ataque de fuerza bruta."
+    },
+    {
+      pregunta: "¿Qué debes hacer SIEMPRE que termines de usar un computador en la sala de sistemas o en un cibercafé?",
+      opciones: [
+        "Cambiar el fondo de pantalla para que sepan que estuviste ahí.",
+        "Cerrar tu sesión de correo y plataformas completamente.",
+        "Guardar tus contraseñas en el navegador de Google Chrome.",
+        "Apagar el monitor sin preocuparte por cerrar la sesión."
+      ],
+      correcta: 1,
+      explicacion: "Dejar la sesión abierta permite que la próxima persona que se siente en ese computador acceda libremente a tu información privada."
+    },
+    {
+      pregunta: "¿Qué es exactamente un 'Ataque de Fuerza Bruta' en informática?",
+      opciones: [
+        "Dañar los servidores o el teclado golpeándolos físicamente.",
+        "Adivinar contraseñas usando un programa que prueba millones de combinaciones rápidamente.",
+        "Robar contraseñas mirando por encima del hombro mientras alguien teclea.",
+        "Enviar correos masivos con virus."
+      ],
+      correcta: 1,
+      explicacion: "Los ciberdelincuentes usan software automatizado diseñado para probar letras y números a una velocidad que un humano jamás podría igualar."
+    },
+    {
+      pregunta: "Si recibes un mensaje diciendo que ganaste el último iPhone y te pide tu contraseña de correo para enviártelo, ¿qué debes hacer?",
+      opciones: [
+        "Dar la contraseña rápidamente para que el celular llegue pronto.",
+        "Pedir ayuda a un adulto de confianza e ignorar el mensaje.",
+        "Poner una contraseña falsa a ver qué pasa.",
+        "Reenviar el mensaje de premio a todos tus amigos."
+      ],
+      correcta: 1,
+      explicacion: "Es un caso típico de 'phishing' (pesca de datos) donde usan trucos emocionantes para engañarte. Nunca compartas información sin consultar a un adulto."
+    },
+    {
+      pregunta: "En el juego 'Interland', ¿qué nos enseña específicamente la 'Torre del Tesoro'?",
+      opciones: [
+        "A ganar monedas rápidamente para avanzar de nivel.",
+        "A proteger nuestros secretos y crear contraseñas fuertes a prueba de hackers.",
+        "A chatear con extraños que parecen amigables.",
+        "A buscar tesoros escondidos usando Google Maps."
+      ],
+      correcta: 1,
+      explicacion: "La Torre del Tesoro está diseñada precisamente para practicar cómo blindar nuestra información más valiosa en el mundo digital."
+    }
+  ],
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "Si un amigo cercano te pide tu contraseña de Instagram para 'ayudarte' a ganar más seguidores, ¿qué le responderías y por qué?", lineas: 3 },
+      { id: "r2", texto: "Escribe un ejemplo de una frase creativa que podrías usar para crear una contraseña fuerte. (¡Ojo! Escribe la frase, NO la contraseña final. Ej: Mi perro Toby come 2 manzanas = MpTc2m*).", lineas: 3 },
+      { id: "r3", texto: "¿Cuál fue la parte más fácil y la más difícil al organizar y pintar la tabla de Excel durante el Reto de hoy?", lineas: 3 },
+      { id: "r4", texto: "De las 4 Reglas de Oro para contraseñas, ¿cuál crees que es la que los adultos y jóvenes olvidan cumplir más a menudo? Justifica tu respuesta.", lineas: 4 },
+      { id: "r5", texto: "¿Por qué crees que es importante reportar y pedir ayuda cuando vemos algo sospechoso o recibimos acoso en internet?", lineas: 4 }
+    ]
+  },
+  notasDocente: [
+    "Asegúrate de enfatizar a los estudiantes que bajo ninguna circunstancia deben escribir sus contraseñas reales en el cuaderno, en Excel o en la hoja de trabajo.",
+    "Para el reto de Excel, verifica que los estudiantes usen 'Pegado Especial > Texto' si el formato inicial no se ajusta automáticamente a las columnas en sus versiones de Office.",
+    "Al hablar de Interland, subraya que pedir ayuda a un adulto ante mensajes sospechosos no es 'ser chismoso', sino aplicar protocolos de seguridad cibernética."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
