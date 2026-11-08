@@ -1,1 +1,235 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecnología y sala de sistemas | Grado 6°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 6,
+  edad: 10,
+  periodo: 2,
+  semana: 1,
+  tema: "Tecnología y sala de sistemas",
+  temaAnterior: "Correo Electrónico y Comunicación Responsable",
+  video: "",
+  estilo: "galaxia",
+  emoji: "💻⚙️",
+  objetivo: "Reconocer la tecnología como solución a problemas cotidianos y aplicar las normas de uso de la sala de sistemas.",
+  competencia: "Identifico la diferencia entre artefacto, proceso y sistema, y utilizo herramientas de IA para organizar datos en hojas de cálculo.",
+  preguntaGancho: "¿Crees que la tecnología es solo internet y computadoras, o un lápiz también cuenta como tecnología?",
+  agenda: [
+    { min: 10, titulo: "Conceptos clave", texto: "Diferencia entre artefacto, proceso y sistema con ejemplos." },
+    { min: 10, titulo: "Reglas de oro", texto: "Reconocimiento y cuidado de nuestra sala de sistemas." },
+    { min: 20, titulo: "Reto IA y Excel", texto: "Generación de datos estructurados y copiado a Excel." },
+    { min: 5, titulo: "Cierre y Quiz", texto: "Evaluación de los conceptos aprendidos hoy." }
+  ],
+  cuaderno: {
+    conexion: "En la clase anterior aprendimos sobre el correo electrónico y cómo comunicarnos de forma responsable. Hoy daremos un paso atrás para ver todo el panorama: entender qué es realmente la tecnología y cómo cuidar nuestro espacio tecnológico de trabajo.",
+    bloques: [
+      {
+        icono: "💡",
+        titulo: "1. ¿Qué es la Tecnología?",
+        puntos: [
+          { icono: "📱", termino: "Artefacto", texto: "Objetos físicos que podemos tocar, creados para una función." },
+          { icono: "⚙️", termino: "Proceso", texto: "Pasos ordenados o 'receta' que seguimos para lograr algo." },
+          { icono: "🔗", termino: "Sistema", texto: "Grupo de partes que trabajan juntas. Si quitas una, falla." }
+        ],
+        ampliacion: "¡La tecnología no es solo el celular! Es **todo lo que el ser humano ha inventado** para resolver problemas. Por ejemplo, en Buga, el sistema de recolección de basuras utiliza camiones (artefactos) y rutas establecidas (procesos) para funcionar correctamente."
+      },
+      {
+        icono: "📊",
+        titulo: "2. Ejemplos de nuestro entorno",
+        puntos: [
+          { icono: "🦷", termino: "Aseo personal", texto: "Cepillo (Artefacto) - Lavado (Proceso) - Acueducto (Sistema)" },
+          { icono: "🧹", termino: "Limpieza", texto: "Escoba (Artefacto) - Barrer (Proceso) - Reciclaje (Sistema)" },
+          { icono: "🕹️", termino: "Entretenimiento", texto: "Control (Artefacto) - Armar consola (Proceso) - PC (Sistema)" }
+        ],
+        ampliacion: "Como notas en el **cuadro comparativo**, un artefacto puede ser una pieza muy pequeña que forma parte de un sistema gigantesco. Sin los artefactos ni los procesos, los sistemas colapsarían."
+      },
+      {
+        icono: "🛡️",
+        titulo: "3. Reglas de la Sala de Sistemas",
+        puntos: [
+          { icono: "🚪", termino: "Ingreso", texto: "Entrar en orden, con las manos limpias y en silencio." },
+          { icono: "🥪", termino: "Alimentos", texto: "Prohibido comer o beber cerca de los computadores." },
+          { icono: "🖥️", termino: "Cuidado", texto: "Tratar con delicadeza el teclado, el ratón y la pantalla." }
+        ],
+        ampliacion: "La sala de sistemas del Colegio Santa Mariana de Jesús es nuestro laboratorio creativo. **Aplicar las normas** garantiza que los equipos funcionen todo el año escolar y que tú y tus compañeros puedan seguir aprendiendo."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Artefacto", definicion: "Objeto fabricado por el humano para cumplir una función específica." },
+    { termino: "Proceso", definicion: "Secuencia de pasos o instrucciones para transformar algo o lograr un resultado." },
+    { termino: "Sistema", definicion: "Conjunto de elementos o partes que se relacionan y trabajan en equipo." },
+    { termino: "Celda (Excel)", definicion: "Cada uno de los cuadros que forman una hoja de cálculo, donde se cruzan filas y columnas." }
+  ],
+  sabiasQue: [
+    "La rueda es considerada uno de los artefactos tecnológicos más antiguos e importantes de la humanidad, inventada hace más de 5.000 años.",
+    "El primer sistema de acueducto moderno se parece mucho a los sistemas de redes informáticas: ambos transportan recursos esenciales de un punto a otro."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Identifica el tipo de tecnología",
+      items: [
+        { icono: "🖊️", frente: "Un lapicero para escribir en el cuaderno", reverso: "Artefacto (Es un objeto simple y físico)" },
+        { icono: "📜", frente: "Las instrucciones para armar un escritorio", reverso: "Proceso (Son pasos ordenados)" },
+        { icono: "🚲", frente: "Una bicicleta con pedales, cadena y llantas", reverso: "Sistema (Conjunto de partes que trabajan juntas)" },
+        { icono: "🌐", frente: "La red de internet del colegio", reverso: "Sistema (Conecta múltiples equipos y cables)" }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasifica los siguientes elementos",
+      categorias: ["Artefacto", "Proceso", "Sistema"],
+      items: [
+        { texto: "Tijeras", categoria: 0 },
+        { texto: "Receta para hacer pandebono", categoria: 1 },
+        { texto: "Computadora portátil", categoria: 2 },
+        { texto: "Goma de borrar", categoria: 0 },
+        { texto: "Pasos para reciclar papel", categoria: 1 },
+        { texto: "Reloj mecánico de engranajes", categoria: 2 },
+        { texto: "Manual de uso del televisor", categoria: 1 },
+        { texto: "Sistema de transporte público", categoria: 2 }
+      ]
+    },
+    explorador: {
+      titulo: "Zonas de la Sala de Sistemas",
+      items: [
+        {
+          icono: "🚦",
+          nombre: "Filtro de entrada",
+          secciones: [
+            { titulo: "Antes de sentarse", items: ["Manos limpias", "Dejar maletas en el lugar asignado", "Entrar sin alimentos ni bebidas"] }
+          ]
+        },
+        {
+          icono: "⌨️",
+          nombre: "Estación de trabajo",
+          secciones: [
+            { titulo: "Cuidado del equipo", items: ["No golpear el teclado", "No rayar el monitor", "Usar el ratón suavemente"] }
+          ]
+        },
+        {
+          icono: "🚪",
+          nombre: "Salida",
+          secciones: [
+            { titulo: "Al terminar", items: ["Cerrar todas las ventanas de Windows", "Organizar la silla", "Dejar el puesto limpio"] }
+          ]
+        }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Investigador IA en Excel",
+    descripcion: "Hoy usaremos a la Inteligencia Artificial como nuestra asistente para investigar ejemplos tecnológicos y los organizaremos perfectamente en una hoja de cálculo.",
+    pasos: [
+      "1. Abre la herramienta de IA que indique el profesor (Gemini, ChatGPT, etc.).",
+      "2. Copia y pega el PROMPT exacto que está abajo en la caja de texto de la IA.",
+      "3. Cuando la IA te entregue la tabla, selecciónala toda con el ratón y presiona Copiar (Ctrl+C).",
+      "4. Abre un libro en blanco en Microsoft Excel.",
+      "5. Haz clic derecho en la celda A1 y elige Pegar (Ctrl+V). ¡Observa cómo respeta columnas y filas!",
+      "6. Dale diseño: ponle bordes a todas las celdas y pinta la fila de títulos con tu color favorito.",
+      "7. Llama al profesor para que valide tu excelente trabajo."
+    ],
+    prompt: "Actúa como un profesor de tecnología. Crea una tabla con 3 columnas llamadas: Artefacto, Proceso y Sistema. Escribe 4 ejemplos de cada uno que se puedan encontrar estrictamente dentro de un colegio. Entrégame únicamente la tabla, sin texto introductorio ni conclusiones.",
+    herramientas: [
+      { nombre: "Microsoft Excel", url: "https://www.office.com" },
+      { nombre: "Gemini", url: "https://gemini.google.com" }
+    ],
+    requisitos: [
+      "La tabla pegada en Excel tiene exactamente 3 columnas.",
+      "Las filas y columnas no están desordenadas al pegarlas.",
+      "La primera fila tiene un color de fondo para resaltar los títulos.",
+      "Toda la tabla tiene bordes definidos."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Cuál es la definición más acertada de Tecnología?",
+      opciones: [
+        "Solo los computadores y el internet",
+        "Todo lo inventado por el ser humano para resolver problemas",
+        "La ciencia que estudia los planetas",
+        "Un programa de Microsoft Windows"
+      ],
+      correcta: 1,
+      explicacion: "La tecnología abarca desde un lápiz hasta una nave espacial, todo lo creado para solucionar necesidades."
+    },
+    {
+      pregunta: "Unas tijeras y un cuaderno son ejemplos claros de:",
+      opciones: [
+        "Sistemas complejos",
+        "Procesos industriales",
+        "Artefactos",
+        "Reglas de la sala"
+      ],
+      correcta: 2,
+      explicacion: "Son objetos físicos simples diseñados para una función específica (cortar y escribir)."
+    },
+    {
+      pregunta: "Las instrucciones paso a paso para armar una silla son un:",
+      opciones: [
+        "Artefacto",
+        "Sistema",
+        "Manual",
+        "Proceso"
+      ],
+      correcta: 3,
+      explicacion: "Un proceso es una serie de pasos ordenados para llegar a un resultado."
+    },
+    {
+      pregunta: "¿Qué sucede si a un SISTEMA le quitas una de sus partes importantes?",
+      opciones: [
+        "Funciona más rápido",
+        "Se convierte en un artefacto",
+        "Deja de funcionar correctamente",
+        "No sucede absolutamente nada"
+      ],
+      correcta: 2,
+      explicacion: "Los sistemas requieren que todas sus partes trabajen juntas en armonía."
+    },
+    {
+      pregunta: "¿Por qué NO debemos comer cerca de los computadores en la sala de sistemas?",
+      opciones: [
+        "Porque el profesor tiene hambre",
+        "Porque los teclados son feos",
+        "Porque las migas y líquidos pueden dañar los circuitos internos",
+        "Porque la comida quita el internet"
+      ],
+      correcta: 2,
+      explicacion: "Los líquidos y residuos de comida son los principales enemigos de los componentes electrónicos."
+    },
+    {
+      pregunta: "Al pasar una tabla desde una IA hacia Excel, ¿qué teclas usamos generalmente para copiar y pegar?",
+      opciones: [
+        "Ctrl+X y Ctrl+S",
+        "Ctrl+C y Ctrl+V",
+        "Ctrl+P y Ctrl+O",
+        "Alt+F4 y Enter"
+      ],
+      correcta: 1,
+      explicacion: "Ctrl+C es el atajo universal para Copiar y Ctrl+V para Pegar."
+    }
+  ],
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "Explica con tus propias palabras: ¿Cuál es la diferencia entre un artefacto y un proceso?", lineas: 3 },
+      { id: "r2", texto: "Observa a tu alrededor en el colegio. Menciona 1 artefacto, 1 proceso y 1 sistema que puedas identificar.", lineas: 3 },
+      { id: "r3", texto: "¿Por qué crees que es importante tener reglas estrictas en la sala de sistemas de nuestro colegio?", lineas: 3 },
+      { id: "r4", texto: "¿Cómo te ayudó hoy la Inteligencia Artificial a organizar los datos en Excel?", lineas: 2 },
+      { id: "r5", texto: "Piensa en un problema que tengas en tu casa. ¿Qué artefacto te inventarías para solucionarlo?", lineas: 3 }
+    ]
+  },
+  notasDocente: [
+    "Asegúrate de que los estudiantes no confundan 'proceso' tecnológico con proceso biológico. Enfatiza que es inventado por el humano.",
+    "Para el reto de Excel, algunos estudiantes pueden tener problemas con el pegado (se les junta en una sola celda). Recuérdales hacer clic en la celda A1, no doble clic dentro de ella.",
+    "Repasa las reglas de la sala al inicio; esto sentará un buen precedente de comportamiento para todo el periodo escolar."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
