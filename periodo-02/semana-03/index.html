@@ -15,236 +15,250 @@ const CLASE = {
   tema: "La tecnología y su relación con otros campos",
   temaAnterior: "Historia de la Tecnología: Inventos que Cambiaron el Mundo",
   video: "",
-  estilo: "hojacalculo",
-
-  emoji: "⚙️🔬",
-  objetivo: "Comprender las relaciones entre la tecnología y otros campos del conocimiento (ciencia, técnica, diseño, informática e invención) mediante ejemplos cotidianos y cálculos básicos en hoja de cálculo.",
-  competencia: "Identifica y relaciona los diferentes campos del conocimiento que intervienen en la creación de productos tecnológicos, aplicando fórmulas básicas con referencias de celdas en Excel.",
-  preguntaGancho: "¿Alguna vez te has preguntado cuántas profesiones y conocimientos diferentes se necesitan para fabricar algo tan común como tus tenis o tu teléfono celular?",
+  estilo: "galaxia",
+  emoji: "🔬💡",
+  objetivo: "Comprender cómo la tecnología trabaja en equipo con la ciencia, la técnica, el diseño, la informática y la invención para crear las soluciones y objetos que usamos a diario.",
+  competencia: "Reconozco e identifico la interacción entre la tecnología y otros campos del conocimiento en la creación de artefactos, procesos y sistemas de mi entorno cotidiano.",
+  preguntaGancho: "Si quisieras fabricar los tenis deportivos más rápidos y cómodos de Buga, ¿qué conocimientos necesitarías además de saber pegar suelas?",
   agenda: [
-    { min: 5, titulo: "Saludo y activación", texto: "Pregunta generadora sobre cómo se fabrican los objetos que usamos todos los días." },
-    { min: 15, titulo: "Apuntes en el cuaderno", texto: "Explicación y consignación de los cinco campos relacionados con la tecnología." },
-    { min: 20, titulo: "Reto práctico en sala", texto: "Generación de tabla con IA y cálculo de presupuestos tecnológicos en Excel." },
-    { min: 5, titulo: "Cierre y asignación", texto: "Revisión de fórmulas, guardado del archivo y explicación del mapa conceptual entregable." }
+    { min: 10, titulo: "Conexión y pregunta gancho", texto: "Saludo, escritura de fecha, tema y objetivo. Análisis grupal sobre cómo se fabricó una bicicleta o un celular." },
+    { min: 15, titulo: "Teoría en el cuaderno", texto: "Explicación clara y toma de apuntes de los cinco campos aliados de la tecnología con ejemplos del salón de clases." },
+    { min: 10, titulo: "Mapa conceptual guiado", texto: "Construcción creativa en el cuaderno del mapa conceptual uniendo la tecnología con cada campo y nuevos ejemplos." },
+    { min: 10, titulo: "Reto práctico y cierre", texto: "Socialización de ejemplos cotidianos, preparación para el laboratorio de Excel con IA y revisión de compromisos." }
   ],
   cuaderno: {
-    conexion: "En la clase anterior recorrimos la historia de los grandes inventos que transformaron el mundo. Hoy descubriremos que ninguno de esos inventos nació solo: la tecnología siempre trabaja en equipo con otras áreas del saber para resolver nuestras necesidades.",
+    conexion: "En la clase anterior recorrimos la Historia de la Tecnología y vimos inventos que cambiaron el mundo, como la rueda, la imprenta o el computador. Hoy descubriremos que ninguno de esos grandes inventos nació de la nada: detrás de cada avance siempre hubo un trabajo en equipo entre la tecnología y otras áreas del saber.",
     bloques: [
       {
         icono: "🤝",
         titulo: "1. ¿La tecnología trabaja sola?",
         puntos: [
-          { icono: "🧩", termino: "Trabajo en equipo", texto: "Para crear cualquier artefacto o servicio tecnológico, la tecnología se apoya en cinco campos fundamentales del conocimiento humano." },
-          { icono: "🎯", termino: "Propósito común", texto: "Cada campo aporta una pieza distinta: desde entender cómo funciona la naturaleza hasta darle una forma cómoda y programar su funcionamiento." }
+          { icono: "🔬", termino: "Ciencia (El «porqué» de las cosas)", texto: "Es el conocimiento que estudia y explica cómo funciona la naturaleza y el universo. Ejemplo: saber por qué la electricidad viaja por el cobre o cómo actúa la gravedad." },
+          { icono: "🛠️", termino: "Técnica (El «cómo» se hace)", texto: "Son los pasos ordenados, las habilidades y las herramientas que usamos para fabricar o reparar algo bien. Ejemplo: cortar madera con serrucho, coser un uniforme o soldar circuitos." },
+          { icono: "🎨", termino: "Diseño (La forma y comodidad)", texto: "Es planear cómo se verá un objeto, qué colores tendrá y cómo hacerlo cómodo, bonito y seguro para las personas. Ejemplo: dar forma ergonómica a un pupitre escolar." }
         ],
-        ampliacion: "Piensa en una bicicleta que recorre las calles de Buga o sube hacia La Habana. Aunque parece un objeto sencillo, detrás de ella hay física para equilibrar el peso, metalurgia para soldar el cuadro, diseño industrial para que el sillín sea cómodo y mucha creatividad. **La tecnología es el puente que une diferentes saberes para crear soluciones útiles.** Sin esa colaboración entre campos, los objetos serían inseguros, difíciles de usar o simplemente no funcionarían."
+        ampliacion: "Muchas veces confundimos tecnología con tener aparatos caros, pero en realidad es una red de conocimientos trabajando juntos. Cuando un ingeniero en el Valle del Cauca diseña un sistema de riego para los cultivos de caña o frutas, necesita la **ciencia** para saber cuánta agua absorbe la planta, la **técnica** para unir las tuberías sin fugas y el **diseño** para que los aspersores cubran todo el terreno sin desperdiciar ni una gota."
       },
       {
-        icono: "🔬",
-        titulo: "2. Ciencia, Técnica e Invención",
+        icono: "💻",
+        titulo: "2. Informática e Invención: motores de cambio",
         puntos: [
-          { icono: "🧪", termino: "Ciencia", texto: "Es el conocimiento que investiga y explica por qué y cómo ocurren los fenómenos en la naturaleza. Ejemplo: descubrir cómo viaja la electricidad." },
-          { icono: "🛠️", termino: "Técnica", texto: "Son los pasos ordenados, las habilidades manuales y las herramientas que usamos para fabricar o reparar algo. Ejemplo: saber cortar y soldar metal." },
-          { icono: "💡", termino: "Invención", texto: "Es crear algo totalmente nuevo que antes no existía para resolver un problema. Ejemplo: la primera bombilla eléctrica o el primer teléfono." }
+          { icono: "🖥️", termino: "Informática (El cerebro digital)", texto: "Es el uso de computadores, programas y datos para procesar información de forma rápida y automática. Ejemplo: las aplicaciones del celular, los videojuegos o el sistema que controla los semáforos." },
+          { icono: "💡", termino: "Invención (La idea nueva)", texto: "Es crear algo totalmente nuevo que antes no existía para resolver un problema o facilitar una tarea. Ejemplo: la creación de la primera bombilla eléctrica, la rueda o el primer teléfono." },
+          { icono: "⚙️", termino: "Tecnología (La unión de todo)", texto: "Es el conjunto de conocimientos y herramientas que integra todos los campos anteriores para crear soluciones prácticas que mejoran nuestra vida diaria." }
         ],
-        ampliacion: "Es muy fácil confundir ciencia y técnica, pero tienen papeles distintos: **la ciencia busca entender el mundo, mientras que la técnica sabe cómo hacer las cosas paso a paso.** Por ejemplo, en un trapiche panelero del Valle del Cauca, la ciencia explica cómo el calor evapora el agua del jugo de caña, mientras que la técnica es la habilidad del trabajador para dar el punto exacto a la miel. Cuando alguien combina ambos saberes para crear una máquina que nunca antes se había visto, nace una invención."
+        ampliacion: "La diferencia entre inventar y programar es clave en el mundo moderno. Una **invención** ocurre cuando alguien imagina por primera vez una solución inédita, mientras que la **informática** permite darle inteligencia y velocidad a esa solución mediante algoritmos y software. Por ejemplo, el reloj fue inventado hace siglos para medir el tiempo, pero hoy los relojes inteligentes usan informática para medir nuestro ritmo cardíaco mientras corremos en el polideportivo."
       },
       {
-        icono: "🎨",
-        titulo: "3. Diseño e Informática",
+        icono: "📱",
+        titulo: "3. Ejemplo en la vida real: El teléfono celular",
         puntos: [
-          { icono: "✏️", termino: "Diseño", texto: "Es imaginar, dibujar y planear la forma, el tamaño, los colores y los materiales de un objeto para que sea bonito, seguro y cómodo. Ejemplo: la suela ergonómica de unos tenis." },
-          { icono: "💻", termino: "Informática", texto: "Es el uso de computadores, programas y algoritmos para guardar, procesar y enviar información de manera rápida y automática. Ejemplo: las aplicaciones de un celular." }
+          { icono: "💡", termino: "Paso 1 - Invención", texto: "A alguien se le ocurrió la idea novedosa de comunicarse por voz a distancia sin necesidad de cables." },
+          { icono: "🔬", termino: "Paso 2 - Ciencia", texto: "Se estudiaron las ondas electromagnéticas y las propiedades del litio y el vidrio para fabricar baterías y pantallas táctiles." },
+          { icono: "🛠️", termino: "Paso 3 - Técnica", texto: "Se crearon máquinas robóticas y pasos exactos para ensamblar piezas microscópicas sin dañarlas." },
+          { icono: "🎨", termino: "Paso 4 - Diseño", texto: "Se planeó que fuera delgado, liviano, resistente a caídas y fácil de sostener con una sola mano." },
+          { icono: "💻", termino: "Paso 5 - Informática", texto: "Se programó su sistema operativo y las aplicaciones para chatear, tomar fotos, hacer tareas o navegar en mapas." }
         ],
-        ampliacion: "Hoy en día no basta con que un aparato funcione bien; también debe ser agradable para las personas y tener inteligencia digital. **El diseño adapta los objetos al cuerpo y gusto humano, mientras que la informática les da el «cerebro» para procesar datos.** Por ejemplo, en un cajero automático o en una tableta escolar, el diseño define el tamaño de la pantalla y la altura de los botones, mientras que la informática hace posible que el programa responda cuando tocas una opción."
+        ampliacion: "Observar un objeto cotidiano bajo la lupa de estos cinco campos nos ayuda a entender el mundo como verdaderos creadores y no solo como consumidores. Cada vez que tomas un celular, un cuaderno cosido o un balón de fútbol, estás sosteniendo siglos de preguntas científicas, habilidades técnicas y decisiones de diseño. La **idea clave** es que ningún producto tecnológico pertenece a un solo saber: todos son el resultado de unir el pensamiento, la creatividad y la práctica."
       }
     ]
   },
   glosario: [
-    { termino: "Ciencia", definicion: "Conjunto de conocimientos comprobados que explican cómo funcionan los fenómenos de la naturaleza." },
-    { termino: "Técnica", definicion: "Procedimientos, destrezas y uso de herramientas necesarios para ejecutar una tarea o fabricar un producto." },
-    { termino: "Diseño", definicion: "Proceso creativo de planear la apariencia, ergonomía y estructura de un objeto antes de fabricarlo." },
-    { termino: "Informática", definicion: "Ciencia y conjunto de técnicas que permiten el tratamiento automático de la información mediante computadores." },
-    { termino: "Invención", definicion: "Creación de un dispositivo, método o producto completamente original que no existía previamente." },
-    { termino: "Referencia de celda", definicion: "Coordenada (como D2 o E2) que indica la ubicación de un dato en Excel para usarlo dentro de una fórmula." }
+    { termino: "Ciencia", definicion: "Conjunto de conocimientos obtenidos mediante la observación y el razonamiento para explicar cómo funciona el mundo natural." },
+    { termino: "Técnica", definicion: "Procedimiento o conjunto de reglas, normas y habilidades prácticas que sirven para fabricar o ejecutar algo con precisión." },
+    { termino: "Diseño", definicion: "Actividad creativa que planifica la forma, estética, seguridad y comodidad de un objeto antes de fabricarlo." },
+    { termino: "Informática", definicion: "Ciencia que estudia el tratamiento automático y racional de la información mediante computadores y programas." },
+    { termino: "Invención", definicion: "Creación o descubrimiento de un objeto, mecanismo o proceso completamente nuevo que no existía anteriormente." },
+    { termino: "Ergonomía", definicion: "Disciplina del diseño que adapta los objetos, sillas y herramientas a las medidas y comodidad del cuerpo humano." }
   ],
   sabiasQue: [
-    "La palabra «tecnología» proviene del griego «tekhné» (arte, técnica u oficio) y «logos» (estudio o conocimiento), lo que significa literalmente el estudio de cómo hacer las cosas.",
-    "Leonardo da Vinci dibujó planos detallados de máquinas voladoras y bicicletas hace más de 500 años, uniendo arte, diseño y ciencia mucho antes de que existieran los motores.",
-    "Los modernos sistemas de riego por goteo usados en los cultivos del Valle del Cauca combinan ciencia agrícola, diseño hidráulico e informática para ahorrar hasta un 50 % de agua."
+    "El cierre de velcro fue una invención inspirada en la naturaleza: en 1941, el ingeniero suizo George de Mestral observó bajo el microscopio cómo los pequeños ganchos de las semillas de bardana se pegaban al pelo de su perro.",
+    "Los primeros teléfonos celulares comerciales, como el Motorola DynaTAC 8000X lanzado en 1983, pesaban cerca de 800 gramos (casi como un ladrillo) y su batería solo duraba 30 minutos de llamada.",
+    "En la fabricación de un balón de fútbol profesional moderno intervienen la ciencia de los polímeros para que no absorba agua, el diseño aerodinámico de sus paneles y la técnica de termosellado sin costuras."
   ],
   modulos: {
     tarjetas: {
-      titulo: "Analogías: Los 5 aliados de la tecnología",
+      titulo: "Los 5 aliados de la Tecnología (Gira cada tarjeta)",
       items: [
-        { icono: "🔬", frente: "La Ciencia es como el detective", reverso: "Investiga pistas de la naturaleza para descubrir por qué ocurren las cosas (ej. por qué cae una manzana o cómo se transmite el sonido)." },
-        { icono: "🛠️", frente: "La Técnica es como el chef experto", reverso: "Conoce exactamente qué herramientas usar y qué pasos seguir en orden para que el resultado quede perfecto." },
-        { icono: "🎨", frente: "El Diseño es como el arquitecto", reverso: "Dibuja los planos, elige los colores y piensa en la comodidad antes de poner un solo ladrillo." },
-        { icono: "💻", frente: "La Informática es como el director de orquesta", reverso: "Organiza millones de datos a toda velocidad mediante programas para que el sistema funcione sin errores." },
-        { icono: "💡", frente: "La Invención es como el explorador", reverso: "Se atreve a crear un camino o un aparato totalmente nuevo que nadie había construido antes." }
+        { icono: "🔬", frente: "Ciencia: El investigador curioso", reverso: "Pregunta «¿Por qué pasa esto?». Descubre leyes naturales como la electricidad, la luz o la resistencia de los materiales." },
+        { icono: "🛠️", frente: "Técnica: El artesano experto", reverso: "Pregunta «¿Cómo lo fabrico bien?». Domina herramientas, cortes, soldaduras y pasos exactos para construir." },
+        { icono: "🎨", frente: "Diseño: El arquitecto de la comodidad", reverso: "Pregunta «¿Cómo se verá y se sentirá?». Elige colores, tamaños, seguridad y facilidad de uso para las personas." },
+        { icono: "💻", frente: "Informática: El cerebro digital", reverso: "Pregunta «¿Cómo procesamos los datos?». Crea programas, aplicaciones y sistemas automáticos que toman decisiones rápidas." },
+        { icono: "💡", frente: "Invención: El creador de ideas nuevas", reverso: "Pregunta «¿Qué pasaría si creamos algo nuevo?». Da origen por primera vez a soluciones que antes no existían." }
       ]
     },
     explorador: {
-      titulo: "Explora cada campo en la vida real",
+      titulo: "Anatomía tecnológica de 4 objetos cotidianos",
       items: [
         {
-          icono: "📱",
-          nombre: "En un Celular",
-          secciones: [
-            { titulo: "Aporte de cada campo", items: ["Ciencia: ondas electromagnéticas y baterías de litio.", "Diseño: pantalla táctil delgada y bordes redondeados.", "Informática: sistema operativo Android o iOS y aplicaciones."] }
-          ]
-        },
-        {
           icono: "🚲",
-          nombre: "En una Bicicleta",
+          nombre: "Bicicleta de montaña",
           secciones: [
-            { titulo: "Aporte de cada campo", items: ["Ciencia: leyes del equilibrio, fricción y palancas.", "Técnica: corte y soldadura precisa de tubos de aluminio.", "Diseño: asiento ergonómico y colores llamativos."] }
+            { titulo: "Ciencia y Diseño", items: ["Ciencia: leyes del equilibrio, fricción de las llantas y palancas en los frenos.", "Diseño: cuadro liviano de aluminio, asiento cómodo y manubrio antideslizante."] },
+            { titulo: "Técnica e Invención", items: ["Técnica: soldadura precisa de tubos y calibración de los radios de las ruedas.", "Invención: creación del sistema de cadena y piñones para multiplicar la fuerza del pedaleo."] }
           ]
         },
         {
-          icono: "🏥",
-          nombre: "En un Hospital",
+          icono: "👟",
+          nombre: "Tenis deportivos",
           secciones: [
-            { titulo: "Aporte de cada campo", items: ["Invención: creación de la máquina de rayos X.", "Informática: historia clínica digital de los pacientes.", "Técnica: protocolos médicos para operar los equipos."] }
+            { titulo: "Ciencia y Diseño", items: ["Ciencia: estudio de espumas que absorben el impacto al saltar y telas transpirables.", "Diseño: colores llamativos, horma anatómica para el pie y suela con agarre."] },
+            { titulo: "Técnica e Informática", items: ["Técnica: corte láser de telas y vulcanizado de la suela de caucho.", "Informática: software 3D usado para simular cómo pisa el deportista antes de fabricar el tenis."] }
+          ]
+        },
+        {
+          icono: "🚦",
+          nombre: "Semáforo inteligente",
+          secciones: [
+            { titulo: "Invención y Ciencia", items: ["Invención: idea de usar luces de colores para ordenar el tráfico en las esquinas.", "Ciencia: funcionamiento de los diodos emisores de luz (LED) de bajo consumo eléctrico."] },
+            { titulo: "Informática y Diseño", items: ["Informática: programación que cambia los tiempos según la cantidad de carros en la vía.", "Diseño: viseras oscuras para que el sol no impida ver las luces desde lejos."] }
+          ]
+        },
+        {
+          icono: "🎒",
+          nombre: "Morral escolar",
+          secciones: [
+            { titulo: "Diseño y Técnica", items: ["Diseño: correas acolchadas para cuidar la espalda y bolsillos distribuidos por peso.", "Técnica: costuras reforzadas con hilo de alta resistencia e instalación de cremalleras."] },
+            { titulo: "Ciencia", items: ["Ciencia: desarrollo de telas sintéticas impermeables que protegen los cuadernos de la lluvia."] }
           ]
         }
       ]
     },
     clasificador: {
-      titulo: "Clasifica cada acción en su campo correspondiente",
-      categorias: ["Ciencia e Invención", "Técnica, Diseño e Informática"],
+      titulo: "Reto de clasificación: ¿A qué campo pertenece cada aporte?",
+      categorias: ["Ciencia y Técnica", "Diseño e Informática"],
       items: [
-        { texto: "Descubrir cómo viaja la luz a través de la fibra óptica", categoria: 0 },
-        { texto: "Crear el primer prototipo de teléfono en la historia", categoria: 0 },
-        { texto: "Programar una aplicación móvil para aprender matemáticas", categoria: 1 },
-        { texto: "Dibujar el boceto y elegir los colores de una mochila escolar", categoria: 1 },
-        { texto: "Soldar con precisión las piezas metálicas de un puente", categoria: 1 },
-        { texto: "Inventar la primera vacuna contra una enfermedad", categoria: 0 },
-        { texto: "Estudiar cómo reacciona el agua al calentarse a 100 grados", categoria: 0 },
-        { texto: "Configurar una hoja de cálculo en Excel con fórmulas automáticas", categoria: 1 }
+        { texto: "Descubrir por qué el aluminio es más liviano y resistente que el hierro.", categoria: 0 },
+        { texto: "Programar la aplicación que muestra la ruta del bus escolar en tiempo real.", categoria: 1 },
+        { texto: "Soldar con precisión los cables internos de un parlante portátil.", categoria: 0 },
+        { texto: "Elegir los colores y el tamaño de las letras de un tablero digital para que se lean bien.", categoria: 1 },
+        { texto: "Estudiar cómo viaja el sonido a través del aire para fabricar mejores micrófonos.", categoria: 0 },
+        { texto: "Dar forma curva y suave al mouse del computador para que no canse la muñeca.", categoria: 1 },
+        { texto: "Aplicar pasos exactos de costura industrial para unir las piezas de un balón.", categoria: 0 },
+        { texto: "Crear el código de un videojuego educativo para practicar matemáticas.", categoria: 1 }
       ]
     }
   },
   reto: {
-    titulo: "Tecnología en Acción: Presupuestos Interdisciplinarios",
-    descripcion: "Genera una tabla de proyectos tecnológicos aplicados a diferentes campos usando Inteligencia Artificial y calcula sus costos reales y diferencias presupuestales en Excel mediante referencias de celdas.",
+    titulo: "Tecnología en acción: Implementos Deportivos",
+    descripcion: "Usarás Inteligencia Artificial para generar una tabla estructurada de implementos deportivos tecnológicos y luego aplicarás formato profesional y fórmulas de multiplicación en Microsoft Excel.",
     pasos: [
-      "Abre tu asistente de IA generativa, copia el prompt de abajo y pega el resultado en la celda A1 de Excel (verifica que queden 6 columnas y datos hasta la fila 11).",
-      "Da formato a la fila 1 (encabezados): relleno azul oscuro, letra blanca Arial tamaño 12, negrita y alineación centrada.",
-      "Selecciona el rango numérico D2:H11 y aplica alineación a la derecha y formato de número con separador de miles; luego pon bordes delgados a toda la tabla A1:H11.",
-      "En G1 escribe «Costo real (COP)» y en G2 ingresa la fórmula =D2*E2; en H1 escribe «Diferencia (COP)» y en H2 ingresa =F2-G2.",
-      "Selecciona G2 y H2 y arrastra el controlador de relleno (cuadrito inferior derecho) hacia abajo hasta la fila 11 para copiar las fórmulas.",
-      "Reto avanzado: en A12 escribe «TOTALES» en negrita y en G12 usa =SUMA(G2:G11) para hallar el costo total de todos los proyectos.",
-      "Guarda el archivo en tu carpeta como 6_tecnologia_y_campos_231126_tunombre.xlsx verificando que termine en .xlsx."
+      "Paso 1 (Generar datos con IA): Abre tu herramienta de IA favorita, copia el prompt exacto de abajo y pégalo. Luego copia la tabla generada y pégala en la celda A1 de Excel verificando que los datos lleguen hasta la fila 11.",
+      "Paso 2 (Verificar estructura): Revisa que la información haya quedado repartida en 4 columnas (A, B, C y D). Si todo quedó pegado en una sola columna o faltan filas, pídele a la IA que lo corrija.",
+      "Paso 3 (Dar formato a encabezados): Selecciona el rango de encabezados (A1 a D1) y aplícales fuente Arial, tamaño 12, negrita, color de relleno azul claro y alineación centrada.",
+      "Paso 4 (Bordes y ajuste): Aplica todos los bordes a la tabla completa (desde A1 hasta D11) y ajusta el ancho de las columnas para que ningún texto quede cortado.",
+      "Paso 5 (Calcular el total con fórmula): Haz clic en la celda D2, escribe exactamente =B2*C2 y presiona Enter. Luego arrastra el cuadro verde de la esquina inferior derecha de D2 hasta D11 para copiar la fórmula.",
+      "Paso 6 (Reto avanzado y guardado): Cambia el color de la fuente a verde en toda la columna Total (COP). Guarda el archivo en tu carpeta de Tecnología como 6_tecnologia_deporte_231126_tu_nombre.xlsx (sin espacios, tildes ni ñ)."
     ],
-    prompt: "Genera una tabla sobre la tecnología y su relación con otros campos. La tabla debe tener exactamente 6 columnas con estos encabezados: ID, Campo, Tecnología, Cantidad, Costo unitario (COP), Presupuesto (COP). Genera exactamente 10 filas de datos realistas (ej: Medicina, Agricultura, Educación con tecnologías como Drones, IA, Robótica). La columna Cantidad debe tener números enteros entre 1 y 20. La columna Costo unitario (COP) debe tener números entre 500000 y 5000000. La columna Presupuesto (COP) debe ser un número ligeramente superior o inferior al costo total esperado. Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas. Usa tabulaciones reales como separador.",
+    prompt: "Genera una tabla sobre implementos deportivos con tecnología. Encabezados exactos: Implemento, Cantidad, Precio (COP), Total (COP). Entrega SOLO la tabla en formato TSV (separada por tabulaciones), con 1 fila de encabezados y exactamente 10 filas de datos, sin explicaciones, sin markdown y sin comillas.",
     herramientas: [
-      { nombre: "Microsoft Excel / Hoja de Cálculo", url: "https://www.office.com" },
-      { nombre: "Google Gemini (Asistente IA)", url: "https://gemini.google.com" }
+      { nombre: "Microsoft Copilot (IA)", url: "https://copilot.microsoft.com" },
+      { nombre: "Google Gemini (IA)", url: "https://gemini.google.com" },
+      { nombre: "Excel Online (Microsoft 365)", url: "https://www.office.com" }
     ],
     requisitos: [
-      "Tabla pegada en A1:F11 con 10 proyectos tecnológicos en distintos campos.",
-      "Encabezados con relleno azul oscuro, texto blanco Arial 12 en negrita y bordes en A1:H11.",
-      "Fórmula =D2*E2 aplicada en toda la columna G (Costo real).",
-      "Fórmula =F2-G2 aplicada en toda la columna H (Diferencia).",
-      "Fila 12 con el total calculado mediante =SUMA(G2:G11) y archivo guardado con la nomenclatura indicada."
+      "La tabla tiene 1 fila de encabezados (A1:D1) y exactamente 10 filas de implementos deportivos (filas 2 a 11).",
+      "Los encabezados tienen fuente Arial 12, negrita, relleno azul claro y texto centrado.",
+      "Toda la tabla (A1:D11) tiene bordes visibles y las columnas están bien ajustadas.",
+      "La columna Total (COP) calcula automáticamente el valor usando la fórmula =B2*C2 arrastrada hasta D11.",
+      "Los valores de la columna Total (COP) tienen color de fuente verde (Reto avanzado).",
+      "El archivo está guardado en la carpeta de Tecnología con extensión .xlsx y nombre sin espacios ni tildes."
     ]
   },
   quiz: [
     {
-      pregunta: "¿Cuál es la diferencia principal entre ciencia y técnica?",
+      pregunta: "¿Cuál es la función principal de la Ciencia cuando se relaciona con la tecnología?",
       opciones: [
-        "La ciencia explica por qué ocurren las cosas y la técnica aplica pasos y herramientas para hacerlas.",
-        "La ciencia solo se usa en hospitales y la técnica solo en computadores.",
-        "La técnica inventa teorías matemáticas y la ciencia pinta los objetos.",
-        "No existe ninguna diferencia porque ambas significan exactamente lo mismo."
+        "Decorar los objetos para que se vean modernos en las tiendas.",
+        "Explicar el «porqué» funcionan los fenómenos de la naturaleza y los materiales.",
+        "Vender los productos tecnológicos por Internet a todo el país.",
+        "Escribir únicamente los manuales de instrucciones en varios idiomas."
+      ],
+      correcta: 1,
+      explicacion: "La ciencia investiga y explica las leyes naturales que luego la tecnología aprovecha para crear soluciones."
+    },
+    {
+      pregunta: "Cuando un carpintero o un técnico sigue pasos ordenados y usa herramientas con habilidad para ensamblar una silla, está aplicando principalmente:",
+      opciones: [
+        "La informática.",
+        "La técnica.",
+        "La astronomía.",
+        "La publicidad."
+      ],
+      correcta: 1,
+      explicacion: "La técnica reúne los procedimientos, habilidades y uso correcto de herramientas para fabricar algo."
+    },
+    {
+      pregunta: "Un equipo de creadores planea que un casco de bicicleta sea liviano, tenga ventilación y sea cómodo para la cabeza del ciclista. ¿Qué campo lidera esa decisión?",
+      opciones: [
+        "El diseño.",
+        "La minería.",
+        "La geografía.",
+        "La contabilidad."
       ],
       correcta: 0,
-      explicacion: "La ciencia busca comprender los fenómenos naturales, mientras que la técnica se enfoca en los procedimientos y habilidades para fabricar o ejecutar algo."
+      explicacion: "El diseño se encarga de planear la forma, ergonomía, estética y seguridad de los objetos."
     },
     {
-      pregunta: "Cuando un equipo de trabajo imagina, dibuja y elige la forma y colores de unos tenis para que sean cómodos, ¿qué campo aplica?",
+      pregunta: "¿Qué aporte hace la Informática a un reloj inteligente moderno?",
       opciones: [
-        "Informática",
-        "Diseño",
-        "Ciencia",
-        "Presupuesto"
-      ],
-      correcta: 1,
-      explicacion: "El diseño se encarga de planear la estética, comodidad, ergonomía y estructura de un objeto antes de producirlo."
-    },
-    {
-      pregunta: "¿Qué campo del conocimiento se encarga de procesar, guardar y enviar datos de manera automática mediante computadores y programas?",
-      opciones: [
-        "La técnica artesanal",
-        "La informática",
-        "La agricultura tradicional",
-        "La carpintería"
-      ],
-      correcta: 1,
-      explicacion: "La informática utiliza sistemas computacionales y software para gestionar información de forma rápida y precisa."
-    },
-    {
-      pregunta: "Si en Excel la celda D2 tiene la cantidad de drones (5) y la celda E2 tiene el costo unitario (1.000.000), ¿qué fórmula calcula el costo real?",
-      opciones: [
-        "D2*E2",
-        "=D2+E2",
-        "=D2*E2",
-        "=SUMA(D2:F2)"
+        "El caucho flexible de la correa deportiva.",
+        "El vidrio mineral que protege la pantalla contra rayones.",
+        "El sistema operativo y las aplicaciones que miden pasos y frecuencia cardíaca.",
+        "La caja de cartón reciclado donde viene empacado."
       ],
       correcta: 2,
-      explicacion: "Toda fórmula en Excel debe iniciar con el signo igual (=) y usar el asterisco (*) para multiplicar las referencias de celda D2 y E2."
+      explicacion: "La informática aporta el software, los programas y el procesamiento digital de datos del dispositivo."
     },
     {
-      pregunta: "¿Por qué es mejor escribir =F2-G2 en Excel en lugar de escribir los números directamente?",
+      pregunta: "En el reto de Excel de esta semana, si en B2 tienes la cantidad de balones y en C2 el precio unitario, ¿qué fórmula debes escribir en D2 para calcular el total?",
       opciones: [
-        "Porque Excel prohíbe escribir números sin el signo igual.",
-        "Porque si cambias un valor en F2 o G2, el resultado se actualiza automáticamente.",
-        "Porque las letras ocupan menos memoria en el disco duro.",
-        "Porque así los números se convierten en texto de color azul."
+        "=B2+C2",
+        "=B2*C2",
+        "=SUMA(B2:C2)",
+        "B2xC2"
       ],
       correcta: 1,
-      explicacion: "Las referencias de celda hacen que la hoja de cálculo sea dinámica y recalcule los resultados al instante si modificas los datos iniciales."
+      explicacion: "En Excel toda fórmula inicia con el signo igual (=) y el asterisco (*) representa la multiplicación."
     },
     {
-      pregunta: "¿Qué es una invención tecnológica?",
+      pregunta: "¿Por qué afirmamos que la tecnología «no trabaja sola»?",
       opciones: [
-        "Copiar un objeto que ya existe sin cambiarle nada.",
-        "Crear algo totalmente nuevo que antes no existía para resolver una necesidad.",
-        "Reparar una bicicleta dañada usando herramientas básicas.",
-        "Ordenar una tabla de datos de mayor a menor."
+        "Porque siempre necesita estar conectada a un tomacorriente eléctrico.",
+        "Porque solo funciona si la usan personas adultas en una fábrica.",
+        "Porque integra saberes de la ciencia, técnica, diseño, informática e invención para crear soluciones.",
+        "Porque únicamente existe dentro de los teléfonos celulares y computadores."
       ],
-      correcta: 1,
-      explicacion: "Una invención implica dar vida a un artefacto o solución original que no existía previamente en la sociedad."
+      correcta: 2,
+      explicacion: "Todo desarrollo tecnológico combina conocimientos científicos, habilidades técnicas, diseño, software e ideas innovadoras."
     }
   ],
   tarea: {
-    titulo: "Evidencia: Mapa Conceptual de la Tecnología y otros Campos",
+    titulo: "La tecnología en otros campos",
     html: true,
-    instruccion: "<h4>1. Elaboración en hoja suelta (horizontal)</h4><ul><li>En una hoja de block tamaño carta u oficio (sin rayas o cuadriculada), dibuja un <b>mapa conceptual</b> usando óvalos o rectángulos unidos por flechas y palabras de enlace (por ejemplo: <i>se apoya en, explica, aplica, por ejemplo</i>).</li><li>Coloca en la parte superior central el concepto principal: <b>LA TECNOLOGÍA</b>.</li></ul><h4>2. Ramas y ejemplos cotidianos</h4><ul><li>Saca 5 ramas principales hacia los campos vistos en clase: <b>Ciencia, Técnica, Diseño, Informática e Invención</b>.</li><li>Debajo de cada campo explica brevemente qué hace y escribe <b>un ejemplo cotidiano diferente</b> al visto en el tablero.</li></ul><h4>3. Presentación</h4><ul><li>Usa colores para diferenciar los conceptos principales, las definiciones y los ejemplos, y marca la hoja con tu nombre completo, grado 6° y fecha.</li></ul>",
+    instruccion: "<h4>Instrucción general</h4><ul><li>Responde en tu hoja suelta usando <b>solo lápiz y colores</b>, sin usar el computador.</li></ul><h4>Punto 1: Dibuja y señala</h4><ul><li>Dibuja y señala <b>2 ejemplos de tecnología</b> aplicados al <b>deporte</b> o a la <b>agricultura</b>.</li><li>Usa flechas para indicar sus partes importantes o cómo ayudan en esa actividad.</li></ul><h4>Punto 2: Reflexión escrita</h4><ul><li>Escribe con tus propias palabras: <b>¿por qué es útil la tecnología en ese campo?</b></li></ul>",
     renglones: 0,
-    indicacion: "Entrégalo en una hoja suelta marcada con tus datos para la carpeta de evidencias.",
+    indicacion: "Realízala en una hoja suelta marcada con tu nombre completo, grado y fecha.",
     criterios: [
-      "Incluye el concepto central y los 5 campos relacionados (ciencia, técnica, diseño, informática e invención).",
-      "Utiliza correctamente recuadros, flechas y palabras de enlace propias de un mapa conceptual.",
-      "Aporta un ejemplo cotidiano claro y pertinente para cada uno de los cinco campos.",
-      "Presentación limpia, ordenada, con buena ortografía y uso de colores."
+      "Dibujos claros, bien coloreados y con partes señaladas.",
+      "Respuesta coherente escrita con palabras propias (sin copiar de Internet).",
+      "Hoja limpia y marcada con nombre completo, grado 6° y fecha."
     ],
-    entrega: "Próxima clase"
+    entrega: "Próxima clase, en hoja suelta con nombre completo, grado y fecha."
   },
   hoja: {
     preguntas: [
-      { id: "r1", texto: "1. Escoge un objeto que uses todos los días (como un computador, una moto o unos audífonos) y explica cómo participan al menos tres campos del conocimiento en su creación:", lineas: 3 },
-      { id: "r2", texto: "2. ¿Qué pasaría si fabricáramos un celular teniendo en cuenta solo la informática pero olvidando por completo el diseño?", lineas: 3 },
-      { id: "r3", texto: "3. En el ejercicio de Excel, ¿qué significa que la columna «Diferencia (COP)» dé un resultado negativo en algún proyecto?", lineas: 2 },
-      { id: "r4", texto: "4. ¿Para qué te sirvió el formato TSV al copiar la tabla desde la Inteligencia Artificial hacia Excel?", lineas: 2 },
-      { id: "r5", texto: "5. ¿Qué aprendí hoy sobre la relación de la tecnología con otros campos y el uso de fórmulas en Excel?", lineas: 3 }
+      { id: "r1", texto: "1. Elige un objeto que tengas en tu cartuchera o maleta y explica cómo intervinieron la ciencia, la técnica y el diseño para crearlo.", lineas: 3 },
+      { id: "r2", texto: "2. ¿Cuál es la diferencia entre una invención y la informática? Da un ejemplo cotidiano de cada una.", lineas: 3 },
+      { id: "r3", texto: "3. En el reto de Excel, ¿para qué nos sirvió usar Inteligencia Artificial en el Paso 1 y qué ventaja nos da arrastrar la fórmula =B2*C2?", lineas: 3 },
+      { id: "r4", texto: "4. Si pudieras inventar un objeto tecnológico para mejorar algún deporte o el cuidado de los cultivos en Buga, ¿qué problema resolvería?", lineas: 3 },
+      { id: "r5", texto: "5. ¿Qué aprendí hoy sobre la relación entre la tecnología y otros campos del conocimiento?", lineas: 2 }
     ]
   },
   notasDocente: [
-    "Al iniciar el reto en sala, verificar que los estudiantes copien el prompt completo para que la IA respete las tabulaciones TSV y no pegue toda la información en la columna A.",
-    "Recordar a los estudiantes de 6° que en Excel siempre se empieza una fórmula con el signo = y que el controlador de relleno evita tener que escribir la fórmula diez veces.",
-    "Enfatizar que el mapa conceptual debe realizarse en hoja suelta horizontal para aprovechar el ancho de las cinco ramas y servir como insumo para la digitalización de la segunda hora."
+    "Utilice objetos físicos presentes en el aula (el ventilador, el marcador borrable, un pupitre o el video beam) para ejemplificar en vivo la diferencia entre ciencia (materiales/electricidad), técnica (ensamblaje) y diseño (ergonomía).",
+    "Antes de ir a la sala de sistemas, verifique que todos los estudiantes tengan claro el esquema del mapa conceptual en el cuaderno usando colores distintos por cada rama.",
+    "En el laboratorio de informática, recuerde a los estudiantes configurar el teclado en español para encontrar fácilmente los signos (=) y (*), y enfatice en guardar el archivo sin espacios ni tildes."
   ]
 };
 </script>
